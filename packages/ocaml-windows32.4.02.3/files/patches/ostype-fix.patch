@@ -1,0 +1,48 @@
+From f9edfa977d378df4673c3f46f534412b79d4ed3a Mon Sep 17 00:00:00 2001
+From: Mauricio Fernandez <mfp@acm.org>
+Date: Sat, 7 May 2016 21:32:55 +0200
+Subject: [PATCH] Hardcode compile-time ostype constant (ostype_xxx
+ primitives) for win32 x-comp.
+
+---
+ asmcomp/closure.ml |    6 +++---
+ asmcomp/cmmgen.ml  |    6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/asmcomp/closure.ml b/asmcomp/closure.ml
+index 249e67c..ba6a342 100644
+--- a/asmcomp/closure.ml
++++ b/asmcomp/closure.ml
+@@ -493,9 +493,9 @@ let simplif_prim_pure fpc p (args, approxs) dbg =
+       begin match c with
+         | Big_endian -> make_const_bool Arch.big_endian
+         | Word_size -> make_const_int (8*Arch.size_int)
+-        | Ostype_unix -> make_const_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> make_const_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> make_const_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> make_const_bool false
++        | Ostype_win32 -> make_const_bool true
++        | Ostype_cygwin -> make_const_bool false
+       end
+   (* Catch-all *)
+   | _ ->
+diff --git a/asmcomp/cmmgen.ml b/asmcomp/cmmgen.ml
+index 8314966..bfaec2b 100644
+--- a/asmcomp/cmmgen.ml
++++ b/asmcomp/cmmgen.ml
+@@ -1582,9 +1582,9 @@ and transl_prim_1 p arg dbg =
+         match c with
+         | Big_endian -> const_of_bool Arch.big_endian
+         | Word_size -> tag_int (Cconst_int (8*Arch.size_int))
+-        | Ostype_unix -> const_of_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> const_of_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> const_of_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> const_of_bool false
++        | Ostype_win32 -> const_of_bool true
++        | Ostype_cygwin -> const_of_bool false
+       end
+   | Poffsetint n ->
+       if no_overflow_lsl n then
+-- 
+1.7.10.4
+

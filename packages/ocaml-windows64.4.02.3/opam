@@ -5,6 +5,7 @@ patches: [
   "patches/ocamldoc.patch"
   "patches/install_distrib.patch"
   "patches/install-ocamlrun.patch"
+  "patches/ostype-fix.patch"
 ]
 substs: [
   "config/Makefile"
