@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "hez@0ok.org"
+license: "MIT"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ZMQ"]]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "uint-windows"
+]
+available: [ ocaml-version < "4.03.0" ]
