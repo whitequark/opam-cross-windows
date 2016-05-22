@@ -1,0 +1,55 @@
+opam-version: "1.2"
+maintainer: "Pierre Boutillier <pierre.boutillier@laposte.net>"
+authors: [
+  "Jérôme Vouillon"
+  "Jérémie Dimino"
+]
+homepage: "http://github.com/ocsigen/lwt"
+dev-repo: "git://github.com/ocsigen/lwt"
+bug-reports: "http://github.com/ocsigen/lwt/issues"
+license: "LGPL with OpenSSL linking exception"
+
+build: [
+  ["ocaml" "setup.ml" "-configure"
+    "--override" "os_type" "Win32"
+    "--override" "flexlink" "%{lib}%/flexdll-windows/flexlink"
+    "--override" "ext_dll" ".dll"
+    "--override" "datarootdir" "%{prefix}%/windows-sysroot/share"
+    "--disable-pthread"
+    "--prefix" "%{prefix}%/windows-sysroot"
+    "--disable-libev"
+#    "--%{camlp4:enable}%-camlp4"
+    "--disable-camlp4"
+    "--%{react-windows:enable}%-react"
+    "--%{ssl-windows:enable}%-ssl"
+    "--enable-unix"
+    "--enable-preemptive"
+    "--%{lablgtk-windows:enable}%-glib"
+    "--disable-ppx"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+
+  # make ppx 'available'
+  ["ln" "-s" "../../bin/ppx_lwt" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
+  ["sed" "-e" "/\"ppx.cm/d" "-i" "%{prefix}%/windows-sysroot/lib/lwt/META"]
+]
+remove: [
+  ["rm" "-f" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "lwt"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build & >= "1.5.0"}
+  "ocamlbuild" {build}
+  "ppx_tools"
+  "lwt" {= "2.5.2"}
+]
+depopts: [
+#  "camlp4"
+  "ssl-windows"
+  "react-windows"
+  "lablgtk-windows"
+]
