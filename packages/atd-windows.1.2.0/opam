@@ -1,0 +1,13 @@
+opam-version: "1.2"
+maintainer: "pierre.boutillier@laposte.net"
+authors: "Martin Jambon"
+homepage: "https://github.com/mjambon/atd"
+bug-reports: "https://github.com/mjambon/atd/issues"
+dev-repo: "https://github.com/mjambon/atd.git"
+license: "BSD3"
+patches: ["patches/ocamlc_config_through_ocamlfind.patch"]
+build: ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+install:
+["env" "OCAMLFIND_TOOLCHAIN=windows" make "install" "BINDIR=%{prefix}%/windows-sysroot/bin/"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "atd"]
+depends: ["ocaml-windows" "ocamlfind" "menhir" "easy-format-windows"]
