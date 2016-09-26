@@ -1,0 +1,24 @@
+opam-version: "1.2"
+maintainer: "pierre.boutillier@laposte.net"
+authors: ["Martin Jambon"]
+
+homepage: "https://github.com/mjambon/atdgen"
+bug-reports: "https://github.com/mjambon/atdgen/issues"
+dev-repo: "https://github.com/mjambon/atdgen.git"
+license: "BSD3"
+
+patches: ["patches/ocamlc_config_through_ocamlfind.patch"]
+build: [ ["env" "OCAMLFIND_TOOLCHAIN=windows" make] ]
+
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "findlib-install"]
+
+remove: [
+    ["ocamlfind" "-toolchain" "windows" "remove" "atdgen"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "atd-windows" {>= "1.2.0"}
+  "biniou-windows" {>= "1.0.6"}
+  "yojson-windows" {>= "1.2.1" }
+]
