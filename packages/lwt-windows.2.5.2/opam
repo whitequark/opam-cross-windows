@@ -32,7 +32,7 @@ install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
   # make -package lwt.ppx of target's lwt invoke build's ppx_lwt
   ["ln" "-s" "../../bin/ppx_lwt" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
-  ["sed" "-e" "/\"ppx.cm/d" "-i" "%{prefix}%/windows-sysroot/lib/lwt/META"]
+  ["sed" "-i" "-e" "/\"ppx.cm/d" "%{prefix}%/windows-sysroot/lib/lwt/META"]
 ]
 remove: [
   ["rm" "-f" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
