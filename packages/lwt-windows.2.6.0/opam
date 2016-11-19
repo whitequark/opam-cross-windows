@@ -1,14 +1,15 @@
 opam-version: "1.2"
+name: "lwt"
+version: "2.6.0"
 maintainer: "Pierre Boutillier <pierre.boutillier@laposte.net>"
 authors: [
   "Jérôme Vouillon"
   "Jérémie Dimino"
 ]
-homepage: "http://github.com/ocsigen/lwt"
-dev-repo: "git://github.com/ocsigen/lwt"
+homepage: "https://github.com/ocsigen/lwt"
+dev-repo: "https://github.com/ocsigen/lwt.git"
 bug-reports: "http://github.com/ocsigen/lwt/issues"
 license: "LGPL with OpenSSL linking exception"
-
 build: [
   ["ocaml" "setup.ml" "-configure"
     "--override" "os_type" "Win32"
@@ -42,11 +43,17 @@ depends: [
   "ocaml-windows"
   "ocamlfind" {build & >= "1.5.0"}
   "ocamlbuild" {build}
+  "result-windows"
   "ppx_tools"
-  "lwt" {= "2.5.2"}
+  "lwt" {= "2.6.0"}
 ]
 depopts: [
   "ssl-windows"
-  "react-windows"
   "lablgtk-windows"
+  "react-windows"
+]
+conflicts: [
+  "react-windows" {< "1.0.0"}
+  "ssl-windows" {< "0.5.0"}
+  "ppx_tools" {< "1.0.0" }
 ]
