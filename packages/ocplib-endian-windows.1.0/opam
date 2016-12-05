@@ -1,0 +1,25 @@
+opam-version: "1.2"
+authors: "Pierre Chambart"
+maintainer: "pierre.chambart@ocamlpro.com"
+homepage: "https://github.com/OCamlPro/ocplib-endian"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "ocplib-endian"]
+]
+depends: [
+  "ocaml-windows"
+  "cppo" {build}
+  "ocamlbuild" {build}
+]
+dev-repo: "https://github.com/OCamlPro/ocplib-endian.git"
+bug-reports: "https://github.com/OCamlPro/ocplib-endian/issues"
