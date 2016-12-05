@@ -1,0 +1,43 @@
+diff --git a/Makefile.in b/Makefile.in
+index 14c9a63..8cd4c18 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -135,16 +135,16 @@ META: Makefile
+ .SUFFIXES: .ml .mli .cmo .cmi .cmx $(OBJ_EXT)
+ 
+ .mli.cmi:
+-	$(CAMLC) $(BYTEFLAGS) -c $<
++	$(CAMLFIND) ocamlc $(BYTEFLAGS) -c $<
+ 
+ .ml.cmo:
+-	$(CAMLC) $(BYTEFLAGS) -c $<
++	$(CAMLFIND) ocamlc $(BYTEFLAGS) -c $<
+ 
+ .ml$(OBJ_EXT):
+-	$(CAMLOPT) $(OPTFLAGS) -c $<
++	$(CAMLFIND) ocamlopt $(OPTFLAGS) -c $<
+ 
+ .ml.cmx:
+-	$(CAMLOPT) $(OPTFLAGS) -c $<
++	$(CAMLFIND) ocamlopt $(OPTFLAGS) -c $<
+ 
+ # Tests
+ #######
+@@ -160,7 +160,7 @@ TESTS_CMO= $(TESTS_ML:.ml=.cmo)
+ $(TESTS_CMO) $(TESTS_CMI): $(LIBDIR)/$(NAMELIB).cmo $(LIBDIR)/$(NAMELIB).cmi
+ 
+ tests/test: $(LIBDIR)/$(NAMELIB).cmo $(TESTS_CMO)
+-	$(CAMLC) -o $@ $(BYTEFLAGS) unix.cma str.cma $(LIBDIR)/$(NAMELIB).cmo \
++	$(CAMLFIND) ocamlc -o $@ $(BYTEFLAGS) -package unix -package str -linkpkg $(LIBDIR)/$(NAMELIB).cmo \
+ 		$(TESTS_CMO)
+ 
+ .PHONY: tests
+@@ -185,7 +185,7 @@ utils/example.ml: utils/example.ml.4
+ endif
+ 
+ utils/example.cmo: utils/example.ml
+-	$(CAMLC) -I +ocamldoc -I utils -c $<
++	$(CAMLFIND) ocamlc -I +ocamldoc -I utils -c $<
+ 
+ .PHONY: doc
+ doc: $(CMO) utils/example.cmo
