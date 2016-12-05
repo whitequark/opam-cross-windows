@@ -1,9 +1,6 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
 patches: [
-  "patches/ar-fix.patch"
-  "patches/ocamldoc.patch"
-  "patches/install_distrib.patch"
   "patches/install-ocamlrun.patch"
   "patches/ostype-fix.patch"
 ]
