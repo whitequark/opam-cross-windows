@@ -9,15 +9,14 @@ tags: [ "result" "error" "declarative" "org:erratique" ]
 license: "ISC"
 available: [ ocaml-version >= "4.01.0"]
 depends: [
-  "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build}
   "result-windows"
   "ocaml-windows"
 ]
 build:[[
-  "env" "TOPKG_CONF_TOOLCHAIN=android"
   "ocaml" "pkg/pkg.ml" "build"
+          "--toolchain" "windows"
           "--pinned" "%{pinned}%" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "rresult.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "rresult"]]
