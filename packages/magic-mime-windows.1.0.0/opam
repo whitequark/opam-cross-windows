@@ -1,0 +1,23 @@
+opam-version: "1.2"
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+homepage: "https://github.com/mirage/ocaml-magic-mime"
+bug-reports: "https://github.com/mirage/ocaml-magic-mime/issues"
+dev-repo: "https://github.com/mirage/ocaml-magic-mime.git"
+license: "ISC"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "magic-mime"]
+depends: [
+  "ocamlbuild" {build}
+  "ocaml-windows"
+]
