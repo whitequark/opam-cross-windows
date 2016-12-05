@@ -1,0 +1,29 @@
+opam-version: "1.2"
+maintainer: "hez@0ok.org"
+authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
+license: "MIT"
+homepage: "https://github.com/hcarty/lwt-zmq"
+bug-reports: "https://github.com/hcarty/lwt-zmq/issues"
+dev-repo: "https://github.com/hcarty/lwt-zmq.git"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "lwt-zmq"]
+]
+depends: [
+  "ocaml-windows"
+  "lwt-windows"
+  "zmq-windows" {>= "4.0-2"}
+  "ocamlbuild" {build}
+]
+available: [ ocaml-version >= "3.12.1"]
