@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "Hezekiah M. Carty <hcarty@endgame.com>"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "cryptokit"]]
+depends: [
+  "ocaml-windows"
+  "ocamlbuild" {build}
+]
+depexts: [
+  [["mxe"] ["zlib"]]
+]
