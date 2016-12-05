@@ -1,0 +1,41 @@
+opam-version: "1.2"
+homepage: "https://github.com/mirage/ocaml-uri"
+bug-reports: "https://github.com/mirage/ocaml-uri/issues"
+dev-repo: "https://github.com/mirage/ocaml-uri.git"
+maintainer: "sheets@alum.mit.edu"
+authors: [
+  "Anil Madhavapeddy"
+  "David Sheets"
+  "Rudi Grinberg"
+]
+license: "ISC"
+tags: [
+  "url"
+  "uri"
+  "org:mirage"
+  "org:xapi-project"
+]
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "uri"]
+]
+depends: [
+  "ocaml-windows"
+  "re-windows"
+  "stringext-windows" {>= "1.4.0"}
+  "sexplib-windows"
+  "ppx_sexp_conv-windows"
+  "ocamlbuild" {build}
+]
+available: [ ocaml-version >= "4.02.2" ]
