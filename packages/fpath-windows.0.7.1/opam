@@ -1,0 +1,24 @@
+opam-version: "1.2"
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+homepage: "http://erratique.ch/software/fpath"
+doc: "http://erratique.ch/software/fpath/doc"
+dev-repo: "http://erratique.ch/repos/fpath.git"
+bug-reports: "https://github.com/dbuenzli/fpath/issues"
+tags: [ "file" "system" "path" "org:erratique" ]
+license: "ISC"
+available: [ ocaml-version >= "4.01.0"]
+depends: [
+   "ocamlbuild" {build}
+   "topkg" {build}
+   "result-windows"
+   "astring-windows"
+   "ocaml-windows"
+]
+build: [[
+  "env"
+  "ocaml" "pkg/pkg.ml" "build"
+          "--toolchain" "windows"
+          "--pinned" "%{pinned}%" ]]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "fpath.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "fpath"]]
