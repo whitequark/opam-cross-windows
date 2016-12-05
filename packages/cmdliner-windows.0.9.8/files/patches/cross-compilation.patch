@@ -1,0 +1,11 @@
+--- a/pkg/build.ml	2016-05-06 14:03:19.801635508 +0000
++++ b/pkg/build.ml	2016-05-06 14:03:27.301467873 +0000
+@@ -3,7 +3,7 @@
+ #use "topkg.ml";;
+ 
+ let () = 
+-  let builder = `Other ("ocamlbuild -classic-display", "_build") in
++  let builder = `OCamlbuild in
+   Pkg.describe "cmdliner" ~builder [
+     Pkg.lib "pkg/META";
+     Pkg.lib ~exts:Exts.module_library "src/cmdliner";
