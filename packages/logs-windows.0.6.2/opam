@@ -1,0 +1,29 @@
+opam-version: "1.2"
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+homepage: "http://erratique.ch/software/logs"
+doc: "http://erratique.ch/software/logs/doc"
+dev-repo: "http://erratique.ch/repos/logs.git"
+bug-reports: "https://github.com/dbuenzli/logs/issues"
+tags: [ "log" "system" "org:erratique" ]
+license: "ISC"
+available: [ ocaml-version >= "4.01.0"]
+depends: [
+  "ocamlbuild" {build}
+  "topkg" {build}
+  "result-windows"
+  "ocaml-windows" ]
+depopts: [
+  "fmt-windows"
+  "cmdliner-windows"
+  "lwt-windows" ]
+build: [[
+  "ocaml" "pkg/pkg.ml" "build"
+          "--pinned" "%{pinned}%"
+          "--with-fmt" "%{fmt-windows:installed}%"
+          "--with-cmdliner" "%{cmdliner-windows:installed}%"
+          "--with-lwt" "%{lwt-windows:installed}%"
+          "--with-js_of_ocaml" "false"
+          "--toolchain" "windows" ]]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "logs.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "logs"]]
