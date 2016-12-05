@@ -1,0 +1,47 @@
+diff --git a/myocamlbuild.ml b/myocamlbuild.ml
+index f3a0b78..f12cf45 100644
+--- a/myocamlbuild.ml
++++ b/myocamlbuild.ml
+@@ -897,8 +897,6 @@ let package_default =
+                  S
+                    [
+                       A "-ccopt";
+-                      A "-I/usr/local/include";
+-                      A "-ccopt";
+                       A "-I.";
+                       A "-ccopt";
+                       A "-I";
+@@ -915,10 +913,10 @@ let package_default =
+           (["oasis_library_zmq_cclib"; "link"],
+             [
+                (OASISExpr.EBool true,
+-                 S [A "-cclib"; A "-L/usr/local/lib"; A "-cclib"; A "-lzmq"])
++                 S [A "-cclib"; A "-lzmq"])
+             ]);
+           (["oasis_library_zmq_cclib"; "ocamlmklib"; "c"],
+-            [(OASISExpr.EBool true, S [A "-L/usr/local/lib"; A "-lzmq"])]);
++            [(OASISExpr.EBool true, S [A "-lzmq"])]);
+           (["oasis_executable_test_byte"; "ocaml"; "link"; "byte"],
+             [(OASISExpr.EBool true, S [A "-thread"])]);
+           (["oasis_executable_test_native"; "ocaml"; "link"; "native"],
+diff --git a/setup.ml b/setup.ml
+index ca99271..1c79a6d 100644
+--- a/setup.ml
++++ b/setup.ml
+@@ -7196,7 +7196,6 @@ let setup_t =
+                         [
+                            (OASISExpr.EBool true,
+                              [
+-                                "-I/usr/local/include";
+                                 "-I.";
+                                 "-I";
+                                 "${pkg_stdint}";
+@@ -7208,7 +7207,7 @@ let setup_t =
+                       bs_cclib =
+                         [
+                            (OASISExpr.EBool true,
+-                             ["-L/usr/local/lib"; "-lzmq"])
++                             ["-lzmq"])
+                         ];
+                       bs_dlllib = [(OASISExpr.EBool true, [])];
+                       bs_dllpath = [(OASISExpr.EBool true, [])];

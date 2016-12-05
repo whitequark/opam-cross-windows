@@ -1,6 +1,7 @@
 opam-version: "1.2"
 maintainer: "hez@0ok.org"
 license: "MIT"
+patches: ["patches/no-usr-local.patch"]
 build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
    "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
@@ -15,8 +16,6 @@ install: [
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "ZMQ"]]
 depends: [
   "ocaml-windows"
-  "ocamlfind" {build}
   "ocamlbuild" {build}
-  "uint-windows"
+  "stdint-windows"
 ]
-available: [ ocaml-version < "4.03.0" ]
