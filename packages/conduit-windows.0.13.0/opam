@@ -1,0 +1,34 @@
+opam-version: "1.2"
+maintainer:   "anil@recoil.org"
+authors:      ["Anil Madhavapeddy" "Thomas Leonard" "Thomas Gazagnaire" "Rudi Grinberg"]
+homepage:     "https://github.com/mirage/ocaml-conduit"
+dev-repo:     "https://github.com/mirage/ocaml-conduit.git"
+bug-reports:  "https://github.com/mirage/ocaml-conduit/issues"
+tags:         "org:mirage"
+license:      "ISC"
+
+build:   [
+  [make "ppx"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove:  ["ocamlfind" "-toolchain" "windows" "remove" "conduit"]
+
+depends: [
+  "ocaml-windows"
+  "ocamlbuild" {build}
+  "ppx_driver-windows" {build}
+  "ppx_optcomp-windows" {build & >="113.24.00"}
+  "ppx_sexp_conv" {build}
+  "ppx_sexp_conv-windows" {build}
+  "sexplib-windows"
+  "stringext-windows"
+  "uri-windows"
+# Removing ssl for now because it breaks mxe+ocaml
+#  "ssl-windows"
+  "cstruct-windows" {>="1.0.1"}
+  "ipaddr-windows" {>="2.5.0"}
+  "lwt-windows"
+]
+available: [ocaml-version >= "4.02.3"]
