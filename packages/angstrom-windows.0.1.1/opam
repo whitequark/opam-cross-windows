@@ -1,0 +1,29 @@
+opam-version: "1.2"
+maintainer: "Spiros Eliopoulos <spiros@inhabitedtype.com>"
+authors: [ "Spiros Eliopoulos <spiros@inhabitedtype.com>" ]
+license: "BSD-3-clause"
+homepage: "https://github.com/inhabitedtype/angstrom"
+bug-reports: "https://github.com/inhabitedtype/angstrom/issues"
+dev-repo: "https://github.com/inhabitedtype/angstrom.git"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml" "setup.ml" "-configure" "--prefix" prefix
+    "--enable-unix"
+    "--%{lwt-windows:enable}%-lwt"
+    "--disable-async"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+remove: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocamlfind" "remove" "angstrom"]
+]
+depends: [
+  "cstruct-windows" {>= "0.6.0"}
+  "result-windows"
+  "ocplib-endian-windows" {>= "0.6"}
+  "ocaml-windows"
+]
+depopts: [
+  "lwt-windows"
+]
+available: [ ocaml-version >= "4.00.0" ]
