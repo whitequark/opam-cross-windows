@@ -1,0 +1,22 @@
+opam-version: "1.2"
+name: "ppx_defer"
+version: "0.2.0"
+maintainer: "Hezekiah M. Carty <hez@0ok.org>"
+authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
+license: "MIT"
+homepage: "https://github.com/hcarty/ppx_defer"
+bug-reports: "https://github.com/hcarty/ppx_defer/issues"
+dev-repo: "https://github.com/hcarty/ppx_defer.git"
+tags: [ "syntax" ]
+build:[
+  "ocaml" "pkg/build.ml" "native=true"
+                         "native-dynlink=true"
+]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_defer.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ppx_defer"]]
+depends: [
+  "ppx_tools" {>= "0.99.3"}
+  "ocamlbuild" {build}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.02.3" ]
