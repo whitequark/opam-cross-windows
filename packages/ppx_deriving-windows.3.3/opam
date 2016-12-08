@@ -9,16 +9,24 @@ dev-repo: "https://github.com/whitequark/ppx_deriving.git"
 tags: [ "syntax" ]
 substs: [ "pkg/META" ]
 build: [
-  # If there is no native dynlink, we can't use native builds
-  "ocaml" "pkg/build.ml" "native=%{ocaml-native-dynlink}%"
-                         "native-dynlink=%{ocaml-native-dynlink}%"
+  [ "ocamlbuild" "-just-plugin" "-use-ocamlfind" "-plugin-tags" "package(cppo_ocamlbuild)"]
+  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml" "pkg/build.ml" "native=true"
+                           "native-dynlink=true" ]
+]
+install: [
+  ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_deriving.install"]
+  ["ln" "-sf" "%{lib}%/ppx_deriving" "%{prefix}%/windows-sysroot/lib/ppx_deriving/native"]
+]
+remove : [
+  ["rm" "-f" "%{prefix}%/windows-sysroot/lib/ppx_deriving/native"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "ppx_deriving"]
 ]
 depends: [
   "ocaml-windows"
   "ocamlbuild" {build}
   "cppo"       {build & >= "1.2.2"}
-  "ppx_tools"  {>= "4.02.3"}
+  "ppx_tools-windows"  {>= "4.02.3"}
+  "ocaml-windows"
 ]
-install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_deriving.install"]]
-remove: [["ocamlfind" "-toolchain" "windows" "remove" "ppx_deriving"]]
 available: [ ocaml-version >= "4.02.1" & opam-version >= "1.2" ]
