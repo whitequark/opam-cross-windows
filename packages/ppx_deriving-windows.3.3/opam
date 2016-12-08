@@ -14,8 +14,8 @@ build: [
                          "native-dynlink=%{ocaml-native-dynlink}%"
 ]
 depends: [
+  "ocaml-windows"
   "ocamlbuild" {build}
-  "ocamlfind"  {build & >= "1.5.4"}
   "cppo"       {build & >= "1.2.2"}
   "ppx_tools"  {>= "4.02.3"}
 ]
