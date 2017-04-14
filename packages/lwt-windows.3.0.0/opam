@@ -1,0 +1,66 @@
+opam-version: "1.2"
+name: "lwt"
+version: "3.0.0"
+maintainer: "Pierre Boutillier <pierre.boutillier@laposte.net>"
+authors: [
+  "Jérôme Vouillon"
+  "Jérémie Dimino"
+]
+homepage: "https://github.com/ocsigen/lwt"
+doc: "https://ocsigen.org/lwt/manual/"
+bug-reports: "https://github.com/ocsigen/lwt/issues"
+license: "LGPL with OpenSSL linking exception"
+dev-repo: "https://github.com/ocsigen/lwt.git"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "setup"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure"
+    "--override" "os_type" "Win32"
+    "--override" "flexlink" "%{lib}%/flexdll-windows/flexlink"
+    "--override" "ext_dll" ".dll"
+    "--override" "datarootdir" "%{prefix}%/windows-sysroot/share"
+    "--disable-pthread"
+    "--prefix" "%{prefix}%/windows-sysroot"
+    "--disable-libev"
+    "--disable-camlp4"
+    "--enable-unix"
+    "--enable-preemptive"
+    "--disable-ppx"]
+  ["ocamlbuild" "-use-ocamlfind" "-plugin-tag" "package(cppo_ocamlbuild)" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "build"]
+]
+
+install: [
+["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+  # make -package lwt.ppx of target's lwt invoke build's ppx_lwt
+  ["ln" "-s" "../../bin/ppx_lwt" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
+  ["sed" "-i" "-e" "/\"ppx.cm/d" "%{prefix}%/windows-sysroot/lib/lwt/META"]
+]
+remove: [
+  ["rm" "-f" "%{prefix}%/windows-sysroot/bin/ppx_lwt"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "lwt"]
+]
+
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build & >= "1.5.0"}
+  "ocamlbuild" {build}
+  "result-windows"
+  "ppx_tools"
+  "lwt" {= "3.0.0"}
+  "cppo" {build}
+  # See https://github.com/ocsigen/lwt/issues/266
+  ( "base-no-ppx" | "ppx_tools" {build} )
+]
+conflicts: [
+  "ppx_tools" {< "1.0.0" }
+  "conf-flambda-windows"
+]
+messages: [
+  "For module Lwt_ssl, please install package lwt_ssl-windows"
+  {ssl-windows:installed & !lwt_ssl-windows:installed}
+  "For module Lwt_glib, please install package lwt_glib-windows"
+  {lablgtk-windows:installed & !lwt_glib-windows:installed}
+  "For module Lwt_react, please install package lwt_react-windows"
+  {react-windows:installed & !lwt_react-windows:installed}
+]
