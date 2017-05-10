@@ -54,6 +54,7 @@ depopts: [
   "react-windows"
 ]
 conflicts: [
+  "conf-flambda-windows"
   "react-windows" {< "1.0.0"}
   "ssl-windows" {< "0.5.0"}
   "ppx_tools" {< "1.0.0" }
