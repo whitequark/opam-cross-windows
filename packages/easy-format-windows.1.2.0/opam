@@ -1,8 +1,0 @@
-opam-version: "1"
-maintainer: "whitequark@whitequark.org"
-build: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
-]
-remove: [["ocamlfind" "-toolchain" "windows" "remove" "easy-format"]]
-depends: ["ocaml-windows" "ocamlfind"]
