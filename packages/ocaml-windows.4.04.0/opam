@@ -1,5 +1,9 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
+install: [
+  ["./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+]
 depends: [
+  "conf-gcc-windows"
   ( "ocaml-windows32" {= "4.04.0"} | "ocaml-windows64" {= "4.04.0"} )
 ]
