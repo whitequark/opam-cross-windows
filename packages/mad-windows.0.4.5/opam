@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-mad"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "make" "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" name]
+depends: ["ocamlfind" {build}]
+depexts: [
+  [["mxe"] ["libmad"]]
+]
+bug-reports: "https://github.com/savonet/ocaml-mad/issues"
+dev-repo: "https://github.com/savonet/ocaml-mad.git"
