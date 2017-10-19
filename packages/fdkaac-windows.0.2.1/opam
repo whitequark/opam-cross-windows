@@ -1,0 +1,22 @@
+opam-version: "1.2"
+maintainer: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-fdkaac"
+bug-reports: "https://github.com/savonet/ocaml-fdkaac/issues"
+license: "GPL-2.0"
+dev-repo: "https://github.com/savonet/ocaml-fdkaac.git"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "make" "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "fdkaac"]
+depends: [
+  "ocamlfind" {build}
+]
+depexts: [
+  [["mxe"] ["fdk-aac"]]
+]
