@@ -1,5 +1,8 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
+substs: [
+  "windows.conf"
+]
 install: [
   ["./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
 ]

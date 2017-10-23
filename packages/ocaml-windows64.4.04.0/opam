@@ -6,7 +6,6 @@ patches: [
 ]
 substs: [
   "config/Makefile"
-  "windows.conf"
 ]
 build: [
   [make "-f" "Makefile.nt" "world" "opt" "install"]

@@ -13,6 +13,3 @@ done
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics num num-top stdlib str threads unix; do
   cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
 done
-
-mkdir -p "${PREFIX}/lib/findlib.conf.d"
-cp windows.conf "${PREFIX}/lib/findlib.conf.d"
