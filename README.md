@@ -104,7 +104,7 @@ External dependencies
 
 opam-windows-cross is designed to use native dependencies from the [MXE environment](http://mxe.cc). It is possible to automatically install all required dependencies for an OPAM package, e.g. `camlbz2-windows`, using one short command within an MXE checkout:
 
-    make `opam list --short --recursive --external=mxe camlbz2-windows`
+    make `opam list --short --recursive --external=mxe --required-by=camlbz2-windows`
 
 Porting packages
 ----------------
