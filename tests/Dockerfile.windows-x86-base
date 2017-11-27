@@ -1,0 +1,26 @@
+FROM dockcross/windows-x86
+MAINTAINER Romain Beauxis <toots@rastageeks.org>
+
+RUN apt-get update && apt-get install -y --force-yes gawk aspcud
+
+RUN useradd -g staff --create-home opam
+USER opam
+WORKDIR /home/opam/opam-cross-windows
+
+RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.04.0+32bit
+
+RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
+
+ADD packages/ /home/opam/opam-cross-windows/packages
+
+USER root
+
+RUN chown -R opam /home/opam/opam-cross-windows
+
+USER opam
+
+RUN opam repository add windows /home/opam/opam-cross-windows
+
+ENV TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static-
+
+RUN eval $(opam config env) && opam install ocaml-windows

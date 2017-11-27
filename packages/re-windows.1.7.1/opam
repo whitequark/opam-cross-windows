@@ -6,4 +6,7 @@ build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "re"]]
-depends: ["ocaml-windows" "ocamlfind"]
+depends: [
+  "ocaml-windows"
+  "ocamlbuild" {build}
+]
