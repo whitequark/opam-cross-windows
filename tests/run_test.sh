@@ -16,7 +16,7 @@ if [ "$?" -eq "0" ]; then
   exit 0
 fi
 
-RET=$(docker build -f ${TEST_PWD}/Dockerfile.windows-x86-test --no-cache --build-arg "SKIPPED=${SKIPPED}" --build-arg "OPAM_PKG=${PACKAGE}" ${TEST_PWD} 2>/dev/null)
+RET=$(docker build -f ${TEST_PWD}/Dockerfile.windows-x86-test --no-cache --build-arg "OPAM_PKG=${PACKAGE}" . 2>/dev/null)
 
 if [ "$?" -ne "0" ]; then
   if [ -n "${VERBOSE}" ]; then

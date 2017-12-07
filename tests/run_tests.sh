@@ -32,14 +32,14 @@ build_package() {
 
 PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 1 -mindepth 1 -type d | cut -d '/' -f 2 | sort -u)
 
-# This is weird..
-git fetch origin master >/dev/null 2>&1
+git remote set-branches origin '*'
+git fetch origin master
 
 echo "${PACKAGES}" | while read PACKAGE; do
   if [ -n "${WORLD}" ]; then
     build_package "${PACKAGE}"
   else
-    RET=$(cd "${BASE_PWD}/packages/${PACKAGE}" && git diff --name-only HEAD master .)
+    RET=$(cd "${BASE_PWD}/packages/${PACKAGE}" && git diff --name-only HEAD origin/master .)
 
     if [ -n "${RET}" ]; then
       build_package "${PACKAGE}"
