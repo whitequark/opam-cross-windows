@@ -39,7 +39,7 @@ echo "${PACKAGES}" | while read PACKAGE; do
   if [ -n "${WORLD}" ]; then
     build_package "${PACKAGE}"
   else
-    RET=$(cd "${BASE_PWD}/packages/${PACKAGE}" && git diff --name-only HEAD master .)
+    RET=$(cd "${BASE_PWD}/packages/${PACKAGE}" && git diff --name-only HEAD origin/master .)
 
     if [ -n "${RET}" ]; then
       build_package "${PACKAGE}"
