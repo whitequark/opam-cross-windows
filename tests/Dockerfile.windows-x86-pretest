@@ -1,0 +1,18 @@
+FROM ocamlcross/windows-x86-base:latest
+MAINTAINER Romain Beauxis <toots@rastageeks.org>
+
+ARG OPAM_SKIPPED
+
+USER root
+
+RUN rm -rf /home/opam/opam-cross-windows/packages
+
+ADD packages/ /home/opam/opam-cross-windows/packages
+
+RUN cd /home/opam/opam-cross-windows/packages && rm -rf $OPAM_SKIPPED
+
+RUN chown -R opam /home/opam/opam-cross-windows
+
+USER opam
+
+RUN opam update windows

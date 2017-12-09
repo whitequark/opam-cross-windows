@@ -5,11 +5,16 @@ RUN apt-get update && apt-get install -y --force-yes gawk aspcud
 
 RUN useradd -g staff --create-home opam
 USER opam
-WORKDIR /home/opam/opam-cross-windows
 
-RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.04.0+32bit
+RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | env CC=gcc OCAMLBREW_FLAGS="-r" bash
+
+ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
+
+RUN opam init --auto --compiler=4.04.0+32bit
 
 RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
+
+WORKDIR /home/opam/opam-cross-windows
 
 ADD packages/ /home/opam/opam-cross-windows/packages
 
@@ -23,4 +28,4 @@ RUN opam repository add windows /home/opam/opam-cross-windows
 
 ENV TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static-
 
-RUN eval $(opam config env) && opam install ocaml-windows
+RUN eval $(opam config env) && opam install -y ocaml-windows
