@@ -10,7 +10,7 @@ build: [
   ["./boot.exe" "--subst"] {pinned}
   ["./boot.exe" "-j" jobs]
   ["./_build/install/default/bin/jbuilder" "build" "--install-prefix" "windows-sysroot"]
-  ["/bin/sh" "-c" "cat jbuilder.install >> jbuilder-x.install"]
+  ["/bin/sh" "-c" "cat jbuilder.install >> jbuilder-windows.install"]
 ]
 depends: [
   # ocamlfind is not mandatory to build packages using

@@ -6,11 +6,11 @@ bug-reports: "https://github.com/janestreet/ppx_core/issues"
 license: "Apache-2.0"
 dev-repo: "https://github.com/janestreet/ppx_core.git"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_core"  "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_core"  "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ocaml-compiler-libs-windows"
   "ppx_ast" {>= "v0.9.0" & < "v0.10"}
   "ppx_ast-windows"

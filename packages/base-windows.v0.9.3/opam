@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/base/issues"
 license: "Apache-2.0"
 dev-repo: "https://github.com/janestreet/base.git"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "base" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "base" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "sexplib-windows"
 ]
 available: [ocaml-version >= "4.03.0" & ocaml-version < "4.06.0" ]

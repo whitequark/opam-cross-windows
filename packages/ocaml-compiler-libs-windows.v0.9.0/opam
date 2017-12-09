@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/ocaml-compiler-libs/issues"
 dev-repo: "https://github.com/janestreet/ocaml-compiler-libs.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ocaml-compiler-libs" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ocaml-compiler-libs" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ocaml-windows"
 ]
 available: [ ocaml-version >= "4.03.0" ]

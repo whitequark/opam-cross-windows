@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/ppx_sexp_conv/issues"
 dev-repo: "https://github.com/janestreet/ppx_sexp_conv.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_sexp_conv" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_sexp_conv" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ppx_core-windows"
   "ppx_driver-windows"
   "ppx_metaquot-windows"

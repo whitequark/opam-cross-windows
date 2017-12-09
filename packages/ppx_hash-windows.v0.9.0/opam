@@ -6,11 +6,11 @@ bug-reports: "https://github.com/janestreet/ppx_hash/issues"
 dev-repo: "https://github.com/janestreet/ppx_hash.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_hash" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_hash" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
-  "jbuilder-x"  {build}
+  "jbuilder-windows"  {build}
   "ppx_compare" {>= "v0.9" & < "v0.10"}
   "ppx_compare-windows"
   "ppx_core-windows"

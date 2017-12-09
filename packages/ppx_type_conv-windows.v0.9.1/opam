@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/ppx_type_conv/issues"
 license: "Apache-2.0"
 dev-repo: "https://github.com/janestreet/ppx_type_conv.git"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_type_conv" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_type_conv" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ppx_core" {= "v0.9.0"} # This is a hint to dep resolver.
   "ppx_core-windows"
   "ppx_driver" {= "v0.9.1"}

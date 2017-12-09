@@ -6,9 +6,9 @@ homepage: "https://github.com/diml/ppx_derivers"
 bug-reports: "https://github.com/diml/ppx_derivers/issues"
 dev-repo: "git://github.com/diml/ppx_derivers.git"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ocaml-windows"
 ]

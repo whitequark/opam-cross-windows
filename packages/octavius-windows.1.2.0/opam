@@ -13,10 +13,10 @@ available: [ ocaml-version >= "4.03.0"]
 depends: [
   "ocaml-windows"
   "ocamlfind" {build}
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "topkg" {build & >= "0.7.5"} ]
 
 build: [
-  ["jbuilder-x" "subst" "-x" "windows"] {pinned}
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "octavius" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "subst" "-x" "windows"] {pinned}
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "octavius" "-j" jobs "-x" "windows"]
 ]

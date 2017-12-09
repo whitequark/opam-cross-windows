@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/ppx_ast/issues"
 dev-repo: "https://github.com/janestreet/ppx_ast.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_ast" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_ast" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ocaml-compiler-libs-windows"
   "ocaml-migrate-parsetree-windows"
 ]

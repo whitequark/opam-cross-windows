@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/ppx_js_style/issues"
 dev-repo: "https://github.com/janestreet/ppx_js_style.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_js_style" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_js_style" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder-x" {build}
+  "jbuilder-windows" {build}
   "ppx_core-windows"
   "ppx_driver" {= "v0.9.1"}
   "ppx_driver-windows" {= "v0.9.1"}
