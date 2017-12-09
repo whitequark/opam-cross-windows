@@ -1,0 +1,29 @@
+opam-version: "1.2"
+maintainer: "Markus Mottl <markus.mottl@gmail.com>"
+authors: [ "Markus Mottl <markus.mottl@gmail.com>" ]
+license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "https://mmottl.github.io/pcre-ocaml"
+doc: "https://mmottl.github.io/pcre-ocaml/api"
+dev-repo: "https://github.com/mmottl/pcre-ocaml.git"
+bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
+
+build: [
+  ["jbuilder-x" "subst"]{pinned}
+  ["env" "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig" 
+   "jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "pcre" "-j" jobs "-x" "windows"]
+]
+
+depends: [
+  "base-windows" {build}
+  "stdio-windows" {build}
+  "configurator" {build}
+  "configurator-windows" {build}
+  "jbuilder-x" {build}
+  "ocaml-windows"
+]
+
+depexts: [
+  [["mxe"] ["pcre"]]
+]
+
+available: [ ocaml-version >= "4.04" ]
