@@ -1,0 +1,18 @@
+opam-version: "1.2"
+maintainer: "Gabriel Scherer <gabriel.scherer@gmail.com>"
+authors: ["Nicolas Pouillard" "Berke Durak"]
+homepage: "https://github.com/ocaml/ocamlbuild/"
+bug-reports: "https://github.com/ocaml/ocamlbuild/issues"
+license: "LGPL-2 with OCaml linking exception"
+doc: "https://github.com/ocaml/ocamlbuild/blob/master/manual/manual.adoc"
+dev-repo: "https://github.com/ocaml/ocamlbuild.git"
+build: [
+  [ "sh" "-c" "export PATH=%{prefix}%/windows-sysroot/bin:$PATH && %{make}% -f configure.make all OCAMLBUILD_PREFIX=%{prefix}%/windows-sysroot OCAMLBUILD_BINDIR=%{prefix}%/windows-sysroot/bin OCAMLBUILD_LIBDIR=%{prefix}%/windows-sysroot/lib OCAMLBUILD_MANDIR=%{prefix}%/windows-sysroot/man OCAML_NATIVE=true OCAML_NATIVE_TOOLS=false && %{make}% check-if-preinstalled byte native install-lib-opam"]
+]
+install: [
+  ["opam-installer" "-i" "--prefix" "%{prefix}%/windows-sysroot" "ocamlbuild.install"]
+]
+depends: [
+  "ocaml-windows"
+]
+available: [ocaml-version >= "4.03"]

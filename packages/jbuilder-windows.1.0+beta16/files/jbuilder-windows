@@ -1,0 +1,4 @@
+#!/bin/sh
+
+CWD=$(dirname $0)
+${CWD}/../windows-sysroot/bin/jbuilder "$@"
