@@ -8,7 +8,9 @@ substs: [
   "config/Makefile"
 ]
 build: [
-  [make "-f" "Makefile.nt" "world" "opt" "install"]
+  ["./build.sh"]
+]
+install: [
   ["./install.sh" "%{prefix}%"]
 ]
 remove: [

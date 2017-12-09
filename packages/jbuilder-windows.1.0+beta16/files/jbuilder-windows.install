@@ -1,0 +1,4 @@
+bin: [
+  "jbuilder-windows" {"jbuilder-windows"}
+  "_build/install/default/bin/jbuilder" {"../windows-sysroot/bin/jbuilder"}
+]

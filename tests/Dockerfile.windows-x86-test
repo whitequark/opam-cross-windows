@@ -1,17 +1,7 @@
-FROM ocamlcross/windows-x86-base:latest
+FROM ocamlcross/windows-x86-pretest:latest
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG OPAM_PKG
-
-USER root
-
-ADD packages/ /home/opam/opam-cross-windows/packages
-
-RUN chown -R opam /home/opam/opam-cross-windows
-
-USER opam
-
-RUN opam update windows
 
 RUN opam list --short --recursive --external=mxe --required-by=$OPAM_PKG > /home/opam/mxe-deps
 
@@ -21,14 +11,4 @@ RUN cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
 
 USER opam
 
-RUN eval $(opam config env) && opam install --verbose $OPAM_PKG
-
-RUN opam list --short --recursive --external=mxe --depends-on=$OPAM_PKG > /home/opam/mxe-revdeps
-
-USER root
-
-RUN cd /usr/src/mxe/ && cat /home/opam/mxe-revdeps | xargs make
-
-USER opam
-
-RUN eval $(opam config env) && opam list --rec --short --sort --depends-on=$OPAM_PKG | while read i; do opam install --verbose "$i"; done
+RUN eval $(opam config env) && opam reinstall -y $OPAM_PKG

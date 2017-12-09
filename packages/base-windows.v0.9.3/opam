@@ -1,0 +1,15 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+homepage: "https://github.com/janestreet/base"
+bug-reports: "https://github.com/janestreet/base/issues"
+license: "Apache-2.0"
+dev-repo: "https://github.com/janestreet/base.git"
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "base" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "jbuilder-windows" {build}
+  "sexplib-windows"
+]
+available: [ocaml-version >= "4.03.0" & ocaml-version < "4.06.0" ]

@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_enumerate"
+bug-reports: "https://github.com/janestreet/ppx_enumerate/issues"
+dev-repo: "https://github.com/janestreet/ppx_enumerate.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_enumerate" "--root" "." "-j" jobs "-x" "windows"]
+]
+depends: [
+  "jbuilder-windows" {build}
+  "ppx_core-windows"
+  "ppx_driver-windows"
+  "ppx_metaquot-windows"
+  "ppx_type_conv-windows"
+  "ocaml-migrate-parsetree-windows"
+]
+available: [ ocaml-version >= "4.03.0" ]

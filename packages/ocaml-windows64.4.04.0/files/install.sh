@@ -2,6 +2,15 @@
 
 PREFIX="$1"
 
+make -f Makefile.nt install
+
+cp compilerlibs/ocamlcommon.cmxa compilerlibs/ocamlcommon.a \
+   compilerlibs/ocamlbytecomp.cmxa compilerlibs/ocamlbytecomp.a \
+   compilerlibs/ocamloptcomp.cmxa compilerlibs/ocamloptcomp.a \
+   driver/main.cmx driver/main.o \
+   driver/optmain.cmx driver/optmain.o \
+   "${PREFIX}/windows-sysroot/lib/ocaml/compiler-libs"
+
 for bin in ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
   cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
 #!/bin/sh
