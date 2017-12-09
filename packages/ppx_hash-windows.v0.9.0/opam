@@ -1,0 +1,24 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_hash"
+bug-reports: "https://github.com/janestreet/ppx_hash/issues"
+dev-repo: "https://github.com/janestreet/ppx_hash.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_hash" "--root" "." "-j" jobs "-x" "windows"]
+]
+depends: [
+  "base-windows"
+  "jbuilder-x"  {build}
+  "ppx_compare" {>= "v0.9" & < "v0.10"}
+  "ppx_compare-windows"
+  "ppx_core-windows"
+  "ppx_driver-windows"
+  "ppx_metaquot-windows"
+  "ppx_sexp_conv" {>= "v0.9" & < "v0.10"}
+  "ppx_sexp_conv-windows"
+  "ppx_type_conv-windows"
+  "ocaml-migrate-parsetree-windows"
+]
+available: [ ocaml-version >= "4.03.0" ]
