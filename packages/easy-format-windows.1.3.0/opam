@@ -1,0 +1,15 @@
+opam-version: "1.2"
+maintainer: "pierre.boutillier@laposte.net"
+authors: ["Martin Jambon"]
+homepage: "http://mjambon.com/easy-format.html"
+bug-reports: "https://github.com/mjambon/easy-format/issues"
+dev-repo: "https://github.com/mjambon/easy-format.git"
+build: [
+  ["sh" "-c" "env PATH=%{prefix}%/windows-sysroot/bin/:$PATH OCAMLFIND_TOOLCHAIN=windows jbuilder build -p easy-format -j %{jobs}%"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "jbuilder" "install" "--prefix=%{prefix}%/windows-sysroot" "-p" "easy-format"]
+]
+
+depends: [
+  "ocaml-windows"
+  "jbuilder" {build}
+]
