@@ -1,0 +1,22 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+homepage: "https://github.com/janestreet/ppx_type_conv"
+bug-reports: "https://github.com/janestreet/ppx_type_conv/issues"
+license: "Apache-2.0"
+dev-repo: "https://github.com/janestreet/ppx_type_conv.git"
+build: [
+  ["jbuilder-x" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_type_conv" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "jbuilder-x" {build}
+  "ppx_core" {= "v0.9.0"} # This is a hint to dep resolver.
+  "ppx_core-windows"
+  "ppx_driver" {= "v0.9.1"}
+  "ppx_driver-windows" {= "v0.9.1"}
+  "ppx_metaquot" {= "v0.9.0"} 
+  "ppx_metaquot-windows" {= "v0.9.0"}
+  "ocaml-migrate-parsetree-windows"
+  "ppx_derivers-windows"
+]
+available: [ocaml-version > "4.03.0"]
