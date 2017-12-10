@@ -1,0 +1,23 @@
+opam-version: "1.2"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-duppy"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "make" "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "duppy"]
+depends: [
+  "ocamlfind" {build}
+  "pcre-windows"
+  "ocaml-windows"
+]
+depopts: [
+  "ssl-windows"
+]
+bug-reports: "https://github.com/savonet/ocaml-duppy/issues"
+dev-repo: "https://github.com/savonet/ocaml-duppy.git"
