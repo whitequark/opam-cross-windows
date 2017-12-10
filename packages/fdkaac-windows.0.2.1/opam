@@ -11,7 +11,7 @@ build: [
 ]
 install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   "make" "install"]
+   make "install"]
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "fdkaac"]
 depends: [
