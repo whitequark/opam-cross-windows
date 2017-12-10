@@ -7,4 +7,3 @@ for bin in ocaml ocamlc ocamlcp ocamldebug ocamldep ocamldoc ocamllex ocamlmklib
 done
 
 rm -rf "${PREFIX}/windows-sysroot/lib/ocaml"
-rm -rf "${PREFIX}/lib/findlib.conf.d/windows.conf"

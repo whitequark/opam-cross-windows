@@ -6,7 +6,6 @@ patches: [
 ]
 substs: [
   "config/Makefile"
-  "windows.conf"
 ]
 build: [
   ["./build.sh"]
