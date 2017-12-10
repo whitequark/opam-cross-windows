@@ -10,7 +10,7 @@ install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
    "make" "install"]
 ]
-remove: ["ocamlfind" "remove" "duppy"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "duppy"]
 depends: [
   "ocamlfind" {build}
   "pcre-windows"
