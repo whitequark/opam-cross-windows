@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-mm"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["sh" "-c" 
+   "ocamlfind -toolchain windows install mm src/META src/*.cm* src/*.mli src/*.dll src/*.a"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "mm"]
+depends: ["ocamlfind" {build}]
+depopts: [
+  "ao-windows"
+  "pulseaudio-windows"
+  "gstreamer-windows"
+  "mad-windows"
+  "ogg-windows"
+  "ocamlsdl-windows"
+  "theora-windows"
+]
+bug-reports: "https://github.com/savonet/ocaml-mm/issues"
+dev-repo: "https://github.com/savonet/ocaml-mm.git"
+available: [compiler != "4.04.2+flambda"]
