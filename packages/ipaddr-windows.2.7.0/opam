@@ -1,0 +1,39 @@
+opam-version: "1.2"
+maintainer:   "sheets@alum.mit.edu"
+authors: [
+              "David Sheets"
+              "Anil Madhavapeddy"
+              "Hugo Heuzard"
+]
+license:      "ISC"
+homepage:     "https://github.com/mirage/ocaml-ipaddr"
+bug-reports:  "https://github.com/mirage/ocaml-ipaddr/issues"
+dev-repo:     "https://github.com/mirage/ocaml-ipaddr.git"
+
+tags: [
+  "org:mirage"
+  "org:xapi-project"
+]
+
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "ipaddr"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlbuild" {build}
+  "sexplib-windows"
+  "ppx_sexp_conv-windows"
+]
+available: [ ocaml-version >= "4.02.2" ]

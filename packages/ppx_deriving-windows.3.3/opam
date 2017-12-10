@@ -1,0 +1,32 @@
+opam-version: "1.2"
+maintainer: "whitequark <whitequark@whitequark.org>"
+authors: [ "whitequark <whitequark@whitequark.org>" ]
+license: "MIT"
+homepage: "https://github.com/whitequark/ppx_deriving"
+doc: "https://whitequark.github.io/ppx_deriving"
+bug-reports: "https://github.com/whitequark/ppx_deriving/issues"
+dev-repo: "https://github.com/whitequark/ppx_deriving.git"
+tags: [ "syntax" ]
+substs: [ "pkg/META" ]
+build: [
+  [ "ocamlbuild" "-just-plugin" "-use-ocamlfind" "-plugin-tags" "package(cppo_ocamlbuild)"]
+  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml" "pkg/build.ml" "native=true"
+                           "native-dynlink=true" ]
+]
+install: [
+  ["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_deriving.install"]
+  ["ln" "-sf" "%{lib}%/ppx_deriving" "%{prefix}%/windows-sysroot/lib/ppx_deriving/native"]
+]
+remove : [
+  ["rm" "-f" "%{prefix}%/windows-sysroot/lib/ppx_deriving/native"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "ppx_deriving"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlbuild" {build}
+  "cppo"       {build & >= "1.2.2"}
+  "ppx_tools-windows"  {>= "4.02.3"}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.02.1" & opam-version >= "1.2" ]

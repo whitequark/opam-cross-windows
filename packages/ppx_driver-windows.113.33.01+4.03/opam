@@ -1,0 +1,22 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_driver"
+bug-reports: "https://github.com/janestreet/ppx_driver/issues"
+dev-repo: "https://github.com/janestreet/ppx_driver.git"
+license: "Apache-2.0"
+build: [
+  ["./configure" "--prefix" "%{prefix}%/windows-sysroot"]
+  [make]
+]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_driver.install"]]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "ppx_driver"]
+depends: [
+  "ocaml-windows"
+  "ocamlbuild"  {build}
+  "ppx_core"    {>= "113.33.00+4.03" & < "113.34.00+4.03"}
+  "ppx_optcomp" {>= "113.33.00+4.03" & < "113.34.00+4.03"}
+  "ppx_core-windows"    {>= "113.33.00+4.03" & < "113.34.00+4.03"}
+  "ppx_optcomp-windows" {>= "113.33.00+4.03" & < "113.34.00+4.03"}
+]
+available: [ ocaml-version >= "4.03.0" ]

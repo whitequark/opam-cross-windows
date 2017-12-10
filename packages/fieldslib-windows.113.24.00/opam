@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/fieldslib"
+bug-reports: "https://github.com/janestreet/fieldslib/issues"
+dev-repo: "https://github.com/janestreet/fieldslib.git"
+license: "Apache-2.0"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "./configure" "--prefix" prefix]
+  ["ocamlbuild" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "fieldslib.install"]]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "fieldslib"]
+depends: [
+  "ocamlbuild" {build}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.02.3" ]

@@ -1,0 +1,39 @@
+opam-version: "1.2"
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Stefano Zacchiroli"
+  "David Sheets"
+  "Thomas Gazagnaire"
+  "David Scott"
+  "Rudi Grinberg"
+  "Andy Ray"
+]
+homepage: "https://github.com/mirage/ocaml-cohttp"
+bug-reports: "https://github.com/mirage/ocaml-cohttp/issues"
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+dev-repo: "https://github.com/mirage/ocaml-cohttp.git"
+build: [
+  [ "env" "OCAMLFIND_TOOLCHAIN=windows" make "PREFIX=%{prefix}%/windows-sysroot" "build" ]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "PREFIX=%{prefix}%/windows-sysroot" "install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "cohttp"]
+depends: [
+  "ocaml-windows"
+  "re-windows"
+  "uri-windows" {>= "1.9.0"}
+  "fieldslib-windows"
+  "sexplib-windows"
+  "conduit-windows" {>= "0.11.0"}
+  "ppx_fields_conv-windows"
+  "ppx_sexp_conv-windows"
+  "stringext-windows"
+  "base64-windows" {>= "2.0.0"}
+  "magic-mime-windows"
+]
+depopts: ["lwt-windows"]
+conflicts: [
+  "lwt-windows" {< "2.5.0"}
+]
+available: [ocaml-version >= "4.01.0"]

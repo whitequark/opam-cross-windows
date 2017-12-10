@@ -1,0 +1,41 @@
+opam-version: "1.2"
+maintainer:   "anil@recoil.org"
+authors:      ["Anil Madhavapeddy" "Richard Mortier" "Thomas Gazagnaire"
+               "Pierre Chambart" "David Kaloper" "Jeremy Yallop" ]
+homepage:     "https://github.com/mirage/ocaml-cstruct"
+license:      "ISC"
+dev-repo:     "https://github.com/mirage/ocaml-cstruct.git"
+bug-reports:  "https://github.com/mirage/ocaml-cstruct/issues"
+tags: [
+  "org:mirage"
+  "org:xapi-project"
+]
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure"
+     "--prefix" "%{prefix}%/windows-sysroot"
+     "--override" "ext_dll" ".dll"
+     "--%{lwt-windows:enable}%-lwt"
+     "--disable-ppx"
+     "--disable-async"
+     "--enable-unix"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-install"]
+]
+remove:  [
+  ["ocamlfind" "-toolchain" "windows" "remove" "cstruct"]
+]
+depends: [
+  "ocplib-endian-windows"
+  "sexplib-windows"
+  "ocaml-windows"
+]
+depopts: [
+  "lwt-windows"
+]
+available: [ocaml-version >= "4.02.3"]

@@ -1,0 +1,9 @@
+opam-version: "1"
+maintainer: "Mauricio Fernandez <mfp@acm.org>"
+install: [
+  ["ln" "-sf" "%{lib}%/ppx_tools" "%{prefix}%/windows-sysroot/lib/ppx_tools"]
+]
+remove: [
+  ["rm" "-f" "%{prefix}%/windows-sysroot/lib/ppx_tools"]
+]
+depends: ["ocaml-windows" "ppx_tools"]
