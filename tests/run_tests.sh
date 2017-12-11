@@ -22,7 +22,7 @@ if [ -n "${BUILD_BASE}" ]; then
   fi
 fi
 
-SKIPPED="ocaml-windows64.4.04.0 conf-gcc-windows64.1 lwt-zmq-windows.2.0.1 zmq-windows.4.0-7"
+SKIPPED="ao-windows.0.2.1 ocaml-windows64.4.04.0 conf-gcc-windows64.1 lwt-zmq-windows.2.0.1 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
 DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x86-pretest -t ocamlcross/windows-x86-pretest:latest --build-arg \"OPAM_SKIPPED=${SKIPPED}\" ${BASE_PWD}"
