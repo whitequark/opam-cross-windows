@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "smimram@gmail.com"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "ao"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
