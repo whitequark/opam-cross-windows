@@ -1,0 +1,23 @@
+opam-version: "1.2"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-ladspa"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows" "CFLAGS=-I."]
+  ["mv" "ladspa.h" "src"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "ladspa"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
+depexts: [
+  [["mxe"] ["dlfcn-win32"]]
+]
+bug-reports: "https://github.com/savonet/ocaml-ladspa/issues"
+dev-repo: "https://github.com/savonet/ocaml-ladspa.git"
