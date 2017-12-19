@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_compare/issues"
 dev-repo: "https://github.com/janestreet/ppx_compare.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ppx_compare" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--only-packages" "ppx_compare" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"

@@ -10,7 +10,7 @@ bug-reports: "https://github.com/let-def/ocaml-migrate-parsetree/issues"
 dev-repo: "git://github.com/let-def/ocaml-migrate-parsetree.git"
 tags: [ "syntax" "org:ocamllabs" ]
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ocaml-migrate-parsetree" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "-p" "ocaml-migrate-parsetree" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "result-windows"

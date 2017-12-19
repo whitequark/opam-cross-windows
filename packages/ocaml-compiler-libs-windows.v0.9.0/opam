@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ocaml-compiler-libs/issues"
 dev-repo: "https://github.com/janestreet/ocaml-compiler-libs.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "ocaml-compiler-libs" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--only-packages" "ocaml-compiler-libs" "--root" "." "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder-windows" {build}

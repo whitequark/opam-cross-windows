@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/configurator/issues"
 dev-repo: "https://github.com/janestreet/configurator.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "configurator" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "-p" "configurator" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
