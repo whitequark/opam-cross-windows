@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "pierre.boutillier@laposte.net"
+authors: [
+  "Frédéric Bour <frederic.bour@lakaban.net>"
+]
+homepage: "https://github.com/let-def/ppx_tools_versioned"
+bug-reports: "https://github.com/let-def/ppx_tools_versioned/issues"
+license: "MIT"
+tags: "syntax"
+dev-repo: "git://github.com/let-def/ppx_tools_versioned.git"
+build: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove:
+  ["ocamlfind" "-toolchain" "windows" "remove" "ppx_tools_versioned"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build & >= "1.5.0"}
+  "ocaml-migrate-parsetree-windows" {>= "0.7"}
+]
