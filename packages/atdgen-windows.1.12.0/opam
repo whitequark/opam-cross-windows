@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "pierre.boutillier@laposte.net"
+authors: ["Martin Jambon"]
+
+homepage: "https://github.com/mjambon/atdgen"
+bug-reports: "https://github.com/mjambon/atdgen/issues"
+dev-repo: "https://github.com/mjambon/atdgen.git"
+
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "atdgen" "-j" jobs "-x" "windows"]
+]
+
+depends: [
+  "jbuilder-windows" {build}
+  "atdgen" {= "1.12.0"}
+  "atd-windows"
+  "biniou-windows"
+  "yojson-windows"
+]
