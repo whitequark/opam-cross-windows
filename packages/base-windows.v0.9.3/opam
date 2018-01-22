@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/base/issues"
 license: "Apache-2.0"
 dev-repo: "https://github.com/janestreet/base.git"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "base" "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "-p" "base" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder-windows" {build}

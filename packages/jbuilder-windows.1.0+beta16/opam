@@ -9,7 +9,7 @@ build: [
   ["ocaml" "bootstrap.ml"]
   ["./boot.exe" "--subst"] {pinned}
   ["./boot.exe" "-j" jobs]
-  ["./_build/install/default/bin/jbuilder" "build" "--install-prefix" "windows-sysroot"]
+  ["./_build/install/default/bin/jbuilder" "build"]
   ["/bin/sh" "-c" "cat jbuilder.install >> jbuilder-windows.install"]
 ]
 depends: [
