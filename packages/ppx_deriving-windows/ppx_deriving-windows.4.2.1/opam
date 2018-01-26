@@ -12,12 +12,15 @@ tags: [ "syntax" ]
 substs: [ "pkg/META" ]
 build: [
   # If there is no native dynlink, we can't use native builds
+  "env" "OCAMLFIND_TOOLCHAIN=windows"
   "ocaml" "pkg/build.ml" "native=%{ocaml-native-dynlink}%"
                          "native-dynlink=%{ocaml-native-dynlink}%"
 ]
 build-test: [
   "ocamlbuild" "-toolchain" "windows" "-classic-display" "-use-ocamlfind" "src_test/test_ppx_deriving.byte" "--"
 ]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_deriving.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ppx_deriving"]]
 build-doc: [
   make "doc"
 ]
@@ -25,12 +28,12 @@ depends: [
   "ocaml-windows"
   "ocamlbuild" {build}
   "ocamlfind"  {build & >= "1.6.0"}
-  "cppo"       {build}
-  "cppo_ocamlbuild" {build}
+  "cppo-windows"       {build}
+  "cppo_ocamlbuild-windows" {build}
   "ocaml-migrate-parsetree-windows"
   "ppx_derivers-windows"
   "ppx_tools"  {>= "4.02.3"}
-  "result"
+  "result-windows"
   "ounit"      {test}
 ]
 available: [ ocaml-version >= "4.02.1" & opam-version >= "1.2" ]
