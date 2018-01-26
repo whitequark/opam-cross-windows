@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "francois.pottier@inria.fr"
+name: "pprint-windows"
+version: "20171003"
+authors: [
+  "François Pottier <francois.pottier@inria.fr>"
+  "Nicolas Pouillard <np@nicolaspouillard.fr>"
+]
+homepage: "https://github.com/fpottier/pprint"
+dev-repo: "git@github.com:fpottier/pprint.git"
+bug-reports: "francois.pottier@inria.fr"
+build: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "uninstall"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+]
+available: [ ocaml-version >= "4.02" ]
+

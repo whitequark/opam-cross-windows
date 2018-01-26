@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "martin@mjambon.com"
+authors: ["Martin Jambon"]
+name: "cppo-windows"
+version: "1.6.0"
+homepage: "http://mjambon.com/cppo.html"
+dev-repo: "https://github.com/mjambon/cppo.git"
+bug-reports: "https://github.com/mjambon/cppo/issues"
+license: "BSD-3-Clause"
+build: [
+  ["jbuilder-windows" "subst"] {pinned}
+  ["jbuilder-windows" "build" "-p" "cppo" "-x" "windows" "-j" jobs]
+]
+depends: [
+  "ocaml-windows"
+  "jbuilder-windows" {build & >= "1.0+beta10"}
+  "base-bytes"
+  "base-unix"
+]

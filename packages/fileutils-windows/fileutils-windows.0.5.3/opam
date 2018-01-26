@@ -1,0 +1,27 @@
+opam-version: "1.2"
+maintainer: "Sylvain Le Gall <sylvain+ocaml@le-gall.net>"
+authors: [ "Sylvain Le Gall" ]
+name: "fileutils-windows"
+version: "0.5.3"
+homepage: "http://ocaml-fileutils.forge.ocamlcore.org/"
+license: "LGPL-2.1 with OCaml linking exception"
+dev-repo: "https://github.com/gildor478/ocaml-fileutils.git"
+bug-reports: "https://github.com/gildor478/ocaml-fileutils/issues"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "fileutils"]
+]
+build-doc: [ "ocaml" "setup.ml" "-doc" ]
+depends: [
+  "ocaml-windows"
+  "base-unix"
+  "base-bytes"
+  "ocamlbuild-windows" {build}
+  "ocamlfind" {build}
+  "ounit" {test & >= "2.0.0"}
+]
+available: os != "win32"

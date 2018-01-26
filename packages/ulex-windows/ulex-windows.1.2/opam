@@ -1,0 +1,16 @@
+opam-version: "1.2"
+name: "ulex-windows"
+version: "1.2"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all.opt"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ulex"]]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "camlp4"
+  "ocamlbuild" {build}
+]

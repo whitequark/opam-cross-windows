@@ -1,0 +1,27 @@
+*** src/jbuild	2017-11-27 06:01:14.000000000 +0000
+--- src/jbuild	2018-01-26 13:07:24.717645400 +0000
+***************
+*** 9,19 ****
+    ))
+    (c_names (sqlite3_stubs))
+    (c_flags (
+!     (:include c_flags.sexp) -g -O2 -fPIC -DPIC
+      ; NOTE: for debugging before releases
+      ; -Wall -pedantic -Wextra -Wunused -Wno-long-long -Wno-keyword-macro
+    ))
+!   (c_library_flags ((:include c_library_flags.sexp) -lpthread))
+  ))
+  
+  (rule (
+--- 9,19 ----
+    ))
+    (c_names (sqlite3_stubs))
+    (c_flags (
+!     (:include c_flags.sexp) -g -O2 -fPIC -DPIC -I ../../../sqlite-amalgamation-3220000 -L ../../../sqlite-amalgamation-3220000
+      ; NOTE: for debugging before releases
+      ; -Wall -pedantic -Wextra -Wunused -Wno-long-long -Wno-keyword-macro
+    ))
+!   (c_library_flags ((:include c_library_flags.sexp) -lpthread -L../../sqlite-amalgamation-3220000))
+  ))
+  
+  (rule (

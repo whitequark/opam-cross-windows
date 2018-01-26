@@ -1,0 +1,20 @@
+opam-version: "1.2"
+maintainer: "Jonathan Protzenko <jonathan.protzenko@gmail.com>"
+authors: "Andreas Rossberg <rossberg@mpi-sws.org>"
+name: "wasm-windows"
+version: "1.0"
+homepage: "https://github.com/WebAssembly/spec"
+bug-reports: "https://github.com/WebAssembly/spec/issues"
+license: "Apache-2.0"
+dev-repo: "https://github.com/WebAssembly/spec.git"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-C" "interpreter" "opt" "unopt"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-C" "interpreter" "install"]
+remove: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-C" "interpreter" "uninstall"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild-windows" {build}
+]
+available: [ ocaml-version >= "4.02.3" ]
