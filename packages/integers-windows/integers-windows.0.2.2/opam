@@ -13,7 +13,10 @@ license: "MIT"
 build:
 [[ "ocaml" "pkg/pkg.ml" "build"
            "--pinned" "%{pinned}%"
-           "--toolchain" "windows"]]
+           "--toolchain" "windows"
+           "--pkg-name" "integers"]]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "integers.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "integers"]]
 depends: [
   "ocaml-windows"
   "ocamlbuild-windows" {build}
