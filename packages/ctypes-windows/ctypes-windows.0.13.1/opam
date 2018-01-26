@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["sh" "-c" "echo \"libffi_opt=$(%{conf-gcc-windows:prefix}%pkg-config --cflags libffi)\" >>libffi.config"] {ctypes-foreign-windows:installed}
+  ["sh" "-c" "echo \"libffi_lib=$(%{conf-gcc-windows:prefix}%pkg-config --libs libffi)\" >>libffi.config"] {ctypes-foreign-windows:installed}
+  ["touch" "libffi.config"] {!ctypes-foreign-windows:installed}
+  [make "OCAMLFIND=ocamlfind -toolchain windows" "HOSTOCAMLFIND=ocamlfind"
+        "ctypes-base" "ctypes-stubs" ]
+  [make "OCAMLFIND=ocamlfind -toolchain windows" "HOSTOCAMLFIND=ocamlfind"
+        "ctypes-foreign" ] {ctypes-foreign-windows:installed}
+]
+install: [
+  [make "OCAMLFIND=ocamlfind -toolchain windows" "install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "ctypes"]
+]
+depends: [
+  "conf-gcc-windows"
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "integers-windows"
+]
+depexts: [
+  [["mxe"] ["libffi"]]
+]
