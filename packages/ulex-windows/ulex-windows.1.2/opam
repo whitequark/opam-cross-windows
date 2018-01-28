@@ -11,7 +11,7 @@ remove: [["ocamlfind" "-toolchain" "windows" "remove" "ulex"]]
 depends: [
   "ocaml-windows"
   "ocamlfind"
-  "camlp4"
+  "camlp4-windows"
   "ocamlbuild" {build}
 ]
 patches: ["ulex-windows-1.2.patch"]
