@@ -1,13 +1,7 @@
-diff -crB ppx_tools-windows.5.0/Makefile ppx_tools-windows.5.0-mine/Makefile
 *** Makefile	2018-01-28 01:49:58.281766400 +0000
---- Makefile	2018-01-28 16:52:24.171148100 +0000
+--- Makefile	2018-01-28 22:31:49.035461400 +0000
 ***************
-*** 4,15 ****
-  
-  include $(shell ocamlc -where)/Makefile.config
-  
-! PACKAGE = ppx_tools
-  VERSION = 5.0
+*** 9,15 ****
   # Don't forget to change META file as well
   
   OCAMLC = ocamlc -bin-annot
@@ -15,12 +9,7 @@ diff -crB ppx_tools-windows.5.0/Makefile ppx_tools-windows.5.0-mine/Makefile
   COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
   
   .PHONY: all
---- 4,15 ----
-  
-  include $(shell ocamlc -where)/Makefile.config
-  
-! PACKAGE = ppx_tools-windows
-  VERSION = 5.0
+--- 9,15 ----
   # Don't forget to change META file as well
   
   OCAMLC = ocamlc -bin-annot

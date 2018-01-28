@@ -1,0 +1,49 @@
+diff -crB ocamlbuild-0.12.0/configure.make ocamlbuild-0.12.0-mine/configure.make
+*** configure.make	2018-01-28 17:17:05.582083400 +0000
+--- configure.make	2018-01-28 17:10:42.420020000 +0000
+***************
+*** 6,12 ****
+  # from the main Makefile, but this made it not robust to addition of
+  # new variables to this ocaml/Makefile.config that we do not control.
+  
+! include $(shell ocamlc -where)/Makefile.config
+  
+  OCAML_PREFIX = $(PREFIX)
+  OCAML_BINDIR = $(BINDIR)
+--- 6,12 ----
+  # from the main Makefile, but this made it not robust to addition of
+  # new variables to this ocaml/Makefile.config that we do not control.
+  
+! include $(shell ocamlfind ocamlc -where)/Makefile.config
+  
+  OCAML_PREFIX = $(PREFIX)
+  OCAML_BINDIR = $(BINDIR)
+diff -crB ocamlbuild-0.12.0/Makefile ocamlbuild-0.12.0-mine/Makefile
+*** Makefile	2018-01-28 17:17:05.535250400 +0000
+--- Makefile	2018-01-28 17:19:21.021889600 +0000
+***************
+*** 405,415 ****
+  	$(MAKE) install-man-opam
+  	$(MAKE) install-doc-opam
+  
+  check-if-preinstalled:
+  ifeq ($(CHECK_IF_PREINSTALLED), true)
+! 	if test -d $(shell ocamlc -where)/ocamlbuild; then\
+  	  >&2 echo "ERROR: Preinstalled ocamlbuild detected at"\
+! 	       "$(shell ocamlc -where)/ocamlbuild";\
+  	  >&2 echo "Installation aborted; if you want to bypass this"\
+  	        "safety check, pass CHECK_IF_PREINSTALLED=false to make";\
+  	  exit 2;\
+--- 405,416 ----
+  	$(MAKE) install-man-opam
+  	$(MAKE) install-doc-opam
+  
++ OCAMLC_DIR=$(shell ocamlfind ocamlc -where)
+  check-if-preinstalled:
+  ifeq ($(CHECK_IF_PREINSTALLED), true)
+! 	if test -d $(OCAMLC_DIR)/ocamlbuild; then\
+  	  >&2 echo "ERROR: Preinstalled ocamlbuild detected at"\
+! 	       "$(OCAMLC_DIR)/ocamlbuild";\
+  	  >&2 echo "Installation aborted; if you want to bypass this"\
+  	        "safety check, pass CHECK_IF_PREINSTALLED=false to make";\
+  	  exit 2;\

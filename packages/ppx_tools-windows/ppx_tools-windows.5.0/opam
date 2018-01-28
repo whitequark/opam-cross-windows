@@ -10,7 +10,10 @@ dev-repo: "git://github.com/ocaml-ppx/ppx_tools.git"
 tags: [ "syntax" ]
 build: [["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]]
 install: [["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]]
-remove: [["ocamlfind" "-toolchain" "windows" "remove" "ppx_tools"]]
+remove: [
+["env" "OCAMLFIND_TOOLCHAIN=windows" make "uninstall"]
+["ocamlfind" "-toolchain" "windows" "remove" "ppx_tools"]
+]
 depends: [
   "ocaml-windows"
   "ocamlfind" {>= "1.5.0"}
