@@ -1,0 +1,59 @@
+*** Makefile	2018-01-27 16:13:32.881698500 +0000
+--- Makefile	2018-01-27 16:14:22.911803700 +0000
+***************
+*** 109,115 ****
+  # The directories where things are built.
+  
+  # For Menhir and MenhirLib.
+! BUILDDIR := src/_stage2
+  # For MenhirSdk.
+  SDKDIR   := src/_sdk
+  
+--- 109,115 ----
+  # The directories where things are built.
+  
+  # For Menhir and MenhirLib.
+! BUILDDIR := src/_stage1
+  # For MenhirSdk.
+  SDKDIR   := src/_sdk
+  
+***************
+*** 193,201 ****
+  	@if `$(BUILDDIR)/menhir.$(TARGET) --suggest-ocamlfind | tr -d '\r'` ; then \
+  	  echo 'Installing MenhirLib and MenhirSdk via ocamlfind.' ; \
+  	  cp -f src/menhirLib.META META ; \
+! 	  ocamlfind install menhirLib META $(patsubst %,$(BUILDDIR)/%,$(MENHIRLIB)) ; \
+  	  cp -f src/menhirSdk.META META ; \
+! 	  ocamlfind install menhirSdk META $(patsubst %,$(SDKDIR)/%,$(MENHIRSDK)) ; \
+  	  rm -f META ; \
+  	else \
+  	  echo 'Installing MenhirLib and MenhirSdk manually.' ; \
+--- 193,201 ----
+  	@if `$(BUILDDIR)/menhir.$(TARGET) --suggest-ocamlfind | tr -d '\r'` ; then \
+  	  echo 'Installing MenhirLib and MenhirSdk via ocamlfind.' ; \
+  	  cp -f src/menhirLib.META META ; \
+! 	  ocamlfind -toolchain windows install menhirLib META $(patsubst %,$(BUILDDIR)/%,$(MENHIRLIB)) ; \
+  	  cp -f src/menhirSdk.META META ; \
+! 	  ocamlfind -toolchain windows install menhirSdk META $(patsubst %,$(SDKDIR)/%,$(MENHIRSDK)) ; \
+  	  rm -f META ; \
+  	else \
+  	  echo 'Installing MenhirLib and MenhirSdk manually.' ; \
+***************
+*** 212,219 ****
+  uninstall:
+  	@if `$(bindir)/$(MENHIREXE) --suggest-ocamlfind` ; then \
+  	  echo 'Un-installing MenhirLib and MenhirSdk via ocamlfind.' ; \
+! 	  ocamlfind remove menhirLib ; \
+! 	  ocamlfind remove menhirSdk ; \
+  	fi
+  	rm -rf $(bindir)/$(MENHIREXE)
+  	rm -rf $(libdir)
+--- 212,219 ----
+  uninstall:
+  	@if `$(bindir)/$(MENHIREXE) --suggest-ocamlfind` ; then \
+  	  echo 'Un-installing MenhirLib and MenhirSdk via ocamlfind.' ; \
+! 	  ocamlfind -toolchain windows remove menhirLib ; \
+! 	  ocamlfind -toolchain windows remove menhirSdk ; \
+  	fi
+  	rm -rf $(bindir)/$(MENHIREXE)
+  	rm -rf $(libdir)

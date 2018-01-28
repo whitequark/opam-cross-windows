@@ -9,14 +9,16 @@ dev-repo: "https://github.com/ocaml-batteries-team/batteries-included.git"
 license: "LGPL-2.1+ with OCaml linking exception"
 doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
 build: [
-  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
-    "ocaml" "setup.ml" "-configure" 
-        "--prefix" "%{prefix}%/windows-sysroot"
-        "--override" "ext_dll" ".dll"]
-  [make "all"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" 
+       "--prefix" "%{prefix}%/windows-sysroot"
+       "--override" "ext_dll" ".dll"]
 ]
-install: ["env" "OCAMLFIND_TOOLCHAIN=windows"
-          make "install"]
+install: [
+  "env" "OCAMLBUILDFLAGS=-no-links -use-ocamlfind -ocamlopt '-toolchain windows ocamlopt' -ocamldep '-toolchain windows ocamldep'"
+  "env" "BATTERIES_NATIVE_SHLIB=no"
+  make "all" "install" "-j" jobs
+]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "batteries"]
 depends: [
   "ocamlfind" {>= "1.5.3"}
@@ -28,3 +30,4 @@ depends: [
   "ocaml-windows"
 ]
 available: [ocaml-version >= "3.12.1" & ocaml-version < "4.07.0"]
+patches: ["batteries-2.8.0-windows.patch"]

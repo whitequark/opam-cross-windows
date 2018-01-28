@@ -1,0 +1,42 @@
+Only in batteries-2.8.0-mine: _build
+diff -crB batteries-2.8.0/Makefile batteries-2.8.0-mine/Makefile
+*** batteries-2.8.0/Makefile	2018-01-27 20:24:55.902964300 +0000
+--- batteries-2.8.0-mine/Makefile	2018-01-27 20:25:35.072742500 +0000
+***************
+*** 107,123 ****
+  
+  man: all batteries.odocl
+  	-mkdir man
+! 	ocamlfind ocamldoc -package threads.posix -sort -man -hide-warnings -d man -I _build/libs -I _build/src libs/uniclib.mli src/*.mli
+  
+  install: all uninstall_packages
+! 	ocamlfind install $(NAME) $(INSTALL_FILES) \
+  		-optional $(OPT_INSTALL_FILES)
+  
+  test_install:
+  	./scripts/test_install.sh
+  
+  uninstall_packages:
+! 	ocamlfind remove $(NAME)
+  
+  uninstall: uninstall_packages
+  	${RM} -r $(DOCROOT)
+--- 107,123 ----
+  
+  man: all batteries.odocl
+  	-mkdir man
+! 	ocamlfind -toolchain windows ocamldoc -package threads.posix -sort -man -hide-warnings -d man -I _build/libs -I _build/src libs/uniclib.mli src/*.mli
+  
+  install: all uninstall_packages
+! 	ocamlfind -toolchain windows install $(NAME) $(INSTALL_FILES) \
+  		-optional $(OPT_INSTALL_FILES)
+  
+  test_install:
+  	./scripts/test_install.sh
+  
+  uninstall_packages:
+! 	ocamlfind -toolchain windows remove $(NAME)
+  
+  uninstall: uninstall_packages
+  	${RM} -r $(DOCROOT)
+Only in batteries-2.8.0-mine: setup.data

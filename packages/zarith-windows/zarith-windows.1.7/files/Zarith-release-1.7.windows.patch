@@ -1,0 +1,19 @@
+*** project.mak	2018-01-28 00:19:47.241867100 +0000
+--- project.mak	2018-01-28 00:34:24.898528300 +0000
+***************
+*** 42,48 ****
+  
+  CMIOBJ = $(MLISRC:%.mli=%.cmi)
+  CMXOBJ = $(MLISRC:%.mli=%.cmx)
+! TOINSTALL := zarith.h zarith.cma libzarith.$(LIBSUFFIX) $(MLISRC) $(CMIOBJ)
+  
+  ifeq ($(HASOCAMLOPT),yes)
+  TOINSTALL := $(TOINSTALL) zarith.$(LIBSUFFIX) zarith.cmxa $(CMXOBJ)
+--- 42,48 ----
+  
+  CMIOBJ = $(MLISRC:%.mli=%.cmi)
+  CMXOBJ = $(MLISRC:%.mli=%.cmx)
+! TOINSTALL := zarith.h zarith.cma libzarith.$(LIBSUFFIX) gmp-6.1.2/.libs/libgmp.$(LIBSUFFIX) $(MLISRC) $(CMIOBJ)
+  
+  ifeq ($(HASOCAMLOPT),yes)
+  TOINSTALL := $(TOINSTALL) zarith.$(LIBSUFFIX) zarith.cmxa $(CMXOBJ)
