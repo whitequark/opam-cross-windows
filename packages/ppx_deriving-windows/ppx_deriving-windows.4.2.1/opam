@@ -12,7 +12,6 @@ tags: [ "syntax" ]
 substs: [ "pkg/META" ]
 build: [
   # If there is no native dynlink, we can't use native builds
-  "env" "OCAMLFIND_TOOLCHAIN=windows"
   "ocaml" "pkg/build.ml" "native=%{ocaml-native-dynlink}%"
                          "native-dynlink=%{ocaml-native-dynlink}%"
 ]
@@ -32,7 +31,7 @@ depends: [
   "cppo_ocamlbuild-windows" {build}
   "ocaml-migrate-parsetree-windows"
   "ppx_derivers-windows"
-  "ppx_tools"  {>= "4.02.3"}
+  "ppx_tools-windows"  {>= "4.02.3"}
   "result-windows"
   "ounit"      {test}
 ]
