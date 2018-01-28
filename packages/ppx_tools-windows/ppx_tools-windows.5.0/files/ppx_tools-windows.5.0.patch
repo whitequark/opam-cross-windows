@@ -1,0 +1,19 @@
+*** ppx_tools-5.0-4.04.0/Makefile	2018-01-28 01:49:58.281766400 +0000
+--- ppx_tools-windows.5.0-mine/Makefile	2018-01-28 01:46:39.798296700 +0000
+***************
+*** 9,15 ****
+  # Don't forget to change META file as well
+  
+  OCAMLC = ocamlc -bin-annot
+! OCAMLOPT = ocamlopt
+  COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
+  
+  .PHONY: all
+--- 9,15 ----
+  # Don't forget to change META file as well
+  
+  OCAMLC = ocamlc -bin-annot
+! OCAMLOPT = ocamlfind ocamlopt
+  COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
+  
+  .PHONY: all
