@@ -19,6 +19,8 @@ install: [
   ["sh" "-c" "PATH=%{prefix}%/windows-sysroot/bin:$PATH make install"]
 ]
 remove: [
+  ["sh" "-c" "./configure"]
+  ["sh" "-c" "sed 's|PREFIX|%{prefix}%/windows-sysroot|g' Makefile.config.pre > Makefile.config"]
   ["sh" "-c" "PATH=%{prefix}%/windows-sysroot/bin:$PATH make uninstall"]
 ]
 available: [ocaml-version >= "3.12.0"] # ocamlfind refers to cmxs
