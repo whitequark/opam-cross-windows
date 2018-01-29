@@ -11,7 +11,6 @@ dev-repo: "git://github.com/whitequark/ppx_deriving_yojson.git"
 tags: [ "syntax" "json" ]
 substs: [ "pkg/META" ]
 build: [
-  "env" "OCAMLFIND_TOOLCHAIN=windows" 
   "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
                          "native-dynlink=%{ocaml-native-dynlink}%"
 ]
@@ -19,15 +18,18 @@ build-test: [
   "ocamlbuild" "-toolchain" "windows" "-classic-display" "-use-ocamlfind"
     "src_test/test_ppx_yojson.byte" "--"
 ]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "ppx_deriving_yojson.install" "--name" "ppx_deriving_yojson"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "ppx_deriving_yojson"]]
 depends: [
   "ocaml-windows"
-  "yojson"
-  "result"
+  "yojson-windows"
+  "result-windows"
   "ppx_deriving-windows" {>= "4.0" & < "5.0"}
-  "ocamlfind" {build}
+  "ocamlfind-windows" {build}
   "ocamlbuild" {build}
   "cppo-windows" {build}
   "cppo_ocamlbuild-windows" {build}
   "ounit"        {test}
   "ppx_import"   {test & >= "1.1"}
 ]
+patches: ["ppx_deriving_yojson-windows.3.1.patch"]
