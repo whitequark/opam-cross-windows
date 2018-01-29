@@ -2,7 +2,7 @@ opam-version: "1.2"
 maintainer: "simon.cruanes.2007@m4x.org"
 author: "Simon Cruanes"
 name: "gen-windows"
-version: "0.4"
+version: "0.5"
 build: [
     ["env" "OCAMLFIND_TOOLCHAIN=windows" "./configure" "--disable-docs" "--disable-tests" "--disable-bench" "--prefix" "%{prefix}%/windows-sysroot"]
     ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
@@ -16,6 +16,7 @@ remove: [
 depends: [
   "ocaml-windows"
   "ocamlfind" {build}
+  "ocamlfind-windows"
   "ocamlbuild" {build}
   "base-bytes"
 ]
