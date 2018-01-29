@@ -9,7 +9,7 @@ bug-reports: "https://github.com/mjambon/cppo/issues"
 license: "BSD-3-Clause"
 build: [
   ["jbuilder-windows" "subst"] {pinned}
-  ["jbuilder-windows" "build" "-p" "cppo" "-x" "windows" "-j" jobs]
+  ["jbuilder-windows" "build" "-p" "cppo" "-x" "windows" "-j" jobs "--install-prefix" "windows-sysroot"]
 ]
 depends: [
   "ocaml-windows"

@@ -7,8 +7,8 @@ homepage: "http://mjambon.com/cppo.html"
 bug-reports: "https://github.com/mjambon/cppo/issues"
 license: "BSD-3-Clause"
 build: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" "jbuilder-windows" "subst"] {pinned}
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" "jbuilder-windows" "build" "-p" "cppo_ocamlbuild" "-x" "windows" "-j" jobs "--install-prefix" "windows-sysroot"]
+  ["jbuilder-windows" "subst"] {pinned}
+  ["jbuilder-windows" "build" "-p" "cppo_ocamlbuild" "-x" "windows" "-j" jobs "--install-prefix" "windows-sysroot"]
 ]
 depends: [
   "ocaml-windows"
