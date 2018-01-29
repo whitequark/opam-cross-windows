@@ -24,6 +24,7 @@ depends: [
   "ocaml-windows"
   "yojson-windows"
   "result-windows"
+  "ppx_deriving" {build}
   "ppx_deriving-windows" {>= "4.0" & < "5.0"}
   "ocamlfind-windows" {build}
   "ocamlbuild" {build}
