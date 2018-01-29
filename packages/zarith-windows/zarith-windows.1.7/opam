@@ -16,14 +16,9 @@ build: [
   ["tar" "xf" "gmp-6.1.2.tar"]
   ["bash" "-c" "pushd gmp-6.1.2 ; ./configure --host=x86_64-w64-mingw32 --enable-static --disable-shared ; popd"]
   [make "-C" "gmp-6.1.2" "-j" jobs]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   "env" "CC=x86_64-w64-mingw32-gcc"
-   "env" "CFLAGS=-I gmp-6.1.2 -L gmp-6.1.2/.libs -static"
-   "./configure" "-host" "x86_64-*-cygwin"]
   [make]
 ]
 install: [
-  "env" "OCAMLFIND_TOOLCHAIN=windows"
   make "install"]
 remove:  ["ocamlfind" "-toolchain" "windows" "remove" "zarith"]
 depends: [
@@ -32,4 +27,4 @@ depends: [
   "conf-gmp"
   "conf-perl" {build}
 ]
-patches: "Zarith-release-1.7.patch"
+patches: ["Zarith-release-1.7.patch" "Zarith-release-1.7.windows.patch"]

@@ -1,0 +1,38 @@
+*** src/Makefile	2018-01-27 14:34:24.519115900 +0000
+--- src/Makefile	2018-01-27 15:13:50.773953200 +0000
+***************
+*** 10,16 ****
+  # ----------------------------------------------------------------------------
+  # Ocamlbuild tool and settings.
+  
+! OCAMLBUILD := ocamlbuild -classic-display -j 0
+  ifeq ($(TARGET),byte)
+    OCAMLBUILD := $(OCAMLBUILD) -byte-plugin
+  endif
+--- 10,16 ----
+  # ----------------------------------------------------------------------------
+  # Ocamlbuild tool and settings.
+  
+! OCAMLBUILD := ocamlbuild -toolchain windows -use-ocamlfind -classic-display -j 0 
+  ifeq ($(TARGET),byte)
+    OCAMLBUILD := $(OCAMLBUILD) -byte-plugin
+  endif
+***************
+*** 27,34 ****
+  
+  bootstrap:
+  	@ $(MAKE) stage1
+! 	@ $(MAKE) stage2
+! 	@ $(MAKE) stage3
+  
+  # ----------------------------------------------------------------------------
+  # Stage 1.
+--- 27,34 ----
+  
+  bootstrap:
+  	@ $(MAKE) stage1
+! 	# @ $(MAKE) stage2
+! 	# @ $(MAKE) stage3
+  
+  # ----------------------------------------------------------------------------
+  # Stage 1.

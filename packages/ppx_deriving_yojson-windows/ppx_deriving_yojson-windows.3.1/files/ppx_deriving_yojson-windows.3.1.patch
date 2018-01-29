@@ -1,0 +1,62 @@
+diff -crB ppx_deriving_yojson-3.1/Makefile ppx_deriving_yojson-3.1-mine/Makefile
+*** Makefile	2018-01-29 11:08:33.679184900 +0000
+--- Makefile	2018-01-29 11:14:04.253686600 +0000
+***************
+*** 4,21 ****
+  
+  test: build
+  	rm -rf _build/src_test/
+! 	ocamlbuild -j 0 -use-ocamlfind -classic-display \
+  						 src_test/test_ppx_yojson.byte --
+  
+  doc:
+! 	ocamlbuild -use-ocamlfind doc/api.docdir/index.html \
+  						 -docflags -t -docflag "API reference for ppx_deriving_yojson" \
+  						 -docflags '-colorize-code -short-functors -charset utf-8' \
+  						 -docflags '-css-style style.css'
+  	cp doc/style.css api.docdir/
+  
+  clean:
+! 	ocamlbuild -clean
+  
+  .PHONY: build test doc clean
+  
+--- 4,21 ----
+  
+  test: build
+  	rm -rf _build/src_test/
+! 	ocamlbuild -toolchain windows -j 0 -use-ocamlfind -classic-display \
+  						 src_test/test_ppx_yojson.byte --
+  
+  doc:
+! 	ocamlbuild -toolchain windows -use-ocamlfind doc/api.docdir/index.html \
+  						 -docflags -t -docflag "API reference for ppx_deriving_yojson" \
+  						 -docflags '-colorize-code -short-functors -charset utf-8' \
+  						 -docflags '-css-style style.css'
+  	cp doc/style.css api.docdir/
+  
+  clean:
+! 	ocamlbuild -toolchain windows -clean
+  
+  .PHONY: build test doc clean
+  
+diff -crB ppx_deriving_yojson-3.1/pkg/build.ml ppx_deriving_yojson-3.1-mine/pkg/build.ml
+*** pkg/build.ml	2018-01-29 11:08:33.732218800 +0000
+--- pkg/build.ml	2018-01-29 11:14:46.236318700 +0000
+***************
+*** 3,9 ****
+  #use "topkg.ml"
+  
+  let ocamlbuild =
+!   "ocamlbuild -use-ocamlfind -classic-display -plugin-tag 'package(cppo_ocamlbuild)'"
+  
+  let () =
+    Pkg.describe "ppx_deriving_yojson" ~builder:(`Other (ocamlbuild, "_build")) [
+--- 3,9 ----
+  #use "topkg.ml"
+  
+  let ocamlbuild =
+!   "ocamlbuild -toolchain windows -use-ocamlfind -classic-display -plugin-tag 'package(cppo_ocamlbuild)'"
+  
+  let () =
+    Pkg.describe "ppx_deriving_yojson" ~builder:(`Other (ocamlbuild, "_build")) [

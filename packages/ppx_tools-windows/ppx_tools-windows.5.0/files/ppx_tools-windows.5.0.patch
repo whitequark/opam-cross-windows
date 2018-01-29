@@ -1,0 +1,19 @@
+*** Makefile	2018-01-28 01:49:58.281766400 +0000
+--- Makefile	2018-01-28 22:31:49.035461400 +0000
+***************
+*** 9,15 ****
+  # Don't forget to change META file as well
+  
+  OCAMLC = ocamlc -bin-annot
+! OCAMLOPT = ocamlopt
+  COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
+  
+  .PHONY: all
+--- 9,15 ----
+  # Don't forget to change META file as well
+  
+  OCAMLC = ocamlc -bin-annot
+! OCAMLOPT = ocamlfind ocamlopt
+  COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
+  
+  .PHONY: all

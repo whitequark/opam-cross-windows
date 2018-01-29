@@ -10,13 +10,13 @@ homepage: "http://gallium.inria.fr/~fpottier/menhir/"
 dev-repo: "https://gitlab.inria.fr/fpottier/menhir.git"
 bug-reports: "menhir@inria.fr"
 build: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-f" "Makefile" "PREFIX=%{prefix}%" "USE_OCAMLFIND=true" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+  [make "-f" "Makefile" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
 ]
 install: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-f" "Makefile" "install" "PREFIX=%{prefix}%" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+  [make "-f" "Makefile" "install" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
 ]
 remove: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "-f" "Makefile" "uninstall" "PREFIX=%{prefix}%" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+  [make "-f" "Makefile" "uninstall" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
 ]
 depends: [
   "ocaml-windows"
@@ -24,3 +24,4 @@ depends: [
   "ocamlbuild" {build}
 ]
 available: [ ocaml-version >= "4.02" ]
+patches: ["menhir-20171222.windows.patch" "menhir-20171222.windows-2.patch"]

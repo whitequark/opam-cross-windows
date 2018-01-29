@@ -1,0 +1,74 @@
+diff -crB sedlex-1.99.4/Makefile sedlex-1.99.4-mine/Makefile
+*** Makefile	2018-01-28 16:21:07.015875400 +0000
+--- Makefile	2018-01-28 16:07:36.822774700 +0000
+***************
+*** 32,44 ****
+  INSTALL_OPT=src/syntax/sedlex.cmxs src/syntax/sedlex$(EXT_LIB) src/syntax/sedlex.cmxa src/syntax/ppx_sedlex.opt$(EXE) src/lib/sedlexing.cmx src/lib/sedlexing$(EXT_LIB) src/lib/sedlexing.cmxa
+  
+  install:
+! 	ocamlfind install sedlex $(INSTALL) $(INSTALL_OPT)
+  
+  install_byteonly:
+! 	ocamlfind install sedlex $(INSTALL)
+  
+  uninstall:
+! 	ocamlfind remove sedlex
+  
+  PACKAGE = sedlex-$(VERSION)
+  DISTRIB = \
+--- 32,44 ----
+  INSTALL_OPT=src/syntax/sedlex.cmxs src/syntax/sedlex$(EXT_LIB) src/syntax/sedlex.cmxa src/syntax/ppx_sedlex.opt$(EXE) src/lib/sedlexing.cmx src/lib/sedlexing$(EXT_LIB) src/lib/sedlexing.cmxa
+  
+  install:
+! 	ocamlfind -toolchain windows install sedlex $(INSTALL) $(INSTALL_OPT)
+  
+  install_byteonly:
+! 	ocamlfind -toolchain windows install sedlex $(INSTALL)
+  
+  uninstall:
+! 	ocamlfind -toolchain windows remove sedlex
+  
+  PACKAGE = sedlex-$(VERSION)
+  DISTRIB = \
+diff -crB sedlex-1.99.4/src/lib/Makefile sedlex-1.99.4-mine/src/lib/Makefile
+*** src/lib/Makefile	2018-01-28 16:21:07.155381300 +0000
+--- src/lib/Makefile	2018-01-28 16:20:15.946339100 +0000
+***************
+*** 18,24 ****
+  doc:
+  	rm -rf ../../libdoc
+  	mkdir ../../libdoc
+! 	ocamlfind ocamldoc -package gen -html sedlexing.mli -d ../../libdoc
+  
+  
+  
+--- 18,25 ----
+  doc:
+  	rm -rf ../../libdoc
+  	mkdir ../../libdoc
+! # ocamldoc of the windows toolchain is broken, so we use the build system's:
+! 	unset OCAMLFIND_TOOLCHAIN ; ocamlfind ocamldoc -package gen -html sedlexing.mli -d ../../libdoc
+  
+  
+  
+diff -crB sedlex-1.99.4/src/syntax/Makefile sedlex-1.99.4-mine/src/syntax/Makefile
+*** src/syntax/Makefile	2018-01-28 16:21:07.233505500 +0000
+--- src/syntax/Makefile	2018-01-28 16:20:39.140587800 +0000
+***************
+*** 8,14 ****
+  
+  OCAMLC=ocamlfind ocamlc
+  OCAMLOPT=ocamlfind ocamlopt
+! PACKAGES=-package ppx_tools_versioned.metaquot_405 -package ocaml-migrate-parsetree
+  OCAMLFLAGS=$(PACKAGES) -linkall -w +A-4-9-42 -annot
+  
+  all: ppx_sedlex$(EXE) sedlex.cma
+--- 8,15 ----
+  
+  OCAMLC=ocamlfind ocamlc
+  OCAMLOPT=ocamlfind ocamlopt
+! BLD_PPX=$(shell unset OCAMLFIND_TOOLCHAIN ; ocamlfind printppx ppx_tools_versioned.metaquot_405)
+! PACKAGES=-package ocaml-migrate-parsetree -package ppx_tools_versioned $(BLD_PPX)
+  OCAMLFLAGS=$(PACKAGES) -linkall -w +A-4-9-42 -annot
+  
+  all: ppx_sedlex$(EXE) sedlex.cma

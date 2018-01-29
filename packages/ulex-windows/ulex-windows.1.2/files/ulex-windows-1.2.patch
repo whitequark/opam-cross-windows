@@ -1,0 +1,55 @@
+*** Makefile	2018-01-27 16:36:38.196086300 +0000
+--- Makefile	2018-01-27 16:38:49.103602300 +0000
+***************
+*** 1,5 ****
+  ALL=pa_ulex.cma ulexing.cma
+! OCAMLBUILD=ocamlbuild -byte-plugin
+  
+  all::
+  	$(OCAMLBUILD) $(ALL)
+--- 1,5 ----
+  ALL=pa_ulex.cma ulexing.cma
+! OCAMLBUILD=ocamlbuild -use-ocamlfind -toolchain windows -byte-plugin
+  
+  all::
+  	$(OCAMLBUILD) $(ALL)
+***************
+*** 12,21 ****
+  	cd _build && $(MAKE) -f ../Makefile realinstall
+  
+  realinstall:
+! 	ocamlfind install ulex ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
+  
+  uninstall:
+! 	ocamlfind remove ulex
+  
+  clean:
+  	$(OCAMLBUILD) -clean
+--- 12,21 ----
+  	cd _build && $(MAKE) -f ../Makefile realinstall
+  
+  realinstall:
+! 	ocamlfind -toolchain windows install ulex ../META $(wildcard $(MODS:=.mli) $(MODS:=.cmi) $(MODS:=.cmx) pa_ulex.cma ulexing.a ulexing.cma ulexing.cmxa)
+  
+  uninstall:
+! 	ocamlfind -toolchain windows remove ulex
+  
+  clean:
+  	$(OCAMLBUILD) -clean
+***************
+*** 25,31 ****
+  	camlp4o -printer ocaml ./_build/pa_ulex.cma test.ml
+  
+  run_test:
+! 	ocamlbuild test.byte
+  	./test.byte
+  
+  custom_ulexing.byte:
+--- 25,31 ----
+  	camlp4o -printer ocaml ./_build/pa_ulex.cma test.ml
+  
+  run_test:
+! 	ocamlbuild -toolchain windows test.byte
+  	./test.byte
+  
+  custom_ulexing.byte:

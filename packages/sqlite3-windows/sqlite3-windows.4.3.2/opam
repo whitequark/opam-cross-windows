@@ -28,7 +28,7 @@ install: [
 ]
 
 remove: [
-  ["opam-installer" "_build/default/sqlite3-windows.install" "--prefix=%{prefix}%/windows-sysroot" "--name=sqlite3" "-u"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "sqlite3"]
 ]
 
 depends: [
