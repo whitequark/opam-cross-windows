@@ -13,7 +13,9 @@ remove: [["ocamlfind" "-toolchain" "windows" "remove" "sedlex"]]
 depends: ["ocaml-windows"
           "ocamlfind" {build}
           "ppx_tools_versioned-windows"
+          "ppx_tools_versioned" {build}
           "ocaml-migrate-parsetree-windows"
+          "gen" {build}
           "gen-windows"
          ]
 available: [ ocaml-version >= "4.02.3" ]
