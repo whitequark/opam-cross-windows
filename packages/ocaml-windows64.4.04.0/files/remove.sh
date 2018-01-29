@@ -11,4 +11,4 @@ for pkg in bigarray bytes compiler-libs dynlink graphics num num-top stdlib str 
 done
 
 rm -rf "${PREFIX}/windows-sysroot/lib/ocaml"
-rm -rf "${PREFIX}/windows-sysroot/lib/findlib.conf.d"
+rm -rf "${PREFIX}/lib/findlib.conf.d/windows.conf"
