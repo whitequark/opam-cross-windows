@@ -1,0 +1,47 @@
+diff -crB wasm-1.0/interpreter/Makefile wasm-1.0-mine/interpreter/Makefile
+*** interpreter/Makefile	2017-10-18 11:52:50.000000000 +0100
+--- interpreter/Makefile	2018-01-30 20:15:42.490281600 +0000
+***************
+*** 20,26 ****
+  DIRS =		util syntax binary text valid runtime exec script host main
+  LIBS =		bigarray
+  FLAGS = 	-cflags '-w +a-4-27-42-44-45 -warn-error +a'
+! OCB =		ocamlbuild $(FLAGS) $(DIRS:%=-I %) $(LIBS:%=-libs %)
+  JS =		# set to JS shell command to run JS tests
+  
+  
+--- 20,26 ----
+  DIRS =		util syntax binary text valid runtime exec script host main
+  LIBS =		bigarray
+  FLAGS = 	-cflags '-w +a-4-27-42-44-45 -warn-error +a'
+! OCB =		ocamlbuild -toolchain windows -use-ocamlfind $(FLAGS) $(DIRS:%=-I %) $(LIBS:%=-libs %)
+  JS =		# set to JS shell command to run JS tests
+  
+  
+***************
+*** 147,158 ****
+  check:
+  		# Check that we can find all relevant libraries
+  		# when using ocamlfind
+! 		ocamlfind query $(LIBS)
+  
+  install:	_build/$(LIB).cmx _build/$(LIB).cmo
+! 		ocamlfind install wasm meta/findlib/META _build/wasm.o \
+  		  $(wildcard _build/$(LIB).cm*) \
+  		  $(wildcard $(DIRS:%=%/*.mli))
+  
+  uninstall:
+! 		ocamlfind remove wasm
+--- 147,158 ----
+  check:
+  		# Check that we can find all relevant libraries
+  		# when using ocamlfind
+! 		ocamlfind -toolchain windows query $(LIBS)
+  
+  install:	_build/$(LIB).cmx _build/$(LIB).cmo
+! 		ocamlfind -toolchain windows install wasm meta/findlib/META _build/wasm.o \
+  		  $(wildcard _build/$(LIB).cm*) \
+  		  $(wildcard $(DIRS:%=%/*.mli))
+  
+  uninstall:
+! 		ocamlfind -toolchain windows remove wasm

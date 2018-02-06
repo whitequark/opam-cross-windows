@@ -1,0 +1,27 @@
+opam-version: "1.2"
+maintainer: "francois.pottier@inria.fr"
+name: "menhir-windows"
+version: "20171222"
+authors: [
+  "François Pottier <francois.pottier@inria.fr>"
+  "Yann Régis-Gianas <yrg@pps.univ-paris-diderot.fr>"
+]
+homepage: "http://gallium.inria.fr/~fpottier/menhir/"
+dev-repo: "https://gitlab.inria.fr/fpottier/menhir.git"
+bug-reports: "menhir@inria.fr"
+build: [
+  [make "-f" "Makefile" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
+]
+install: [
+  [make "-f" "Makefile" "install" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
+]
+remove: [
+  [make "-f" "Makefile" "uninstall" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{prefix}%/windows-sysroot/doc/menhir" "libdir=%{prefix}%/windows-sysroot/lib/menhir" "mandir=%{prefix}%/windows-sysroot/man/man1"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+available: [ ocaml-version >= "4.02" ]
+patches: ["menhir-20171222.windows.patch" "menhir-20171222.windows-2.patch"]

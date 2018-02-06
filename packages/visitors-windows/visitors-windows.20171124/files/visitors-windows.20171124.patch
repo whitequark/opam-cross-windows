@@ -1,0 +1,20 @@
+diff -crB visitors-20171124/src/Makefile visitors-20171124-mine/src/Makefile
+*** src/Makefile	2018-01-29 21:59:47.228217500 +0000
+--- src/Makefile	2018-01-29 22:07:51.633929700 +0000
+***************
+*** 12,18 ****
+    VisitorsRuntime
+  
+  OCAMLBUILD := \
+!   ocamlbuild \
+    -use-ocamlfind \
+    -classic-display \
+    -plugin-tag 'package(cppo_ocamlbuild)' \
+--- 12,18 ----
+    VisitorsRuntime
+  
+  OCAMLBUILD := \
+!   ocamlbuild -toolchain windows\
+    -use-ocamlfind \
+    -classic-display \
+    -plugin-tag 'package(cppo_ocamlbuild)' \

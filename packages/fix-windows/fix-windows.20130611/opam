@@ -1,0 +1,12 @@
+opam-version: "1"
+maintainer: "jonathan.protzenko@gmail.com"
+name: "fix-windows"
+version: "20130611"
+build: ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "fix"]]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild-windows" {build}
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]

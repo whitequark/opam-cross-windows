@@ -1,0 +1,30 @@
+opam-version: "1.2"
+maintainer: "francois.pottier@inria.fr"
+authors: [
+  "François Pottier <francois.pottier@inria.fr>"
+]
+name: "visitors-windows"
+version: "20171124"
+homepage: "https://gitlab.inria.fr/fpottier/visitors"
+dev-repo: "https://gitlab.inria.fr/fpottier/visitors.git"
+bug-reports: "francois.pottier@inria.fr"
+build: [
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+]
+remove: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "uninstall"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "ocamlbuild" {build}
+  "cppo_ocamlbuild-windows" {build}
+  "ppx_tools-windows"
+  "ppx_deriving-windows" {>= "4.0"}
+  "result-windows"
+]
+available: [ ocaml-version >= "4.02.2" ]
+patches: ["visitors-windows.20171124.patch"]

@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer: "jeremie@dimino.org"
+name: "camlp4-windows"
+version: "4.04+1"
+homepage: "https://github.com/ocaml/camlp4"
+bug-reports: "https://github.com/ocaml/camlp4/issues"
+dev-repo: "https://github.com/ocaml/camlp4.git"
+license: "LGPLv2"
+build: [
+  ["./configure" "--bindir=%{prefix}%/windows-sysroot/bin" "--libdir=%{prefix}%/windows-sysroot/lib/ocaml" "--pkgdir=%{prefix}%/windows-sysroot/lib"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install" "install-META"]
+depends: ["ocaml-windows" "ocamlfind" {build}]
+remove: [
+  ["rm" "-rf" "%{prefix}%/windows-sysroot/lib/camlp4"]
+  ["rm" "-f" "%{prefix}%/windows-sysroot/bin/camlp4"  "%{prefix}%/windows-sysroot/bin/camlp4boot" "%{prefix}%/windows-sysroot/bin/mkcamlp4"
+             "%{prefix}%/windows-sysroot/bin/camlp4r" "%{prefix}%/windows-sysroot/bin/camlp4rf"   "%{prefix}%/windows-sysroot/bin/camlp4orf"
+             "%{prefix}%/windows-sysroot/bin/camlp4o" "%{prefix}%/windows-sysroot/bin/camlp4of"   "%{prefix}%/windows-sysroot/bin/camlp4oof"
+             "%{prefix}%/windows-sysroot/bin/camlp4prof"  "%{prefix}%/windows-sysroot/bin/camlp4rf.opt"  "%{prefix}%/windows-sysroot/bin/camlp4orf.opt"
+             "%{prefix}%/windows-sysroot/bin/camlp4o.opt" "%{prefix}%/windows-sysroot/bin/camlp4oof.opt" "%{prefix}%/windows-sysroot/bin/camlp4r.opt"
+  ]
+]
+depexts: [
+  [ ["centos"] ["which"] ]
+]

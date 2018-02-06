@@ -1,0 +1,30 @@
+opam-version: "1.2"
+name: "zarith-windows"
+version: "1.7"
+maintainer: "Xavier Leroy <xavier.leroy@inria.fr>"
+authors: [
+  "Antoine Miné"
+  "Xavier Leroy"
+  "Pascal Cuoq"
+]
+homepage: "https://github.com/ocaml/Zarith"
+bug-reports: "https://github.com/ocaml/Zarith/issues"
+dev-repo: "https://github.com/ocaml/Zarith.git"
+build: [
+  ["wget" "https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2"]
+  ["bzip2" "-d" "gmp-6.1.2.tar.bz2"]
+  ["tar" "xf" "gmp-6.1.2.tar"]
+  ["bash" "-c" "pushd gmp-6.1.2 ; ./configure --host=x86_64-w64-mingw32 --enable-static --disable-shared ; popd"]
+  [make "-C" "gmp-6.1.2" "-j" jobs]
+  [make]
+]
+install: [
+  make "install"]
+remove:  ["ocamlfind" "-toolchain" "windows" "remove" "zarith"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "conf-gmp"
+  "conf-perl" {build}
+]
+patches: ["Zarith-release-1.7.patch" "Zarith-release-1.7.windows.patch"]

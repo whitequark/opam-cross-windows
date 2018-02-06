@@ -19,7 +19,7 @@ END
   chmod +x "${PREFIX}/windows-sysroot/bin/${bin}"
 done
 
-for pkg in bigarray bytes compiler-libs dynlink findlib graphics num num-top stdlib str threads unix; do
+for pkg in bigarray bytes compiler-libs dynlink graphics num num-top stdlib str threads unix; do
   cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
 done
 

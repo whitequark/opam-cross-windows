@@ -1,0 +1,23 @@
+opam-version: "1.2"
+name: "process-windows"
+version: "0.2.1"
+maintainer: "David Sheets <sheets@alum.mit.edu>"
+authors: [ "David Sheets" "Jonathan Protzenko" ]
+homepage: "https://github.com/dsheets/ocaml-process"
+bug-reports: "https://github.com/dsheets/ocaml-process/issues"
+license: "ISC"
+dev-repo: "https://github.com/dsheets/ocaml-process.git"
+tags: [ "process" "subprocess" "command" "system" ]
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "process"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "base-unix"
+  "base-bytes"
+]
+available: [ ocaml-version >= "4.01.0" ]

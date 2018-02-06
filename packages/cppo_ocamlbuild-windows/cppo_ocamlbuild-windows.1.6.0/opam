@@ -1,0 +1,23 @@
+opam-version: "1.2"
+maintainer: "martin@mjambon.com"
+authors: ["Martin Jambon"]
+name: "cppo_ocamlbuild-windows"
+version: "1.6.0"
+homepage: "http://mjambon.com/cppo.html"
+bug-reports: "https://github.com/mjambon/cppo/issues"
+license: "BSD-3-Clause"
+build: [
+  ["jbuilder-windows" "subst"] {pinned}
+  ["jbuilder-windows" "build" "-p" "cppo_ocamlbuild" "-x" "windows" "-j" jobs "--install-prefix" "windows-sysroot"]
+]
+depends: [
+  "ocaml-windows"
+  "jbuilder-windows" {build & >= "1.0+beta10"}
+  "ocamlbuild-windows"
+
+  # Earlier versions of cppo (opam package) used to install
+  # cppo_ocamlbuild (ocamlfind package).
+  # Requiring cppo >= 1.6 ensures we don't install it twice.
+  "cppo-windows" {>= "1.6.0"}
+]
+
