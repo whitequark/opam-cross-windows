@@ -3,13 +3,15 @@ maintainer: "opensource@janestreet.com"
 authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
 homepage: "https://github.com/janestreet/stdio"
 bug-reports: "https://github.com/janestreet/stdio/issues"
-dev-repo: "https://github.com/janestreet/stdio.git"
+dev-repo: "git+https://github.com/janestreet/stdio.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "--only-packages" "stdio" "--root" "." "-j" jobs "-x" "windows"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "stdio" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
+  "sexplib-windows"
   "jbuilder-windows" {build}
+  "ocaml-windows"
 ]
-available: [ ocaml-version >= "4.03.0" ]
+available: [ ocaml-version >= "4.04.1" ]
