@@ -1,0 +1,48 @@
+diff --git a/byterun/caml/misc.h b/byterun/caml/misc.h
+index d9a7b76..e716b23 100644
+--- a/byterun/caml/misc.h
++++ b/byterun/caml/misc.h
+@@ -375,7 +375,7 @@ int caml_runtime_warnings_active(void);
+ 
+ #ifdef DEBUG
+ #ifdef ARCH_SIXTYFOUR
+-#define Debug_tag(x) (0xD700D7D7D700D6D7ul \
++#define Debug_tag(x) (INT64_LITERAL(0xD700D7D7D700D6D7u) \
+                       | ((uintnat) (x) << 16) \
+                       | ((uintnat) (x) << 48))
+ #else
+@@ -411,7 +411,7 @@ int caml_runtime_warnings_active(void);
+ /* Note: the first argument is in fact a [value] but we don't have this
+    type available yet because we can't include [mlvalues.h] in this file.
+ */
+-extern void caml_set_fields (intnat v, unsigned long, unsigned long);
++extern void caml_set_fields (intnat v, uintnat, uintnat);
+ #endif /* DEBUG */
+ 
+ 
+diff --git a/byterun/memory.c b/byterun/memory.c
+index 69a8161..8670aa2 100644
+--- a/byterun/memory.c
++++ b/byterun/memory.c
+@@ -724,7 +724,7 @@ union max_align {
+ 
+ struct pool_block {
+ #ifdef DEBUG
+-  long magic;
++  intnat magic;
+ #endif
+   struct pool_block *next;
+   struct pool_block *prev;
+diff --git a/byterun/misc.c b/byterun/misc.c
+index 46e4099..861db0f 100644
+--- a/byterun/misc.c
++++ b/byterun/misc.c
+@@ -41,7 +41,7 @@ int caml_failed_assert (char * expr, char * file, int line)
+   abort();
+ }
+ 
+-void caml_set_fields (value v, unsigned long start, unsigned long filler)
++void caml_set_fields (value v, uintnat start, uintnat filler)
+ {
+   mlsize_t i;
+   for (i = start; i < Wosize_val (v); i++){

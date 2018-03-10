@@ -1,0 +1,37 @@
+opam-version: "1.2"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/fix-spacetime-pid.patch"
+  "patches/fix-debug-tag-size.patch"
+  "patches/ostype-fix.patch"
+  "patches/avoid-cygwin-specifics.patch"
+  "patches/lowercase-windows-header.patch"
+  "patches/use-host-ocamldoc.patch"
+  "patches/no-ocamltest.patch"
+]
+substs: [
+  "config/Makefile"
+  "windows.conf"
+]
+build: [
+  ["./build.sh"]
+]
+install: [
+  ["./install.sh" "%{prefix}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%"]
+]
+depends: [
+  "ocamlfind" {>= "1.5.4"}
+  "conf-gcc-windows64"
+  "flexdll-windows"
+]
+depopts: [
+  "conf-flambda-windows"
+  "conf-spacetime-windows"
+]
+conflicts: [
+  "ocaml-windows32"
+]
+available: [ (compiler = "4.06.1" & arch = "x86_64") ]

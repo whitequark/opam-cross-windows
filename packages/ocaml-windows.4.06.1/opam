@@ -1,0 +1,12 @@
+opam-version: "1.2"
+maintainer: "whitequark@whitequark.org"
+install: [
+  ["./install.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%" "%{conf-gcc-windows:host}%"]
+]
+depends: [
+  "conf-gcc-windows"
+  ( "ocaml-windows32" {= "4.06.1"} | "ocaml-windows64" {= "4.06.1"} )
+]

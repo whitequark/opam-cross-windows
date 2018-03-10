@@ -1,0 +1,13 @@
+diff --git a/otherlibs/win32unix/envir.c b/otherlibs/win32unix/envir.c
+index 3324d6d..d2c791f 100644
+--- a/otherlibs/win32unix/envir.c
++++ b/otherlibs/win32unix/envir.c
+@@ -20,7 +20,7 @@
+ #include <caml/memory.h>
+ #include <caml/osdeps.h>
+ 
+-#include <Windows.h>
++#include <windows.h>
+ #include <stdlib.h>
+ 
+ CAMLprim value unix_environment(value unit)

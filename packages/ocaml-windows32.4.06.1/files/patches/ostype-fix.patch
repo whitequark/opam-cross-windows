@@ -1,0 +1,34 @@
+diff --git a/asmcomp/closure.ml b/asmcomp/closure.ml
+index 4fdb377..841127e 100644
+--- a/asmcomp/closure.ml
++++ b/asmcomp/closure.ml
+@@ -475,9 +475,9 @@ let simplif_prim_pure fpc p (args, approxs) dbg =
+         | Word_size -> make_const_int (8*Arch.size_int)
+         | Int_size -> make_const_int (8*Arch.size_int - 1)
+         | Max_wosize -> make_const_int ((1 lsl ((8*Arch.size_int) - 10)) - 1 )
+-        | Ostype_unix -> make_const_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> make_const_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> make_const_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> make_const_bool false
++        | Ostype_win32 -> make_const_bool true
++        | Ostype_cygwin -> make_const_bool false
+         | Backend_type ->
+             make_const_ptr 0 (* tag 0 is the same as Native here *)
+       end
+diff --git a/asmcomp/cmmgen.ml b/asmcomp/cmmgen.ml
+index 483123f..5aba425 100644
+--- a/asmcomp/cmmgen.ml
++++ b/asmcomp/cmmgen.ml
+@@ -2006,9 +2006,9 @@ and transl_prim_1 env p arg dbg =
+         | Word_size -> int_const (8*Arch.size_int)
+         | Int_size -> int_const (8*Arch.size_int - 1)
+         | Max_wosize -> int_const ((1 lsl ((8*Arch.size_int) - 10)) - 1)
+-        | Ostype_unix -> const_of_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> const_of_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> const_of_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> const_of_bool false
++        | Ostype_win32 -> const_of_bool true
++        | Ostype_cygwin -> const_of_bool false
+         | Backend_type -> int_const 0 (* tag 0 is the same as Native here *)
+       end
+   | Poffsetint n ->
