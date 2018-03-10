@@ -1,0 +1,13 @@
+diff --git a/src/jbuild b/src/jbuild
+index 1beffcd..385dccb 100644
+--- a/src/jbuild
++++ b/src/jbuild
+@@ -26,7 +26,7 @@
+ 
+ (rule
+  ((targets (location_helper.ml))
+-  (deps    (../generate/select.exe location_helper.ml-4.06 location_helper.ml-default))
++  (deps    (location_helper.ml-4.06 location_helper.ml-default))
+   (action  (bash "../generate/select.exe location_helper.ml-4.06 location_helper.ml-default > ${@}"))))
+ 
+ (rule
