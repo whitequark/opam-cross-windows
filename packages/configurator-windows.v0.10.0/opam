@@ -11,7 +11,7 @@ build: [
 depends: [
   "base-windows"
   "jbuilder-windows" {build}
-  "ppx_base" {>= "v0.9" & < "v0.10"}
+  "ppx_base" {>= "v0.10" & < "v0.11"}
   "ppx_base-windows"
   "ppx_driver-windows"
   "stdio-windows"

@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_sexp_conv"
+bug-reports: "https://github.com/janestreet/ppx_sexp_conv/issues"
+dev-repo: "git+https://github.com/janestreet/ppx_sexp_conv.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_sexp_conv" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "ppx_core-windows"
+  "ppx_driver-windows"
+  "ppx_metaquot-windows"
+  "ppx_type_conv-windows"
+  "sexplib-windows"
+  "jbuilder-windows" {build}
+  "ocaml-migrate-parsetree-windows"
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.04.1" ]
