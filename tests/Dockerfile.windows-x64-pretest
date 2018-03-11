@@ -1,4 +1,4 @@
-FROM ocamlcross/windows-x64-base:4.04.2
+FROM ocamlcross/windows-x64-base:latest
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 USER root
