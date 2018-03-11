@@ -10,6 +10,7 @@ build: [
 ]
 depends: [
   "jbuilder-windows" {build}
+  "num-windows"
   "ocaml-windows"
 ]
 available: [ ocaml-version >= "4.04.1" ]
