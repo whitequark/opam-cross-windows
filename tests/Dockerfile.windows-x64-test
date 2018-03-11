@@ -1,4 +1,4 @@
-FROM ocamlcross/windows-x64-pretest:latest
+FROM ocamlcross/windows-x64-pretest:4.06.1
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG OPAM_PKG

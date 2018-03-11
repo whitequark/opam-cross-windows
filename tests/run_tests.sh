@@ -6,7 +6,7 @@ BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building base image.. "
 
-  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-base -t ocamlcross/windows-x64-base:latest ${BASE_PWD}"
+  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-base -t ocamlcross/windows-x64-base:4.06.1 ${BASE_PWD}"
 
   if [ -n "${VERBOSE}" ]; then
     echo ""
@@ -28,7 +28,7 @@ SKIPPED="ocaml-windows32.4.06.1 ocaml-windows64.4.06.1 ocaml-windows.4.06.1 conf
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
-DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:latest ${BASE_PWD}"
+DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:4.06.1 ${BASE_PWD}"
 
 if [ -n "${VERBOSE}" ]; then
   echo ""
