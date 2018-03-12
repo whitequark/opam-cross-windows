@@ -1,0 +1,37 @@
+opam-version: "1.2"
+name: "batteries-windows"
+maintainer: "thelema314@gmail.com"
+authors: "OCaml batteries-included team"
+homepage: "http://batteries.forge.ocamlcore.org/"
+bug-reports: "https://github.com/ocaml-batteries-team/batteries-included/issues"
+dev-repo: "https://github.com/ocaml-batteries-team/batteries-included.git"
+license: "LGPL-2.1+ with OCaml linking exception"
+doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["ocamlbuild" "-no-links" "-use-ocamlfind" "build/prefilter.byte" "build/mkconf.byte"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "all"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocamlfind" "remove" "batteries"]
+]
+depends: [
+  "ocamlfind" {>= "1.5.3"}
+  "ocamlbuild" {build}
+  "qtest" {test & >= "2.5"}
+  "qcheck" {test & >= "0.6"}
+  "bisect" {test}
+  "num" {build}
+  "num-windows"
+  "ocaml-windows"
+]
+available: [ocaml-version >= "3.12.1" & ocaml-version < "4.07.0"]
