@@ -16,5 +16,5 @@ depends: [
   "ocamlfind" {build}
 ]
 depexts: [
-  [["mxe"] ["libao"]]
+  [["mxe"] ["dlfcn-win32" "libao"]]
 ]
