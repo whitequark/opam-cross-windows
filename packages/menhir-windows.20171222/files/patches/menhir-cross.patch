@@ -1,0 +1,42 @@
+diff -ruN menhir-20171222.orig/src/Makefile menhir-20171222/src/Makefile
+--- menhir-20171222.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
++++ menhir-20171222/src/Makefile	2018-03-12 14:48:15.003153423 +0900
+@@ -10,7 +10,7 @@
+ # ----------------------------------------------------------------------------
+ # Ocamlbuild tool and settings.
+ 
+-OCAMLBUILD := ocamlbuild -classic-display -j 0
++OCAMLBUILD := ocamlbuild -use-ocamlfind -classic-display -j 0
+ ifeq ($(TARGET),byte)
+   OCAMLBUILD := $(OCAMLBUILD) -byte-plugin
+ endif
+@@ -28,7 +28,6 @@
+ bootstrap:
+ 	@ $(MAKE) stage1
+ 	@ $(MAKE) stage2
+-	@ $(MAKE) stage3
+ 
+ # ----------------------------------------------------------------------------
+ # Stage 1.
+@@ -52,7 +51,9 @@
+ FLAGS := -v -lg 1 -la 1 -lc 1 --table --infer --stdlib $(SRC) --strict --fixed-exception --canonical
+ 
+ stage2:
+-	@ $(OCAMLBUILD) -build-dir _stage2 -tag fancy_parser \
++	@ $(OCAMLBUILD) -build-dir _stage2 -just-plugin
++	@ OCAMLFIND_TOOLCHAIN=$(OCAMLFIND_CROSS_TOOLCHAIN) \
++	  $(OCAMLBUILD) -build-dir _stage2 -tag fancy_parser \
+ 	    -use-menhir -menhir "$(SRC)/_stage1/menhir.$(TARGET) $(FLAGS)" \
+ 	    menhir.$(TARGET)
+ 
+@@ -84,7 +85,9 @@
+ # Building menhirSdk.
+ 
+ sdk:
+-	@ $(OCAMLBUILD) \
++	@ $(OCAMLBUILD) -build-dir _sdk -just-plugin
++	@ OCAMLFIND_TOOLCHAIN=$(OCAMLFIND_CROSS_TOOLCHAIN) \
++	  $(OCAMLBUILD) \
+ 	    -build-dir _sdk \
+ 	    -tag sdk \
+ 	    $(MENHIRSDK)

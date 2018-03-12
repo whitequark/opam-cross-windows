@@ -1,0 +1,12 @@
+diff -ruN menhir-20171222.orig/src/Makefile menhir-20171222/src/Makefile
+--- menhir-20171222.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
++++ menhir-20171222/src/Makefile	2018-03-12 14:21:38.053955318 +0900
+@@ -10,7 +10,7 @@
+ # ----------------------------------------------------------------------------
+ # Ocamlbuild tool and settings.
+ 
+-OCAMLBUILD := ocamlbuild -classic-display -j 0
++OCAMLBUILD := ocamlbuild -use-ocamlfind -classic-display -j 0
+ ifeq ($(TARGET),byte)
+   OCAMLBUILD := $(OCAMLBUILD) -byte-plugin
+ endif

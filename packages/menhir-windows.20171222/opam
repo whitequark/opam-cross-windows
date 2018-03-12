@@ -1,0 +1,31 @@
+opam-version: "1.2"
+maintainer: "francois.pottier@inria.fr"
+authors: [
+  "François Pottier <francois.pottier@inria.fr>"
+  "Yann Régis-Gianas <yrg@pps.univ-paris-diderot.fr>"
+]
+homepage: "http://gallium.inria.fr/~fpottier/menhir/"
+dev-repo: "https://gitlab.inria.fr/fpottier/menhir.git"
+bug-reports: "menhir@inria.fr"
+patches: [
+  "patches/menhir-cross.patch"
+]
+build: [
+  ["env" "OCAMLFIND_CROSS_TOOLCHAIN=windows"
+   make "-f" "Makefile" "PREFIX=%{prefix}%/windows-sysroot" "USE_OCAMLFIND=true"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "-f" "Makefile" "install" "PREFIX=%{prefix}%/windows-sysroot"]
+]
+remove: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "-f" "Makefile" "uninstall" "PREFIX=%{prefix}%/windows-sysroot"]
+]
+depends: [
+  "ocamlfind"
+  "ocamlbuild" {build}
+  "menhir" {= "20171222"}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.02" ]
