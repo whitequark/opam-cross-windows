@@ -1,0 +1,15 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/jane-street-headers"
+bug-reports: "https://github.com/janestreet/jane-street-headers/issues"
+dev-repo: "git+https://github.com/janestreet/jane-street-headers.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "jane-street-headers" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "jbuilder-windows" {build & >= "1.0+beta12"}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.04.1" ]
