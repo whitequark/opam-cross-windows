@@ -1,0 +1,24 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_sexp_message"
+bug-reports: "https://github.com/janestreet/ppx_sexp_message/issues"
+dev-repo: "git+https://github.com/janestreet/ppx_sexp_message.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_sexp_message" "-j" jobs "-x" "windows"]
+]
+depends: [
+  "ppx_core-windows"                {>= "v0.10" & < "v0.11"}
+  "ppx_driver-windows"              {>= "v0.10" & < "v0.11"}
+  "ppx_here"                        {>= "v0.10" & < "v0.11"}
+  "ppx_here-windows"                {>= "v0.10" & < "v0.11"}
+  "ppx_metaquot-windows"            {>= "v0.10" & < "v0.11"}
+  "ppx_sexp_conv"                   {>= "v0.10" & < "v0.11"}
+  "ppx_sexp_conv-windows"           {>= "v0.10" & < "v0.11"}
+  "sexplib-windows"                 {>= "v0.10" & < "v0.11"}
+  "jbuilder-windows"                {build & >= "1.0+beta12"}
+  "ocaml-migrate-parsetree-windows" {>= "0.4"}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.04.1" ]
