@@ -1,0 +1,34 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+homepage: "https://github.com/janestreet/ppx_expect"
+bug-reports: "https://github.com/janestreet/ppx_expect/issues"
+dev-repo: "git+https://github.com/janestreet/ppx_expect.git"
+license: "Apache-2.0"
+build: [
+  ["jbuilder" "build" "-p" "ppx_expect" "-j" jobs "-x" "windows"]
+]
+conflicts: [ "jbuilder" { = "1.0+beta19" } ]
+depends: [
+  "base-windows"                    {>= "v0.11" & < "v0.12"}
+  "ppx_assert"                      {>= "v0.11" & < "v0.12"}
+  "ppx_assert-windows"              {>= "v0.11" & < "v0.12"}
+  "ppx_compare-windows"             {>= "v0.11" & < "v0.12"}
+  "ppx_custom_printf"               {>= "v0.11" & < "v0.12"}
+  "ppx_custom_printf-windows"       {>= "v0.11" & < "v0.12"}
+  "ppx_fields_conv"                 {>= "v0.11" & < "v0.12"}
+  "ppx_fields_conv-windows"         {>= "v0.11" & < "v0.12"}
+  "ppx_here-windows"                {>= "v0.11" & < "v0.12"}
+  "ppx_inline_test"                 {>= "v0.11" & < "v0.12"}
+  "ppx_inline_test-windows"         {>= "v0.11" & < "v0.12"}
+  "ppx_sexp_conv-windows"           {>= "v0.11" & < "v0.12"}
+  "ppx_variants_conv"               {>= "v0.11" & < "v0.12"}
+  "ppx_variants_conv-windows"       {>= "v0.11" & < "v0.12"}
+  "stdio-windows"                   {>= "v0.11" & < "v0.12"}
+  "jbuilder"                {build & >= "1.0+beta18.1"}
+  "ocaml-migrate-parsetree-windows" {>= "1.0"}
+  "ppxlib-windows"                  {>= "0.1.0"}
+  "re-windows"                      {>= "1.5.0"}
+  "ocaml-windows"
+]
+available: [ ocaml-version >= "4.04.1" ]

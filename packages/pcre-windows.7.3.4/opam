@@ -8,9 +8,9 @@ dev-repo: "https://github.com/mmottl/pcre-ocaml.git"
 bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
 
 build: [
-  ["jbuilder-windows" "subst"]{pinned}
+  ["dune" "subst"]{pinned}
   ["env" "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig" 
-   "jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "pcre" "-j" jobs "-x" "windows"]
+   "dune" "build"  "-p" "pcre" "-j" jobs "-x" "windows"]
 ]
 
 depends: [
@@ -18,7 +18,7 @@ depends: [
   "stdio-windows" {build}
   "configurator" {build}
   "configurator-windows" {build}
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-windows"
 ]
 

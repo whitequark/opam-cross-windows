@@ -20,7 +20,9 @@ END
 done
 
 for pkg in bigarray bytes compiler-libs dynlink findlib graphics stdlib str threads unix; do
-  cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
+  if [ -d "${PREFIX}/lib/${pkg}" ]; then
+    cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
+  fi
 done
 
 mkdir -p "${PREFIX}/lib/findlib.conf.d"

@@ -30,4 +30,4 @@ RUN opam repository add windows /home/opam/opam-cross-windows
 
 ENV TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static-
 
-RUN eval $(opam config env) && opam install -y ocaml-windows
+RUN eval $(opam config env) && opam update && opam install -y ocaml-windows

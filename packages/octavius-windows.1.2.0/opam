@@ -13,10 +13,10 @@ available: [ ocaml-version >= "4.03.0"]
 depends: [
   "ocaml-windows"
   "ocamlfind" {build}
-  "jbuilder-windows" {build}
+  "dune" {build}
   "topkg" {build & >= "0.7.5"} ]
 
 build: [
-  ["jbuilder-windows" "subst" "-x" "windows"] {pinned}
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "octavius" "-j" jobs "-x" "windows"]
+  ["dune" "subst" "-x" "windows"] {pinned}
+  ["dune" "build"  "-p" "octavius" "-j" jobs "-x" "windows"]
 ]

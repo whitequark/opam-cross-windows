@@ -28,7 +28,7 @@ SKIPPED="ocaml-windows32.4.06.1 ocaml-windows64.4.06.1 ocaml-windows.4.06.1 conf
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
-DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:4.06.1 ${BASE_PWD}"
+DOCKER_CMD="docker build --no-cache -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:4.06.1 ${BASE_PWD}"
 
 if [ -n "${VERBOSE}" ]; then
   echo ""
@@ -49,7 +49,7 @@ build_package() {
   echo "${SKIPPED}" | grep "${PACKAGE}" >/dev/null 2>&1
 
   if [ "$?" -eq "0" ]; then
-    printf "\033[1;33m[skipped]\033[0m⚠️\n"
+    printf "Building ${PACKAGE}.. \033[1;33m[skipped]\033[0m⚠️\n"
   else
     ${TEST_PWD}/run_test.sh "${PACKAGE}"
 
