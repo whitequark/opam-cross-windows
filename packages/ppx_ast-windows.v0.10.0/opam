@@ -10,11 +10,11 @@ patches: [
 ]
 build: [
   ["jbuilder" "build" "generate/select.exe"]
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_ast" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_ast" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder" {build}
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-compiler-libs-windows"
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"

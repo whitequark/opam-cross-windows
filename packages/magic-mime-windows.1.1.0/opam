@@ -7,11 +7,11 @@ dev-repo: "https://github.com/mirage/ocaml-magic-mime.git"
 doc: "https://mirage.github.io/ocaml-magic-mime"
 license: "ISC"
 build: [[
-  "jbuilder-windows" "build"
+  "jbuilder" "build"
                      "--install-prefix" "windows-sysroot" "-x" "windows"
                      "-p" "magic-mime" "-j" jobs ]]
 depends: [
-  "jbuilder-windows" {build & >="1.0+beta9"}
+  "jbuilder" {build & >="1.0+beta9"}
   "ocaml-windows"
 ]
 available: [ ocaml-version >= "4.03.0" ]

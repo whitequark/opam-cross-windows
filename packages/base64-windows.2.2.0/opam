@@ -10,9 +10,9 @@ bug-reports: "https://github.com/mirage/ocaml-base64/issues"
 dev-repo: "https://github.com/mirage/ocaml-base64.git"
 depends: [
   "base-bytes"
-  "jbuilder-windows" {build & >= "1.0+beta10"}
+  "jbuilder" {build & >= "1.0+beta10"}
 ]
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot"
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot"
                       "-p" "base64" "-j" jobs "-x" "windows"]
 ]

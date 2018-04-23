@@ -6,11 +6,11 @@ bug-reports: "https://github.com/janestreet/configurator/issues"
 dev-repo: "git+https://github.com/janestreet/configurator.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "configurator" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "configurator" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ppx_base" {>= "v0.10" & < "v0.11"}
   "ppx_base-windows"
   "ppx_driver-windows"

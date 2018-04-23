@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_compare/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_compare.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_compare" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_compare" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
@@ -14,7 +14,7 @@ depends: [
   "ppx_driver-windows"
   "ppx_metaquot-windows"
   "ppx_type_conv-windows"
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
 ]

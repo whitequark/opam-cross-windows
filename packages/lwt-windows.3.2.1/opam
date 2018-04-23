@@ -20,7 +20,7 @@ patches: [
 ]
 build: [
   [ "ocaml" "src/util/configure.ml" "-use-libev" "false" ]
-  [ "jbuilder-windows" "build"
+  [ "jbuilder" "build"
                        "--install-prefix" "windows-sysroot" "-x" "windows"
                        "-p" "lwt" "-j" jobs ]
   [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
@@ -29,7 +29,7 @@ depends: [
   "ocamlfind" {build}
   "cppo" {build & >= "1.1.0"}
   "ocaml-windows"
-  "jbuilder-windows" {build & >= "1.0+beta14"}
+  "jbuilder" {build & >= "1.0+beta14"}
   "ocaml-migrate-parsetree-windows"
   "ppx_tools_versioned" {>= "5.0.1"}
   "ppx_tools_versioned-windows" {>= "5.0.1"}

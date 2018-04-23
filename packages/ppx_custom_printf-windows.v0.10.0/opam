@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_custom_printf/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_custom_printf.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_custom_printf" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_custom_printf" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"                {>= "v0.10" & < "v0.11"}
@@ -16,7 +16,7 @@ depends: [
   "ppx_sexp_conv-windows"           {>= "v0.10" & < "v0.11"}
   "ppx_traverse"                    {>= "v0.10" & < "v0.11"}
   "ppx_traverse-windows"            {>= "v0.10" & < "v0.11"}
-  "jbuilder-windows"                {build & >= "1.0+beta12"}
+  "jbuilder"                {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]

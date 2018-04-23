@@ -6,12 +6,12 @@ bug-reports: "https://github.com/janestreet/ppx_driver/issues"
 license: "Apache-2.0"
 dev-repo: "git+https://github.com/janestreet/ppx_driver.git"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_driver" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_driver" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"
   "ppx_optcomp-windows"
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
 ]

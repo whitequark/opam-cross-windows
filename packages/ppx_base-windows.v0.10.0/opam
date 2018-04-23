@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_base/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_base.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_base" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_base" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_compare-windows"
@@ -19,7 +19,7 @@ depends: [
   "ppx_js_style-windows"
   "ppx_sexp_conv-windows"
   "ppx_type_conv-windows"
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-migrate-parsetree-windows"
 ]
 available: [ ocaml-version >= "4.04.1" ]

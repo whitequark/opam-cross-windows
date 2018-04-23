@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_core/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_core.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_core"  "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_core"  "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"
@@ -16,7 +16,7 @@ depends: [
   "ppx_traverse_builtins" {>= "v0.10" & < "v0.11"}
   "ppx_traverse_builtins-windows"
   "stdio-windows"
-  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-windows"
 ]
 available: [ ocaml-version >= "4.04.1" ]
