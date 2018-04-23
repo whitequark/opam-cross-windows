@@ -7,7 +7,7 @@ bug-reports: "https://github.com/mjambon/atdgen/issues"
 dev-repo: "https://github.com/mjambon/atdgen.git"
 
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "atdgen" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "atdgen" "-j" jobs "-x" "windows"]
 ]
 
 depends: [

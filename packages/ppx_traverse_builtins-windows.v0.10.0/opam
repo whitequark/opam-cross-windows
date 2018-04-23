@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_traverse_builtins/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_traverse_builtins.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_traverse_builtins" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "ppx_traverse_builtins" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder" {build}

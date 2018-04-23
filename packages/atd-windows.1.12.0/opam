@@ -7,7 +7,7 @@ bug-reports: "https://github.com/mjambon/atd/issues"
 dev-repo: "https://github.com/mjambon/atd.git"
 
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "atd" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "atd" "-j" jobs "-x" "windows"]
 ]
 
 depends: [

@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_bin_prot/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_bin_prot.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_bin_prot" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "ppx_bin_prot" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "bin_prot-windows"                {>= "v0.10" & < "v0.11"}

@@ -10,7 +10,7 @@ bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
 build: [
   ["jbuilder" "subst"]{pinned}
   ["env" "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig" 
-   "jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "pcre" "-j" jobs "-x" "windows"]
+   "jbuilder" "build"  "-p" "pcre" "-j" jobs "-x" "windows"]
 ]
 
 depends: [

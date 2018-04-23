@@ -19,5 +19,5 @@ depends: [
 ]
 build: [[
   "jbuilder" "build"
-                     "--install-prefix" "windows-sysroot" "-x" "windows"
+                      "-x" "windows"
                      "-p" "lwt_react" "-j" jobs]]

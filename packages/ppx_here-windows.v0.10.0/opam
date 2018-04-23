@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_here/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_here.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_here" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "ppx_here" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"                {>= "v0.10" & < "v0.11"}

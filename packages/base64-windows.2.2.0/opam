@@ -13,6 +13,6 @@ depends: [
   "jbuilder" {build & >= "1.0+beta10"}
 ]
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot"
+  ["jbuilder" "build" 
                       "-p" "base64" "-j" jobs "-x" "windows"]
 ]

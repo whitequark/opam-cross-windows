@@ -10,7 +10,7 @@ patches: [
 ]
 build: [
   ["jbuilder" "build" "generate/select.exe"]
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_ast" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "ppx_ast" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder" {build}

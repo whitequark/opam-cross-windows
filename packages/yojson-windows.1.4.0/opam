@@ -6,7 +6,7 @@ bug-reports: "https://github.com/mjambon/yojson/issues"
 dev-repo: "https://github.com/mjambon/yojson.git"
 available: [ ocaml-version >= "4.02.3"]
 build: [
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "yojson" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "yojson" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "jbuilder" {build}

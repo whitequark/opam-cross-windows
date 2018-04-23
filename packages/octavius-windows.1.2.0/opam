@@ -18,5 +18,5 @@ depends: [
 
 build: [
   ["jbuilder" "subst" "-x" "windows"] {pinned}
-  ["jbuilder" "build" "--install-prefix" "windows-sysroot" "-p" "octavius" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build"  "-p" "octavius" "-j" jobs "-x" "windows"]
 ]

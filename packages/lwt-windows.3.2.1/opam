@@ -21,7 +21,7 @@ patches: [
 build: [
   [ "ocaml" "src/util/configure.ml" "-use-libev" "false" ]
   [ "jbuilder" "build"
-                       "--install-prefix" "windows-sysroot" "-x" "windows"
+                        "-x" "windows"
                        "-p" "lwt" "-j" jobs ]
   [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
 ]
