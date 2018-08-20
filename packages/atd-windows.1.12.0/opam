@@ -7,11 +7,11 @@ bug-reports: "https://github.com/mjambon/atd/issues"
 dev-repo: "https://github.com/mjambon/atd.git"
 
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "atd" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "atd" "-j" jobs "-x" "windows"]
 ]
 
 depends: [
-  "jbuilder-windows" {build}
+  "dune" {build}
   "menhir"
   "easy-format-windows"
 ]

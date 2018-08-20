@@ -6,14 +6,14 @@ bug-reports: "https://github.com/janestreet/ppx_enumerate/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_enumerate.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_enumerate" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_enumerate" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"
   "ppx_driver-windows"
   "ppx_metaquot-windows"
   "ppx_type_conv-windows"
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
 ]

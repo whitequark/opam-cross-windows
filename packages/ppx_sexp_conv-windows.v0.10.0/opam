@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_sexp_conv/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_sexp_conv.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_sexp_conv" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_sexp_conv" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"
@@ -14,7 +14,7 @@ depends: [
   "ppx_metaquot-windows"
   "ppx_type_conv-windows"
   "sexplib-windows"
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
 ]

@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_metaquot/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_metaquot.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_metaquot" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_metaquot" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core" {>= "v0.10" & < "v0.11"}
@@ -14,7 +14,7 @@ depends: [
   "ppx_driver" {>= "v0.10" & < "v0.11"}
   "ppx_driver-windows"
   "ppx_traverse_builtins-windows"
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
 ]

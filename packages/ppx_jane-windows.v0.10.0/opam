@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_jane/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_jane.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_jane" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_jane" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_assert-windows"              {>= "v0.10" & < "v0.11"}
@@ -38,7 +38,7 @@ depends: [
   "ppx_typerep_conv"                {>= "v0.10" & < "v0.11"}
   "ppx_typerep_conv-windows"        {>= "v0.10" & < "v0.11"}
   "ppx_variants_conv-windows"       {>= "v0.10" & < "v0.11"}
-  "jbuilder-windows"                {build & >= "1.0+beta12"}
+  "dune"                {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]

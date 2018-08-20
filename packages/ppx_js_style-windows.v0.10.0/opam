@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_js_style/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_js_style.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_js_style" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_js_style" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ppx_core-windows"
@@ -14,7 +14,7 @@ depends: [
   "ppx_driver-windows" {>= "v0.10" & < "v0.11"}
   "ppx_metaquot" {>= "v0.10" & < "v0.11"}
   "ppx_metaquot-windows" {>= "v0.10" & < "v0.11"}
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-migrate-parsetree-windows"
   "octavius"
   "octavius-windows"
