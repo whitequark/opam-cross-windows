@@ -6,10 +6,10 @@ bug-reports: "https://github.com/janestreet/sexplib/issues"
 dev-repo: "git+https://github.com/janestreet/sexplib.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build"  "-p" "sexplib" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "sexplib" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder" {build}
+  "dune" {build}
   "num-windows"
   "ocaml-windows"
 ]

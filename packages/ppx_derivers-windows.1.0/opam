@@ -6,9 +6,9 @@ homepage: "https://github.com/diml/ppx_derivers"
 bug-reports: "https://github.com/diml/ppx_derivers/issues"
 dev-repo: "git://github.com/diml/ppx_derivers.git"
 build: [
-  ["jbuilder" "build"  "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_derivers" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder" {build}
+  "dune" {build}
   "ocaml-windows"
 ]

@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_bin_prot/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_bin_prot.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build"  "-p" "ppx_bin_prot" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_bin_prot" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "bin_prot-windows"                {>= "v0.10" & < "v0.11"}
@@ -15,7 +15,7 @@ depends: [
   "ppx_here-windows"                {>= "v0.10" & < "v0.11"}
   "ppx_metaquot-windows"            {>= "v0.10" & < "v0.11"}
   "ppx_type_conv-windows"           {>= "v0.10" & < "v0.11"}
-  "jbuilder"                {build & >= "1.0+beta12"}
+  "dune"                {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]

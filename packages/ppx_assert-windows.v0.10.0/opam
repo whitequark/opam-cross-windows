@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_assert/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_assert.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build"  "-p" "ppx_assert" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_assert" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"                    {>= "v0.10" & < "v0.11"}
@@ -21,7 +21,7 @@ depends: [
   "ppx_sexp_conv-windows"           {>= "v0.10" & < "v0.11"}
   "ppx_type_conv-windows"           {>= "v0.10" & < "v0.11"}
   "sexplib-windows"                 {>= "v0.10" & < "v0.11"}
-  "jbuilder"                {build & >= "1.0+beta12"}
+  "dune"                {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]

@@ -13,11 +13,11 @@ dev-repo: "https://github.com/ocsigen/lwt.git"
 bug-reports: "https://github.com/ocsigen/lwt/issues"
 license: "LGPL with OpenSSL linking exception"
 depends: [
-  "jbuilder" {build & >= "1.0+beta10"}
+  "dune" {build & >= "1.0+beta10"}
   "lwt-windows" {>= "3.0.0"}
   "react-windows" {>= "1.0.0"}
 ]
 build: [[
-  "jbuilder" "build"
+  "dune" "build"
                       "-x" "windows"
                      "-p" "lwt_react" "-j" jobs]]

@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/ppx_inline_test/issues"
 dev-repo: "git+https://github.com/janestreet/ppx_inline_test.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build"  "-p" "ppx_inline_test" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ppx_inline_test" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "base-windows"                    {>= "v0.10" & < "v0.11"}
@@ -14,7 +14,7 @@ depends: [
   "ppx_driver-windows"              {>= "v0.10" & < "v0.11"}
   "ppx_metaquot"                    {>= "v0.10" & < "v0.11"}
   "ppx_metaquot-windows"            {>= "v0.10" & < "v0.11"}
-  "jbuilder"                {build & >= "1.0+beta12"}
+  "dune"                {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]

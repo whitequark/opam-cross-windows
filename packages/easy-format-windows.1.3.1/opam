@@ -5,10 +5,10 @@ homepage: "http://mjambon.com/easy-format.html"
 bug-reports: "https://github.com/mjambon/easy-format/issues"
 dev-repo: "https://github.com/mjambon/easy-format.git"
 build: [
-  ["jbuilder" "build"  "-p" "easy-format" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "easy-format" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "jbuilder" {build}
+  "dune" {build}
   "ocaml-windows"
 ]
 available: [ ocaml-version >= "4.02.3"]

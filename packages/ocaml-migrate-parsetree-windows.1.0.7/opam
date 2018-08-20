@@ -10,11 +10,11 @@ bug-reports: "https://github.com/let-def/ocaml-migrate-parsetree/issues"
 dev-repo: "git://github.com/let-def/ocaml-migrate-parsetree.git"
 tags: [ "syntax" "org:ocamllabs" ]
 build: [
-  ["jbuilder" "build"  "-p" "ocaml-migrate-parsetree" "-j" jobs "-x" "windows"]
+  ["dune" "build"  "-p" "ocaml-migrate-parsetree" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "result-windows"
   "ocamlfind" {build}
-  "jbuilder" {build}
+  "dune" {build}
 ]
 available: ocaml-version >= "4.02.0"
