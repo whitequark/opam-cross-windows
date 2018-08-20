@@ -9,8 +9,7 @@ patches: [
   "patches/tweak-select-dependency.patch"
 ]
 build: [
-  ["dune" "build" "generate/select.exe"]
-  ["dune" "build"  "-p" "ppx_ast" "-j" jobs "-x" "windows"]
+  ["dune" "build" "-p" "ppx_ast" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "dune" {build}
