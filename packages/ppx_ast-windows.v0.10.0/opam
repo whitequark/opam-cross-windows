@@ -9,12 +9,12 @@ patches: [
   "patches/tweak-select-dependency.patch"
 ]
 build: [
-  ["dune" "build" "generate/select.exe"]
-  ["dune" "build"  "-p" "ppx_ast" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "generate/select.exe"]
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "ppx_ast" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "dune" {build}
-  "dune" {build}
+  "jbuilder-windows" {build}
+  "jbuilder" {build}
   "ocaml-compiler-libs-windows"
   "ocaml-migrate-parsetree-windows"
   "ocaml-windows"
