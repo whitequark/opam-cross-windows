@@ -14,7 +14,7 @@ RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | 
 
 ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
 
-RUN opam init --auto --compiler=4.06.1
+RUN opam init --auto --compiler=4.07.0
 
 WORKDIR /home/opam/opam-cross-windows
 
