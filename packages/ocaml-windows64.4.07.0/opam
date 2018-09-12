@@ -1,9 +1,10 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
 patches: [
+  "patches/use-host-ocamlrun-for-stdlib-doc.patch"
+  "patches/fix-debug-tag-size.patch"
   "patches/ostype-fix.patch"
   "patches/avoid-cygwin-specifics.patch"
-  "patches/lowercase-windows-header.patch"
   "patches/use-host-ocamldoc.patch"
   "patches/no-ocamltest.patch"
 ]
@@ -22,13 +23,14 @@ remove: [
 ]
 depends: [
   "ocamlfind" {>= "1.5.4"}
-  "conf-gcc-windows32"
+  "conf-gcc-windows64"
   "flexdll-windows"
 ]
 depopts: [
   "conf-flambda-windows"
+  "conf-spacetime-windows"
 ]
 conflicts: [
-  "ocaml-windows64"
+  "ocaml-windows32"
 ]
-available: [ (compiler = "4.06.1" & arch = "x86") | compiler = "4.06.1+32bit" ]
+available: [ (compiler = "4.07.0" & arch = "x86_64") ]
