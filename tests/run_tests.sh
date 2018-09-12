@@ -6,7 +6,7 @@ BASE_PWD=$(cd ${TEST_PWD}/.. && pwd)
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building base image.. "
 
-  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-base -t ocamlcross/windows-x64-base:4.06.1 ${BASE_PWD}"
+  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-base -t ocamlcross/windows-x64-base:4.07.0 ${BASE_PWD}"
 
   if [ -n "${VERBOSE}" ]; then
     echo ""
@@ -23,12 +23,12 @@ if [ -n "${BUILD_BASE}" ]; then
 fi
 
 # compiler packages are already present in the base image and should never be rebuilt
-SKIPPED="ocaml-windows32.4.06.1 ocaml-windows64.4.06.1 ocaml-windows.4.06.1 conf-gcc-windows64.1"
+SKIPPED="ocaml-windows32.4.07.0 ocaml-windows64.4.07.0 ocaml-windows.4.07.0 conf-gcc-windows64.1"
 # these packages just fail
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
-DOCKER_CMD="docker build --no-cache -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:4.06.1 ${BASE_PWD}"
+DOCKER_CMD="docker build --no-cache -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:4.07.0 ${BASE_PWD}"
 
 if [ -n "${VERBOSE}" ]; then
   echo ""

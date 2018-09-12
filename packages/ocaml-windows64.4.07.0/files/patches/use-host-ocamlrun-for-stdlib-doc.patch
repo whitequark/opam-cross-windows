@@ -1,0 +1,15 @@
+diff --git a/ocamldoc/stdlib_non_prefixed/Makefile b/ocamldoc/stdlib_non_prefixed/Makefile
+index 801007efc..78f3c1698 100644
+--- a/ocamldoc/stdlib_non_prefixed/Makefile
++++ b/ocamldoc/stdlib_non_prefixed/Makefile
+@@ -3,8 +3,8 @@ include $(TOPDIR)/Makefile.tools
+ 
+ .SUFFIXES:
+ 
+-OCAMLDEP= $(OCAMLRUN) $(TOPDIR)/tools/ocamldep -slash
+-OCAMLC_SNP= $(OCAMLRUN) $(TOPDIR)/ocamlc -nostdlib -nopervasives -I $(HERE)
++OCAMLDEP= ocamlrun $(TOPDIR)/tools/ocamldep -slash
++OCAMLC_SNP= ocamlrun $(TOPDIR)/ocamlc -nostdlib -nopervasives -I $(HERE)
+ 
+ pervasives.cmi: pervasives.mli camlinternalFormatBasics.cmi
+ 	$(OCAMLC_SNP) -c $<

@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 0875c09..4d31b7c 100644
+index 1b4bec8e6..c11a4aaee 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -482,15 +482,13 @@ opt.opt:
+@@ -475,11 +475,10 @@ opt.opt:
  	$(MAKE) ocaml
  	$(MAKE) opt-core
  	$(MAKE) ocamlc.opt
@@ -13,24 +13,10 @@ index 0875c09..4d31b7c 100644
 -	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT) \
 -	  ocamltest.opt
 +	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT)
- else
- opt.opt: core opt-core ocamlc.opt all ocamlopt.opt ocamllex.opt \
--         ocamltoolsopt ocamltoolsopt.opt otherlibrariesopt $(OCAMLDOC_OPT) \
--         ocamltest.opt
-+         ocamltoolsopt ocamltoolsopt.opt otherlibrariesopt $(OCAMLDOC_OPT)
- endif
  
- .PHONY: base.opt
-@@ -501,7 +499,7 @@ base.opt:
- 	$(MAKE) ocaml
- 	$(MAKE) opt-core
- 	$(MAKE) ocamlc.opt
--	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC) ocamltest
-+	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC)
- 	$(MAKE) ocamlopt.opt
- 	$(MAKE) otherlibrariesopt
- 
-@@ -533,7 +531,7 @@ coreboot:
+ # Core bootstrapping cycle
+ .PHONY: coreboot
+@@ -509,7 +508,7 @@ coreboot:
  all: runtime
  	$(MAKE) coreall
  	$(MAKE) ocaml
