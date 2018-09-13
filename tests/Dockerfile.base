@@ -26,6 +26,9 @@ ADD packages/ /home/opam/opam-cross-windows/packages
 
 USER root
 
+# For lame
+RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && apt-get install automake
+
 RUN chown -R opam /home/opam/opam-cross-windows
 
 USER opam
