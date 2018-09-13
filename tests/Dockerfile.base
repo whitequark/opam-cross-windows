@@ -5,18 +5,15 @@ MAINTAINER Romain Beauxis <toots@rastageeks.org>
 ARG COMPILER
 ARG SYSTEM
 
-RUN apt-get update && apt-get install -y --force-yes gawk aspcud
+RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && \
+      apt-get install -y --force-yes gawk aspcud binutils automake opam && \
+      apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
 
 WORKDIR /usr/src/mxe
-RUN git pull origin master
-RUN make cc
+RUN git pull origin master && make cc
 
 RUN useradd -g staff --create-home opam
 USER opam
-
-RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | env CC=gcc OCAMLBREW_FLAGS="-r" bash
-
-ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
 
 RUN opam init --auto --compiler=$COMPILER
 
@@ -25,9 +22,6 @@ WORKDIR /home/opam/opam-cross-windows
 ADD packages/ /home/opam/opam-cross-windows/packages
 
 USER root
-
-# For lame
-RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && apt-get install automake
 
 RUN chown -R opam /home/opam/opam-cross-windows
 
