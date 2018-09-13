@@ -1,5 +1,9 @@
-FROM dockcross/windows-x64
+ARG IMAGE
+FROM $IMAGE
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
+
+ARG COMPILER
+ARG SYSTEM
 
 RUN apt-get update && apt-get install -y --force-yes gawk aspcud
 
@@ -14,7 +18,7 @@ RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | 
 
 ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
 
-RUN opam init --auto --compiler=4.07.0
+RUN opam init --auto --compiler=$COMPILER
 
 WORKDIR /home/opam/opam-cross-windows
 
@@ -28,6 +32,14 @@ USER opam
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 
-ENV TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static-
+RUN if [ "$SYSTEM" = "x64" ]; then \
+      export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
+      eval $(opam config env) && opam update && \
+      opam install -y ocaml-windows; \
+    fi
 
-RUN eval $(opam config env) && opam update && opam install -y ocaml-windows
+RUN if [ "$SYSTEM" = "x86" ]; then \
+      export TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static- && \
+      eval $(opam config env) && opam update && \
+      opam install -y ocaml-windows; \
+    fi

@@ -1,4 +1,5 @@
-FROM ocamlcross/windows-x64-pretest:4.07.0
+ARG IMAGE
+FROM $IMAGE
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG OPAM_PKG

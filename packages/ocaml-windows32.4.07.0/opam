@@ -4,7 +4,6 @@ patches: [
   "patches/use-host-ocamlrun-for-stdlib-doc.patch"
   "patches/ostype-fix.patch"
   "patches/avoid-cygwin-specifics.patch"
-  "patches/lowercase-windows-header.patch"
   "patches/use-host-ocamldoc.patch"
   "patches/no-ocamltest.patch"
 ]
