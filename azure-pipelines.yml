@@ -1,0 +1,6 @@
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- script: VERBOSE=1 ./tests/run_tests.sh
+  displayName: 'Run tests'
