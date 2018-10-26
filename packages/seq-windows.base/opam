@@ -1,0 +1,10 @@
+opam-version: "1.2"
+maintainer: " "
+authors: " "
+homepage: " "
+install: ["ocamlfind" "-toolchain" "windows" "install" "seq" "META"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "seq"]
+
+depends: [ "ocaml-windows" {>= "4.07.0"} ]
+dev-repo: "git+https://github.com/ocaml/ocaml.git"
+bug-reports: "https://caml.inria.fr/mantis/main_page.php"
