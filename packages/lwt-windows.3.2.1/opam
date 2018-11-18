@@ -1,5 +1,4 @@
-opam-version: "1.2"
-version: "2.6.0"
+opam-version: "2.0"
 maintainer: [
   "Anton Bachin <antonbachin@yahoo.com>"
   "Mauricio Fernandez <mfp@acm.org>"
@@ -13,7 +12,7 @@ homepage: "https://github.com/ocsigen/lwt"
 doc: "https://ocsigen.org/lwt/manual/"
 bug-reports: "https://github.com/ocsigen/lwt/issues"
 license: "LGPL with OpenSSL linking exception"
-dev-repo: "https://github.com/ocsigen/lwt.git"
+dev-repo: "git+https://github.com/ocsigen/lwt.git"
 patches: [
   # windows-ocamlc -config has incorrect os_type
   "patches/os_type.patch"
@@ -26,6 +25,7 @@ build: [
   [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
 ]
 depends: [
+  "ocaml"
   "ocamlfind" {build}
   "cppo" {build & >= "1.1.0"}
   "ocaml-windows"
@@ -33,6 +33,16 @@ depends: [
   "ocaml-migrate-parsetree-windows"
   "ppx_tools_versioned" {>= "5.0.1"}
   "ppx_tools_versioned-windows" {>= "5.0.1"}
-  # result is needed as long as Lwt still supports OCaml 4.02.
   "result-windows"
 ]
+synopsis: "Cooperative threads and I/O in monadic style"
+description: """
+Lwt provides typed, composable cooperative threads. These make it easy to run
+normally-blocking I/O operations concurrently in a single process. Also, in many
+cases, Lwt threads can interact without the need for locks or other
+synchronization primitives."""
+extra-files: ["patches/os_type.patch" "md5=4591e8e77a95eefd436540ce10b04ff5"]
+url {
+  src: "https://github.com/ocsigen/lwt/archive/3.2.1.tar.gz"
+  checksum: "md5=13613bbf6b27d198bafcbd9b253a0076"
+}

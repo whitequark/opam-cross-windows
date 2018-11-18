@@ -1,4 +1,4 @@
-opam-version: "1"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 patches: ["patches/Makefile.patch"]
 build: [
@@ -10,9 +10,23 @@ install: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "expat"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+synopsis: "Write XML-Parsers using the SAX method"
+description: """
+An ocaml wrapper for the Expat XML parsing library. It allows you to
+write XML-Parsers using the SAX method. An XML document is parsed on
+the fly without needing to load the entire XML-Tree into memory."""
+flags: light-uninstall
+extra-files: [
+  "patches/Makefile.patch" "md5=4a5a42fb2d6f5bc5ee5b3eb3db4dfb25"
+]
+url {
+  src: "http://mmzeeman.home.xs4all.nl/ocaml/ocaml-expat-0.9.1.tar.gz"
+  checksum: "md5=17aa00a46c5edeb815f1b0555bad7ed2"
+}
 depexts: [
   [["mxe"] ["expat"]]
 ]

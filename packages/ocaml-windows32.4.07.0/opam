@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 patches: [
   "patches/use-host-ocamlrun-for-stdlib-doc.patch"
@@ -22,6 +22,7 @@ remove: [
   ["./remove.sh" "%{prefix}%"]
 ]
 depends: [
+  "ocaml" {"4.07.0" & arch = "x86" | "4.07.0+32bit"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows"
@@ -32,4 +33,28 @@ depopts: [
 conflicts: [
   "ocaml-windows64"
 ]
-available: [ (compiler = "4.07.0" & arch = "x86") | compiler = "4.07.0+32bit" ]
+synopsis: "OCaml cross-compiler for 32-bit x86 Windows targets"
+extra-files: [
+  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
+  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
+  ["install.sh" "md5=585356cd8b5f6a17c9769d1deb2bda57"]
+  ["build.sh" "md5=661e39ae28fb81178637519169313521"]
+  ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
+  ["byterun/caml/m.h" "md5=04983943424ca21bdad1e6a0e808fdc3"]
+  ["config/Makefile.in" "md5=f1c487d0ccd87c50aa20d0b4ffe34140"]
+  [
+    "patches/use-host-ocamlrun-for-stdlib-doc.patch"
+    "md5=bb186ecb914bde3a0a356b691ee8b945"
+  ]
+  ["patches/use-host-ocamldoc.patch" "md5=f6820ab4e19f83df95ece3a35fb62df1"]
+  ["patches/ostype-fix.patch" "md5=46756d0d1b93768c1a85fea2b0695b3d"]
+  ["patches/no-ocamltest.patch" "md5=f47a32e277ed1e66ad8aa09a721a439c"]
+  [
+    "patches/avoid-cygwin-specifics.patch"
+    "md5=ad2c2113ccfee31ac8d31a8683514ea1"
+  ]
+]
+url {
+  src: "https://github.com/ocaml/ocaml/archive/4.07.0.tar.gz"
+  checksum: "md5=1f78bb35a2f15d5ec737ee6a8dc6890d"
+}

@@ -1,5 +1,6 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 conflicts: [
   "ocaml-windows32"
 ]
+depends: ["ocaml"]

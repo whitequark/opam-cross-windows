@@ -1,6 +1,9 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 build: [
   ["sh" "-exc" "${TOOLPREF32-i686-w64-mingw32-}gcc --version"]
   ["sh" "-c" "echo \"prefix: \\\"${TOOLPREF32-i686-w64-mingw32-}\\\"\" >conf-gcc-windows32.config"]
 ]
+synopsis:
+  "Virtual package specifying the location of GCC cross-compiler for 32-bit Windows"
+depends: ["ocaml"]

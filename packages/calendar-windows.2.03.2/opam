@@ -1,4 +1,4 @@
-opam-version: "1"
+opam-version: "2.0"
 maintainer: "contact@ocamlpro.com"
 authors: ["Julien Signoles"]
 homepage: "http://calendar.forge.ocamlcore.org/"
@@ -9,7 +9,13 @@ build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "calendar"]]
-depends: [
-  "ocaml-windows"
-]
+depends: ["ocaml" "ocaml-windows"]
 install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+synopsis: "Library for handling dates and times in your program"
+flags: light-uninstall
+extra-files: ["ocamlfind.patch" "md5=bf999249c781b5cfd8eacf22a16301a5"]
+url {
+  src:
+    "http://forge.ocamlcore.org/frs/download.php/915/calendar-2.03.2.tar.gz"
+  checksum: "md5=4f50e3c9ad0eec3d06c0457a2ba0f0b4"
+}

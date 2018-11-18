@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-duppy"
@@ -12,6 +12,7 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "duppy"]
 depends: [
+  "ocaml" {>= "4.02.3"}
   "ocamlfind" {build}
   "pcre-windows"
   "ocaml-windows"
@@ -20,6 +21,12 @@ depopts: [
   "ssl-windows"
 ]
 conflicts: ["liquidsoap" {<= "1.2.1"}]
-available: [ ocaml-version >= "4.02.3" ]
 bug-reports: "https://github.com/savonet/ocaml-duppy/issues"
-dev-repo: "https://github.com/savonet/ocaml-duppy.git"
+dev-repo: "git+https://github.com/savonet/ocaml-duppy.git"
+synopsis: "Library providing monadic threads"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-duppy/releases/download/0.7.3/ocaml-duppy-0.7.3.tar.gz"
+  checksum: "md5=e76fa658d5b4ec81fd341d041b9ca9df"
+}
