@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker
+branches:
+  only:
+    - master
+script:
+  - VERBOSE=1 ./tests/run_tests.sh
