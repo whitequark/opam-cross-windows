@@ -1,8 +1,0 @@
-pool:
-  vmImage: 'Ubuntu 16.04'
-
-steps:
-- script: VERBOSE=1 SYSTEM_TYPE=x64 OCAML_VERSION=4.07.0 ./tests/run_tests.sh
-  displayName: 'Run tests on x64 arch with OCaml 4.07.0'
-- script: VERBOSE=1 SYSTEM_TYPE=x86 OCAML_VERSION=4.07.0 ./tests/run_tests.sh
-  displayName: 'Run tests on x86 arch with OCaml 4.07.0'
