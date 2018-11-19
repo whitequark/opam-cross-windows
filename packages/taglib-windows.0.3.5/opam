@@ -1,0 +1,31 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-taglib"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "taglib"]
+depends: [
+  "ocaml"
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
+bug-reports: "https://github.com/savonet/ocaml-taglib/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-taglib.git"
+synopsis:
+  "Bindings for the taglib library which provides functions for reading tags in headers of audio files"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-taglib/releases/download/0.3.5/ocaml-taglib-0.3.5.tar.gz"
+  checksum: "md5=a6cc64da45be4a078118660019e320c8"
+}
+depexts: [
+ [["mxe"] ["taglib"]]
+]

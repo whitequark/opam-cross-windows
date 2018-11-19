@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-ffmpeg"
@@ -12,11 +12,20 @@ install: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "gstreamer"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+bug-reports: "https://github.com/savonet/ocaml-ffmpeg/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-ffmpeg.git"
+synopsis:
+  "Bindings for the ffmpeg library which provides functions for decoding audio and video files"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-ffmpeg/releases/download/0.2.0/ocaml-ffmpeg-0.2.0.tar.gz"
+  checksum: "md5=f4315ab1e094196be6276517718ae370"
+}
 depexts: [
   [["mxe"] ["ffmpeg"]]
 ]
-bug-reports: "https://github.com/savonet/ocaml-ffmpeg/issues"
-dev-repo: "https://github.com/savonet/ocaml-ffmpeg.git"

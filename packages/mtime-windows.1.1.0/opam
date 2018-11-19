@@ -1,19 +1,18 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
 authors: [ "Daniel Bünzli <daniel.buenzl i@erratique.ch>" ]
 homepage: "http://erratique.ch/software/mtime"
 doc: "http://erratique.ch/software/mtime"
-dev-repo: "http://erratique.ch/repos/mtime.git"
+dev-repo: "git+http://erratique.ch/repos/mtime.git"
 bug-reports: "https://github.com/dbuenzli/mtime/issues"
 tags: [ "time" "monotonic" "system" "org:erratique" ]
 license: "ISC"
-available: [ ocaml-version >= "4.03.0"]
 patches: [
   "mtime-os.patch"
   "mtime-win32.patch"
 ]
-depends:
-[
+depends: [
+  "ocaml" {>= "4.03.0"}
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build}
@@ -27,3 +26,23 @@ build: [[
                        "--with-js_of_ocaml" "false" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "mtime.install"]]
 remove : [["ocamlfind" "-toolchain" "windows" "remove" "mtime"]]
+synopsis: "Monotonic wall-clock time for OCaml"
+description: """
+Mtime is an OCaml module to access monotonic wall-clock time. It
+allows to measure time spans without being subject to operating system
+calendar time adjustments.
+
+Mtime depends only on your platform system library. The optional
+JavaScript support depends on [js_of_ocaml][1]. It is distributed
+under the BSD3 license.
+
+[1]: http://ocsigen.org/js_of_ocaml/"""
+flags: light-uninstall
+extra-files: [
+  ["mtime-win32.patch" "md5=c15f8f9359d83e8f75fc2972f11ef6e7"]
+  ["mtime-os.patch" "md5=2c9e9949e74e2258a01e38f5754ef8f6"]
+]
+url {
+  src: "http://erratique.ch/software/mtime/releases/mtime-1.1.0.tbz"
+  checksum: "md5=2935fe4a36b721735f60c9c65ad63a26"
+}

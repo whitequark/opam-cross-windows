@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-gstreamer"
@@ -12,11 +12,20 @@ install: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "gstreamer"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+bug-reports: "https://github.com/savonet/ocaml-gstreamer/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-gstreamer.git"
+synopsis:
+  "Bindings for the GStreamer library which provides functions for playning and manipulating multimedia streams"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-gstreamer/releases/download/0.3.0/ocaml-gstreamer-0.3.0.tar.gz"
+  checksum: "md5=f3dc890ea043cbf763015ab989984781"
+}
 depexts: [
   [["mxe"] ["gstreamer" "gst-plugins-base"]]
 ]
-bug-reports: "https://github.com/savonet/ocaml-gstreamer/issues"
-dev-repo: "https://github.com/savonet/ocaml-gstreamer.git"

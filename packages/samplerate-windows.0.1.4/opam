@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-samplerate"
@@ -12,11 +12,20 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "samplerate"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+bug-reports: "https://github.com/savonet/ocaml-samplerate/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-samplerate.git"
+synopsis:
+  "Bindings for the samplerate library which provides functions for changing samplerate of audio data"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-samplerate/releases/download/0.1.4/ocaml-samplerate-0.1.4.tar.gz"
+  checksum: "md5=d1d893965ba6f4e83054574447da9e00"
+}
 depexts: [
   [["mxe"] ["libsamplerate"]]
 ]
-bug-reports: "https://github.com/savonet/ocaml-samplerate/issues"
-dev-repo: "https://github.com/savonet/ocaml-samplerate.git"

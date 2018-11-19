@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-theora"
@@ -12,12 +12,21 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "theora"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
   "ogg-windows"
 ]
+bug-reports: "https://github.com/savonet/ocaml-theora/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-theora.git"
+synopsis:
+  "Bindings for the theora library to decode video files in theora format"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-theora/releases/download/0.3.1/ocaml-theora-0.3.1.tar.gz"
+  checksum: "md5=1a5de0e6254178db0da10e96d4d6d13f"
+}
 depexts: [
   [["mxe"] ["theora"]]
 ]
-bug-reports: "https://github.com/savonet/ocaml-theora/issues"
-dev-repo: "https://github.com/savonet/ocaml-theora.git"

@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-vorbis"
@@ -12,12 +12,20 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "vorbis"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
   "ogg-windows"
 ]
+bug-reports: "https://github.com/savonet/ocaml-vorbis/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-vorbis.git"
+synopsis: "Bindings to libvorbis"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-vorbis/releases/download/0.7.1/ocaml-vorbis-0.7.1.tar.gz"
+  checksum: "md5=341b6f36265c181d3f5da107cbdd8963"
+}
 depexts: [
   [["mxe"] ["vorbis"]]
 ]
-bug-reports: "https://github.com/savonet/ocaml-vorbis/issues"
-dev-repo: "https://github.com/savonet/ocaml-vorbis.git"

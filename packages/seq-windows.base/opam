@@ -1,0 +1,17 @@
+opam-version: "2.0"
+maintainer: " "
+authors: " "
+homepage: " "
+install: ["ocamlfind" "-toolchain" "windows" "install" "seq" "META"]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "seq"]
+
+depends: [
+  "ocaml"
+  "ocaml-windows" {>= "4.07.0"}
+]
+dev-repo: "git+https://github.com/ocaml/ocaml.git"
+bug-reports: "https://caml.inria.fr/mantis/main_page.php"
+synopsis:
+  "Compatibility package for OCaml's standard iterator type starting from 4.07."
+flags: light-uninstall
+extra-files: ["META" "md5=b33c8a1a6c7ed797816ce27df4855107"]

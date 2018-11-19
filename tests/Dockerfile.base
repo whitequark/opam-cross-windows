@@ -6,26 +6,27 @@ ARG COMPILER
 ARG SYSTEM
 
 RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && \
-      apt-get install -y --force-yes gawk aspcud binutils automake opam && \
+      apt-get install -y --force-yes gawk aspcud binutils automake bubblewrap && \
       apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
 
 WORKDIR /usr/src/mxe
 RUN git pull origin master && make cc
 
+RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O /tmp/install.sh && echo /usr/local/bin | sh /tmp/install.sh
+
 RUN useradd -g staff --create-home opam
-USER opam
-
-RUN opam init --auto --compiler=$COMPILER
-
-WORKDIR /home/opam/opam-cross-windows
 
 ADD packages/ /home/opam/opam-cross-windows/packages
 
-USER root
+ADD repo /home/opam/opam-cross-windows/repo
 
 RUN chown -R opam /home/opam/opam-cross-windows
 
 USER opam
+
+WORKDIR /home/opam/opam-cross-windows
+
+RUN opam init --auto --compiler=$COMPILER
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 

@@ -1,4 +1,4 @@
-opam-version: "1"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 patches: [
   "patches/cross-compilation.patch"
@@ -15,9 +15,20 @@ remove: [
   ["ocamlfind" "-toolchain" "windows" "remove" "zip"]
 ]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+synopsis:
+  "Provides easy access to compressed files in ZIP, GZIP and JAR format"
+flags: light-uninstall
+extra-files: [
+  "patches/cross-compilation.patch" "md5=e5528079ab1ff8571f9b36f6177a0f34"
+]
+url {
+  src: "https://github.com/xavierleroy/camlzip/archive/rel107.zip"
+  checksum: "md5=fb6b251fe6bf129cb25b5fd9f5938514"
+}
 depexts: [
   [["mxe"] ["zlib"]]
 ]
