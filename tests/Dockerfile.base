@@ -6,7 +6,7 @@ ARG COMPILER
 ARG SYSTEM
 
 RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && \
-      apt-get install -y --force-yes gawk aspcud binutils automake bubblewrap && \
+      apt-get install -y --force-yes gawk aspcud binutils automake lzip bubblewrap && \
       apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
 
 WORKDIR /usr/src/mxe
