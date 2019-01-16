@@ -6,7 +6,7 @@ ARG OPAM_PKG
 
 USER opam
 
-RUN opam list --short --recursive --external=mxe --depends-on=$OPAM_PKG > /home/opam/mxe-revdeps
+RUN opam list --short --recursive --external --vars os-distribution=mxe --depends-on=$OPAM_PKG > /home/opam/mxe-revdeps
 
 USER root
 
