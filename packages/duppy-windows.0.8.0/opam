@@ -27,6 +27,6 @@ synopsis: "Library providing monadic threads"
 flags: light-uninstall
 url {
   src:
-    "https://github.com/savonet/ocaml-duppy/releases/download/0.7.3/ocaml-duppy-0.7.3.tar.gz"
-  checksum: "md5=e76fa658d5b4ec81fd341d041b9ca9df"
+    "https://github.com/savonet/ocaml-duppy/releases/download/0.8.0/ocaml-duppy-0.8.0.tar.gz"
+  checksum: "md5=07c0eab9584b2236e90e2b88ee246677"
 }
