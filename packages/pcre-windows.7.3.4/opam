@@ -1,29 +1,36 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Markus Mottl <markus.mottl@gmail.com>"
 authors: [ "Markus Mottl <markus.mottl@gmail.com>" ]
 license: "LGPL-2.1+ with OCaml linking exception"
 homepage: "https://mmottl.github.io/pcre-ocaml"
 doc: "https://mmottl.github.io/pcre-ocaml/api"
-dev-repo: "https://github.com/mmottl/pcre-ocaml.git"
+dev-repo: "git+https://github.com/mmottl/pcre-ocaml.git"
 bug-reports: "https://github.com/mmottl/pcre-ocaml/issues"
 
 build: [
-  ["jbuilder-windows" "subst"]{pinned}
+  ["dune" "subst"]{pinned}
   ["env" "PKG_CONFIG_PATH=%{conf-gcc-windows:c-lib}%/pkgconfig" 
-   "jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "pcre" "-j" jobs "-x" "windows"]
+   "dune" "build"  "-p" "pcre" "-j" jobs "-x" "windows"]
 ]
 
 depends: [
+  "ocaml" {>= "4.04"}
   "base-windows" {build}
   "stdio-windows" {build}
   "configurator" {build}
   "configurator-windows" {build}
-  "jbuilder-windows" {build}
+  "dune" {build}
   "ocaml-windows"
 ]
-
+synopsis: "Bindings to the Perl Compatibility Regular Expressions library"
+description: """
+pcre-ocaml offers library functions for string pattern matching and
+substitution, similar to the functionality offered by the Perl language."""
+url {
+  src:
+    "https://github.com/mmottl/pcre-ocaml/releases/download/7.3.4/pcre-7.3.4.tbz"
+  checksum: "md5=fc7b7b092c38bdbdb0b679ff3af2ff68"
+}
 depexts: [
-  [["mxe"] ["pcre"]]
+  ["pcre"] {os-distribution = "mxe"}
 ]
-
-available: [ ocaml-version >= "4.04" ]

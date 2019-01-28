@@ -1,2 +1,4 @@
 archives
 /scripts/local.sh
+*.sw*
+.tested

@@ -1,0 +1,31 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-faad"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "faad"]
+depends: [
+  "ocaml"
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
+bug-reports: "https://github.com/savonet/ocaml-faad/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-faad.git"
+synopsis:
+  "Bindings for the faad library which provides functions for decoding AAC audio files"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-faad/releases/download/0.4.0/ocaml-faad-0.4.0.tar.gz"
+  checksum: "md5=11685e7b48b283b11b8118a21cf11606"
+}
+depexts: [
+  ["faad2"] {os-distribution = "mxe"}
+]

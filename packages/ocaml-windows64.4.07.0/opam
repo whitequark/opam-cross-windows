@@ -1,0 +1,64 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/use-host-ocamlrun-for-stdlib-doc.patch"
+  "patches/fix-debug-tag-size.patch"
+  "patches/ostype-fix.patch"
+  "patches/avoid-cygwin-specifics.patch"
+  "patches/use-host-ocamldoc.patch"
+  "patches/no-ocamltest.patch"
+]
+substs: [
+  "config/Makefile"
+  "windows.conf"
+]
+build: [
+  ["./build.sh"]
+]
+install: [
+  ["./install.sh" "%{prefix}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%"]
+]
+depends: [
+  "ocaml" {= "4.07.0"}
+  "ocaml-base-compiler" {= "4.07.0"}
+  "ocamlfind" {>= "1.5.4"}
+  "conf-gcc-windows64"
+  "flexdll-windows"
+]
+depopts: [
+  "conf-flambda-windows"
+  "conf-spacetime-windows"
+]
+conflicts: [
+  "ocaml-windows32"
+]
+available: arch = "x86_64"
+synopsis: "OCaml cross-compiler for 64-bit x86 Windows targets"
+extra-files: [
+  ["windows.conf.in" "md5=8457fb3000403fb7145f20e8a0095f89"]
+  ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
+  ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
+  ["build.sh" "md5=6c947146f128b8321e4deba61aded445"]
+  ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
+  ["byterun/caml/m.h" "md5=dc60b790626b4d8d8c6769f4b8013ca2"]
+  ["config/Makefile.in" "md5=fb24a8ea27990d202e3b12d337b781aa"]
+  [
+    "patches/use-host-ocamlrun-for-stdlib-doc.patch"
+    "md5=bb186ecb914bde3a0a356b691ee8b945"
+  ]
+  ["patches/use-host-ocamldoc.patch" "md5=f6820ab4e19f83df95ece3a35fb62df1"]
+  ["patches/ostype-fix.patch" "md5=46756d0d1b93768c1a85fea2b0695b3d"]
+  ["patches/no-ocamltest.patch" "md5=f47a32e277ed1e66ad8aa09a721a439c"]
+  ["patches/fix-debug-tag-size.patch" "md5=6bb82b2607e89067aa42c66a21acf1f3"]
+  [
+    "patches/avoid-cygwin-specifics.patch"
+    "md5=ad2c2113ccfee31ac8d31a8683514ea1"
+  ]
+]
+url {
+  src: "https://github.com/ocaml/ocaml/archive/4.07.0.tar.gz"
+  checksum: "md5=1f78bb35a2f15d5ec737ee6a8dc6890d"
+}

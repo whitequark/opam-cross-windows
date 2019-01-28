@@ -1,7 +1,7 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml 4.06.1, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Windows.
 
@@ -23,12 +23,12 @@ Add this repository to OPAM:
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
-    opam switch 4.06.1+32bit
+    opam switch 4.07.0+32bit
     eval `opam config env`
 
 Otherwise, use a regular compiler; its version must match the version of the cross-compiler:
 
-    opam switch 4.06.1
+    opam switch 4.07.0
     eval `opam config env`
 
 Pin some prerequisite packages that don't yet have fixes merged upstream:
@@ -103,7 +103,7 @@ External dependencies
 
 opam-windows-cross is designed to use native dependencies from the [MXE environment](http://mxe.cc). It is possible to automatically install all required dependencies for an OPAM package, e.g. `camlbz2-windows`, using one short command within an MXE checkout:
 
-    make `opam list --short --recursive --external=mxe --required-by=camlbz2-windows`
+    make `opam list --short --recursive --external --vars os-distribution=mxe --required-by=camlbz2-windows`
 
 Porting packages
 ----------------

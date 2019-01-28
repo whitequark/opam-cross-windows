@@ -1,19 +1,19 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
 authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
 homepage: "http://erratique.ch/software/fpath"
 doc: "http://erratique.ch/software/fpath/doc"
-dev-repo: "http://erratique.ch/repos/fpath.git"
+dev-repo: "git+http://erratique.ch/repos/fpath.git"
 bug-reports: "https://github.com/dbuenzli/fpath/issues"
 tags: [ "file" "system" "path" "org:erratique" ]
 license: "ISC"
-available: [ ocaml-version >= "4.01.0"]
 depends: [
-   "ocamlbuild" {build}
-   "topkg" {build}
-   "result-windows"
-   "astring-windows"
-   "ocaml-windows"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "topkg" {build}
+  "result-windows"
+  "astring-windows"
+  "ocaml-windows"
 ]
 build: [[
   "env"
@@ -22,3 +22,18 @@ build: [[
           "--pinned" "%{pinned}%" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "fpath.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "fpath"]]
+synopsis: "File system paths for OCaml"
+description: """
+Fpath is an OCaml module for handling file system paths with POSIX or
+Windows conventions. Fpath processes paths without accessing the file
+system and is independent from any system library.
+
+Fpath depends on [Astring][astring] and is distributed under the ISC
+license.
+
+[astring]: http://erratique.ch/software/astring"""
+flags: light-uninstall
+url {
+  src: "http://erratique.ch/software/fpath/releases/fpath-0.7.2.tbz"
+  checksum: "md5=52c7ecb0bf180088336f3c645875fa41"
+}

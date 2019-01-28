@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Hezekiah M. Carty <hcarty@endgame.com>"
 build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
@@ -13,9 +13,21 @@ install: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "cryptokit"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlbuild" {build}
 ]
+synopsis: "Cryptographic primitives library."
+description: """
+Cryptokit includes block ciphers (AES, DES, 3DES), stream ciphers (ARCfour),
+public-key crypto (RSA, DH), hashes (SHA-1, SHA-256), MACs, random number
+generation -- all presented with a compositional, extensible interface."""
+flags: light-uninstall
+url {
+  src:
+    "https://forge.ocamlcore.org/frs/download.php/1493/cryptokit-1.10.tar.gz"
+  checksum: "md5=aa697b894f87cc19643543ad1dae6c3f"
+}
 depexts: [
-  [["mxe"] ["zlib"]]
+  ["zlib"] {os-distribution = "mxe"}
 ]

@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 1b4bec8e6..c11a4aaee 100644
+--- a/Makefile
++++ b/Makefile
+@@ -475,11 +475,10 @@ opt.opt:
+ 	$(MAKE) ocaml
+ 	$(MAKE) opt-core
+ 	$(MAKE) ocamlc.opt
+-	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC) ocamltest
++	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC)
+ 	$(MAKE) ocamlopt.opt
+ 	$(MAKE) otherlibrariesopt
+-	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT) \
+-	  ocamltest.opt
++	$(MAKE) ocamllex.opt ocamltoolsopt ocamltoolsopt.opt $(OCAMLDOC_OPT)
+ 
+ # Core bootstrapping cycle
+ .PHONY: coreboot
+@@ -509,7 +508,7 @@ coreboot:
+ all: runtime
+ 	$(MAKE) coreall
+ 	$(MAKE) ocaml
+-	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC) ocamltest
++	$(MAKE) otherlibraries $(WITH_DEBUGGER) $(WITH_OCAMLDOC)
+ 
+ # Bootstrap and rebuild the whole system.
+ # The compilation of ocaml will fail if the runtime has changed.

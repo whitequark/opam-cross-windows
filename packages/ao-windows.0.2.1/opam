@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "smimram@gmail.com"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet"
@@ -12,9 +12,18 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "ao"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+synopsis:
+  "Bindings for the AO library which provides high-level functions for using soundcards"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-ao/releases/download/0.2.1/ocaml-ao-0.2.1.tar.gz"
+  checksum: "md5=7f763e8c47e8369274ee400c640532d4"
+}
 depexts: [
-  [["mxe"] ["dlfcn-win32" "libao"]]
+  ["dlfcn-win32" "libao"] {os-distribution = "mxe"}
 ]

@@ -1,4 +1,4 @@
-opam-version: "1"
+opam-version: "2.0"
 maintainer: "whitequark@whitequark.org"
 build: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
@@ -11,10 +11,17 @@ build: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "gdal"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ctypes-windows"
   "ocamlfind" {build}
 ]
+synopsis: "Bindings to the GDAL and OGR libraries"
+flags: light-uninstall
+url {
+  src: "https://github.com/hcarty/ocaml-gdal/archive/v0.9.0.tar.gz"
+  checksum: "md5=496f9fb7a1b33dcd8a59efbf8cd62e37"
+}
 depexts: [
-  [["mxe"] ["gdal"]]
+  ["gdal"] {os-distribution = "mxe"}
 ]

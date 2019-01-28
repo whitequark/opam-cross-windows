@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-opus"
@@ -12,12 +12,21 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "opus"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build}
   "ogg-windows"
 ]
-depexts: [
-  [["mxe"] ["opus"]]
-]
 bug-reports: "https://github.com/savonet/ocaml-opus/issues"
-dev-repo: "https://github.com/savonet/ocaml-opus.git"
+dev-repo: "git+https://github.com/savonet/ocaml-opus.git"
+synopsis:
+  "Bindings for the opus library to decode audio files in opus format"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-opus/releases/download/0.1.2/ocaml-opus-0.1.2.tar.gz"
+  checksum: "md5=dd96c90b18ac838e3680dd5127dc67c9"
+}
+depexts: [
+  ["opus"] {os-distribution = "mxe"}
+]

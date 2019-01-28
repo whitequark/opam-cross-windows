@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "frederic.bour@lakaban.net"
 authors: [
   "Frédéric Bour <frederic.bour@lakaban.net>"
@@ -14,7 +14,14 @@ install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
 remove:
   ["ocamlfind" "-toolchain" "windows" "remove" "ppx_tools_versioned"]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlfind" {build & >= "1.5.0"}
   "ocaml-migrate-parsetree-windows" {>= "0.7"}
 ]
+synopsis: "A variant of ppx_tools based on ocaml-migrate-parsetree"
+flags: light-uninstall
+url {
+  src: "https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.1.tar.gz"
+  checksum: "md5=e48cc87d6da6c2f3020fd8dfe8fe50de"
+}

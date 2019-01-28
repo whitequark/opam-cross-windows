@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "hez@0ok.org"
 license: "MIT"
 patches: ["patches/no-usr-local.patch"]
@@ -15,7 +15,17 @@ install: [
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "ZMQ"]]
 depends: [
+  "ocaml"
   "ocaml-windows"
   "ocamlbuild" {build}
   "stdint-windows"
 ]
+synopsis: "OCaml bindings for ZeroMQ 4.0"
+flags: light-uninstall
+extra-files: [
+  "patches/no-usr-local.patch" "md5=51bd6b19bfdd6e7385ca774e1b82080d"
+]
+url {
+  src: "https://github.com/issuu/ocaml-zmq/archive/4.0-7.tar.gz"
+  checksum: "md5=3adf5ccef1afa9a5d07ecea59dc77ab1"
+}
