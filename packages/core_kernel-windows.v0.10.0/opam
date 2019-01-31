@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "opensource@janestreet.com"
 authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
 homepage: "https://github.com/janestreet/core_kernel"
@@ -10,9 +10,10 @@ patches: [
   "patches/sixtyfour-fix.patch"
 ]
 build: [
-  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "core_kernel" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "-p" "core_kernel" "-j" jobs "-x" "windows"]
 ]
 depends: [
+  "ocaml"                           {>= "4.04.1"}
   "base-windows"                    {>= "v0.10" & < "v0.11"}
   "bin_prot-windows"                {>= "v0.10" & < "v0.11"}
   "configurator"                    {>= "v0.10" & < "v0.11"}
@@ -32,11 +33,22 @@ depends: [
   "stdio-windows"                   {>= "v0.10" & < "v0.11"}
   "typerep-windows"                 {>= "v0.10" & < "v0.11"}
   "variantslib-windows"             {>= "v0.10" & < "v0.11"}
-  "jbuilder-windows"                {build & >= "1.0+beta12"}
+  "jbuilder"                        {build & >= "1.0+beta12"}
   "ocaml-migrate-parsetree-windows" {>= "0.4"}
   "ocaml-windows"
 ]
 depopts: [
   "base-native-int63"
 ]
-available: [ ocaml-version >= "4.04.1" ]
+synopsis: "Industrial strength alternative to OCaml's standard library"
+description: """
+The Core suite of libraries is an industrial strength alternative to
+OCaml's standard library that was developed by Jane Street, the
+largest industrial user of OCaml.
+
+Core_kernel is the system-independent part of Core."""
+url {
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.10/files/core_kernel-v0.10.0.tar.gz"
+  checksum: "md5=a825f5c79d9e9b228e450ce4a439f107"
+}
