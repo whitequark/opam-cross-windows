@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/jane-street-headers/issues"
 dev-repo: "git+https://github.com/janestreet/jane-street-headers.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder-windows" "build" "-p" "jane-street-headers" "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "-p" "jane-street-headers" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml"    { >= "4.04.1" }
