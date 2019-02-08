@@ -9,7 +9,6 @@ dev-repo: "https://github.com/whitequark/ppx_deriving.git"
 tags: [ "syntax" ]
 substs: [ "pkg/META" ]
 build: [
-  [make "ppx_metaquot"]
   [
     "ocaml"
     "pkg/build.ml"
