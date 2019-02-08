@@ -31,8 +31,8 @@ depends: [
 ]
 synopsis: "LR(1) parser generator"
 extra-files: [
-  ["patches/use-ocamlfind.patch" "md5=217BDAB3A47E877319FD636DD722C869"]
-  ["patches/menhir-cross.patch" "md5=F15044C37CCF9DF8EF838531EB6B1B5A"]
+  ["patches/use-ocamlfind.patch" "md5=217bdab3a47e877319fd636dd722c869"]
+  ["patches/menhir-cross.patch" "md5=f15044c37ccf9df8ef838531eb6b1b5a"]
 ]
 url {
   src: "https://gitlab.inria.fr/fpottier/menhir/repository/20181113/archive.tar.gz"
