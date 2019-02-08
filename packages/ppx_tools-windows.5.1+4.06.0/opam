@@ -10,6 +10,7 @@ patches: [
   "patches/use-ocamlfind.patch"
 ]
 build: [
+  [make "ast_lifter.ml" "dumpast" "ppx_metaquot" "rewriter" "ppx_tools.metaquot"]
   ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all" "EXE="]
 ]
 install: [["env" "OCAMLFIND_TOOLCHAIN=windows" make "install" "EXE="]]
