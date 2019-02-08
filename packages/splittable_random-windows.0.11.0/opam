@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/splittable_random/issues"
 dev-repo: "git+https://github.com/janestreet/splittable_random.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build" "-p" name "-j" jobs "-x" "windows"]
+  ["jbuilder" "build" "-p" "splittable_random" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml" {>= "4.04.1"}
