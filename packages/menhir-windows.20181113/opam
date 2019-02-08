@@ -1,0 +1,41 @@
+opam-version: "2.0"
+maintainer: "francois.pottier@inria.fr"
+authors: [
+  "François Pottier <francois.pottier@inria.fr>"
+  "Yann Régis-Gianas <yrg@pps.univ-paris-diderot.fr>"
+]
+homepage: "http://gallium.inria.fr/fpottier/menhir/"
+dev-repo: "git+https://gitlab.inria.fr/fpottier/menhir.git"
+bug-reports: "menhir@inria.fr"
+patches: [
+  "patches/menhir-cross.patch"
+]
+build: [
+  ["env" "OCAMLFIND_CROSS_TOOLCHAIN=windows"
+   make "-f" "Makefile" "PREFIX=%{prefix}%/windows-sysroot" "USE_OCAMLFIND=true" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "-f" "Makefile" "install" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+]
+remove: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "-f" "Makefile" "uninstall" "PREFIX=%{prefix}%/windows-sysroot" "docdir=%{doc}%/menhir" "libdir=%{lib}%/menhir" "mandir=%{man}%/man1"]
+]
+depends: [
+  "ocaml" {>= "4.02"}
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "menhir" {= "20181113"}
+  "ocaml-windows"
+]
+synopsis: "LR(1) parser generator"
+extra-files: [
+  ["patches/use-ocamlfind.patch" "md5=217bdab3a47e877319fd636dd722c869"]
+  ["patches/menhir-cross.patch" "md5=f15044c37ccf9df8ef838531eb6b1b5a"]
+]
+url {
+  src: "https://gitlab.inria.fr/fpottier/menhir/repository/20181113/archive.tar.gz"
+  checksum: 
+    "md5=69ce441a06ea131cd43e7b44c4303f3c"
+}
