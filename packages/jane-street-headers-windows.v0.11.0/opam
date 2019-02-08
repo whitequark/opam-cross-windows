@@ -9,14 +9,14 @@ build: [
   ["jbuilder" "build" "-p" "jane-street-headers" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "ocaml"    { >= "4.04.1" }
-  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
   "ocaml-windows"
 ]
 synopsis: "Jane Street C header files"
 description: "C header files shared between the various Jane Street packages"
 url {
   src:
-    "https://ocaml.janestreet.com/ocaml-core/v0.10/files/jane-street-headers-v0.10.0.tar.gz"
-  checksum: "md5=c9dc04067f7ed596673954ef02fc608d"
+    "https://ocaml.janestreet.com/ocaml-core/v0.11/files/jane-street-headers-v0.11.0.tar.gz"
+  checksum: "md5=13299bfe41f66f6a3f42cfaa015f4869"
 }
