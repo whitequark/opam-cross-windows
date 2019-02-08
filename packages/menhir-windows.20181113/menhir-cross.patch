@@ -1,6 +1,6 @@
-diff -ruN menhir-20171222.orig/Makefile menhir-20171222/Makefile
---- menhir-20171222.orig/Makefile	2018-03-12 14:08:42.865715211 +0900
-+++ menhir-20171222/Makefile	2018-03-12 14:35:17.979838254 +0900
+diff -ruN menhir-20181113.orig/Makefile menhir-20181113/Makefile
+--- menhir-20181113.orig/Makefile	2018-03-12 14:08:42.865715211 +0900
++++ menhir-20181113/Makefile	2018-03-12 14:35:17.979838254 +0900
 @@ -132,7 +132,9 @@
  # Compile the Menhir executable.
  # This causes MenhirLib to be compiled, too, as it is used inside Menhir.
@@ -12,9 +12,9 @@ diff -ruN menhir-20171222.orig/Makefile menhir-20171222/Makefile
  # The source file menhirLib.ml is created by concatenating all of the source
  # files that make up MenhirLib. This file is not needed to compile Menhir or
  # MenhirLib. It is installed at the same time as MenhirLib and is copied by
-diff -ruN menhir-20171222.orig/src/Makefile menhir-20171222/src/Makefile
---- menhir-20171222.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
-+++ menhir-20171222/src/Makefile	2018-03-12 14:26:28.136851835 +0900
+diff -ruN menhir-20181113.orig/src/Makefile menhir-20181113/src/Makefile
+--- menhir-20181113.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
++++ menhir-20181113/src/Makefile	2018-03-12 14:26:28.136851835 +0900
 @@ -94,3 +94,6 @@
  
  clean::
