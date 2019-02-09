@@ -38,6 +38,7 @@ depends: [
   "ocaml-migrate-parsetree"
   "ocaml-migrate-parsetree-windows"
   "ppx_derivers"
+  "ppx_tools"  {>= "4.02.3"}
   "ppx_tools-windows"  {>= "4.02.3"}
   "result"
   "result-windows"
