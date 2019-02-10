@@ -1,6 +1,6 @@
-diff -ruN menhir-20171222.orig/src/Makefile menhir-20171222/src/Makefile
---- menhir-20171222.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
-+++ menhir-20171222/src/Makefile	2018-03-12 14:48:15.003153423 +0900
+diff -ruN menhir-20181113.orig/src/Makefile menhir-20181113/src/Makefile
+--- menhir-20181113.orig/src/Makefile	2018-03-12 14:08:42.861717211 +0900
++++ menhir-20181113/src/Makefile	2018-03-12 14:48:15.003153423 +0900
 @@ -10,7 +10,7 @@
  # ----------------------------------------------------------------------------
  # Ocamlbuild tool and settings.
