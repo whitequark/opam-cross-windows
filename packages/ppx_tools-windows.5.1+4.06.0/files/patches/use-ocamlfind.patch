@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 254d6cc..ba13d40 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,14 +2,14 @@
+ #  under the terms of the MIT license (see LICENSE file).
+ #  Copyright 2013  Alain Frisch and LexiFi
+ 
+-include $(shell ocamlc -where)/Makefile.config
++include $(shell ocamlfind ocamlc -where)/Makefile.config
+ 
+ PACKAGE = ppx_tools
+ VERSION = 5.0
+ # Don't forget to change META file as well
+ 
+-OCAMLC = ocamlc -bin-annot
+-OCAMLOPT = ocamlopt
++OCAMLC = ocamlfind ocamlc -bin-annot
++OCAMLOPT = ocamlfind ocamlopt
+ COMPFLAGS = -w +A-4-17-44-45 -I +compiler-libs -safe-string
+ 
+ .PHONY: all
