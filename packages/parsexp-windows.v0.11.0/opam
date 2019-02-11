@@ -6,13 +6,13 @@ bug-reports: "https://github.com/janestreet/parsexp/issues"
 dev-repo: "git+https://github.com/janestreet/parsexp.git"
 license: "Apache-2.0"
 build: [
+  ["ulimit" "-s" "unlimited"]
   ["jbuilder" "build" "-p" "parsexp" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml" {>= "4.04.1"}
   "sexplib0-windows" {>= "v0.11" & < "v0.12"}
   "jbuilder" {build & >= "1.0+beta18.1"}
-  "conf-flambda-windows"
   "ocaml-windows"
 ]
 synopsis: "S-expression parsing library"
