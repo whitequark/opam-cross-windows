@@ -6,7 +6,7 @@ bug-reports: "https://github.com/janestreet/parsexp/issues"
 dev-repo: "git+https://github.com/janestreet/parsexp.git"
 license: "Apache-2.0"
 build: [
-  ["jbuilder" "build" "-p" "parsexp" "-j" "1" "-x" "windows"]
+  ["jbuilder" "build" "-p" "parsexp" "-j" jobs "-x" "windows"]
 ]
 depends: [
   "ocaml" {>= "4.04.1"}
