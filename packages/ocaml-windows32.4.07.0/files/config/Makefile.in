@@ -67,6 +67,7 @@ MKLIB=%{conf-gcc-windows32:prefix}%ar rc $(1) $(2); %{conf-gcc-windows32:prefix}
 ARCH=i386
 MODEL=default
 SYSTEM=mingw
+OCAML_OS_TYPE=Win32
 NATIVECCPROFOPTS=$(BYTECCCOMPOPTS)
 NATIVECCLIBS=$(BYTECCLIBS)
 ASM=%{conf-gcc-windows32:prefix}%as

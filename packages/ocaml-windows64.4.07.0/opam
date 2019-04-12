@@ -7,6 +7,7 @@ patches: [
   "patches/avoid-cygwin-specifics.patch"
   "patches/use-host-ocamldoc.patch"
   "patches/no-ocamltest.patch"
+  "patches/ocamlopt-config-returns-target-os_type.patch"
 ]
 substs: [
   "config/Makefile"
@@ -44,7 +45,7 @@ extra-files: [
   ["build.sh" "md5=6c947146f128b8321e4deba61aded445"]
   ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
   ["byterun/caml/m.h" "md5=dc60b790626b4d8d8c6769f4b8013ca2"]
-  ["config/Makefile.in" "md5=fb24a8ea27990d202e3b12d337b781aa"]
+  ["config/Makefile.in" "md5=3b43d7043f360ba045afa0000d308801"]
   [
     "patches/use-host-ocamlrun-for-stdlib-doc.patch"
     "md5=bb186ecb914bde3a0a356b691ee8b945"
@@ -56,6 +57,10 @@ extra-files: [
   [
     "patches/avoid-cygwin-specifics.patch"
     "md5=ad2c2113ccfee31ac8d31a8683514ea1"
+  ]
+  [
+    "patches/ocamlopt-config-returns-target-os_type.patch"
+    "md5=6aef55b54bd47813545a03ececf25a29"
   ]
 ]
 url {
