@@ -1,6 +1,6 @@
 opam-version: "2.0"
 name: "batteries-windows"
-version: "2.8.0"
+version: "2.9.0"
 synopsis: "A community-maintained standard library extension"
 maintainer: "thelema314@gmail.com"
 authors: "OCaml batteries-included team"
@@ -10,8 +10,8 @@ doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
 bug-reports:
   "https://github.com/ocaml-batteries-team/batteries-included/issues"
 depends: [
-  "ocaml" {>= "3.12.1" & < "4.07.0"}
-  "ocamlfind" {>= "1.5.3"}
+  "ocaml" {>= "4.00.0" & < "4.08.0"}
+  "ocamlfind" {build & >= "1.5.3"}
   "ocamlbuild" {build}
   "qtest" {with-test & >= "2.5"}
   "qcheck" {with-test & >= "0.6"}
@@ -51,6 +51,6 @@ dev-repo:
   "git+https://github.com/ocaml-batteries-team/batteries-included.git"
 url {
   src:
-    "https://github.com/ocaml-batteries-team/batteries-included/releases/download/v2.8.0/batteries-2.8.0.tar.gz"
-  checksum: "md5=2d9a811dcb47bae9f1159676d880a46b"
+    "https://github.com/ocaml-batteries-team/batteries-included/releases/download/v2.9.0/batteries-2.9.0.tar.gz"
+  checksum: "md5=482adf4d08e90cc215dbaee0314a84fa"
 }
