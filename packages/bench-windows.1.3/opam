@@ -1,0 +1,31 @@
+opam-version: "2.0"
+version: "1.3"
+name:"bench-windows"
+synopsis: "A benchmarking tool for statistically valid benchmarks"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "ocaml"
+  "ocaml-windows"
+  "ocamlfind"
+  "oasis" {>= "0.3.0" & <= "0.4.11"}
+  "ocamlbuild" {build}
+]
+flags: light-uninstall
+patches: ["patches/oasis-version.patch"]
+build: [
+  ["rm" "setup.ml"] {ocaml:version >= "4.00.0"}
+  ["oasis" "setup"] {ocaml:version >= "4.00.0"}
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+]
+install:   ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind"  "-toolchain" "windows" "remove" "bench"]
+url {
+  src: "https://github.com/thelema/bench/releases/download/v1.3/bench-1.3.tar.gz"
+  checksum: "md5=8878462e1be5b580b84a3761de699e92"
+}
+extra-files: [
+  ["patches/oasis-version.patch" "md5=bf811e6899e3d991b6c89fc97a1ab7ca"]
+]
