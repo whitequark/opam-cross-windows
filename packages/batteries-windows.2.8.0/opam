@@ -1,30 +1,14 @@
 opam-version: "2.0"
 name: "batteries-windows"
+version: "2.8.0"
+synopsis: "A community-maintained standard library extension"
 maintainer: "thelema314@gmail.com"
 authors: "OCaml batteries-included team"
-homepage: "http://batteries.forge.ocamlcore.org/"
-bug-reports: "https://github.com/ocaml-batteries-team/batteries-included/issues"
-dev-repo:
-  "git+https://github.com/ocaml-batteries-team/batteries-included.git"
 license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "http://batteries.forge.ocamlcore.org/"
 doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
-build: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
-                                   "--override" "ext_dll" ".dll"]
-  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
-  ["ocamlbuild" "-no-links" "-use-ocamlfind" "build/prefilter.byte" "build/mkconf.byte"]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   make "all"]
-]
-install: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   make "install"]
-]
-remove: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows"
-   "ocamlfind" "remove" "batteries"]
-]
+bug-reports:
+  "https://github.com/ocaml-batteries-team/batteries-included/issues"
 depends: [
   "ocaml" {>= "3.12.1" & < "4.07.0"}
   "ocamlfind" {>= "1.5.3"}
@@ -36,7 +20,35 @@ depends: [
   "num-windows"
   "ocaml-windows"
 ]
-synopsis: "a community-maintained standard library extension"
+build: [
+  [
+    "env"
+    "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml"
+    "setup.ml"
+    "-configure"
+    "--prefix"
+    "%{prefix}%/windows-sysroot"
+    "--override"
+    "ext_dll"
+    ".dll"
+  ]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  [
+    "ocamlbuild"
+    "-no-links"
+    "-use-ocamlfind"
+    "build/prefilter.byte"
+    "build/mkconf.byte"
+  ]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+remove: [
+  "env" "OCAMLFIND_TOOLCHAIN=windows" "ocamlfind" "remove" "batteries"
+]
+dev-repo:
+  "git+https://github.com/ocaml-batteries-team/batteries-included.git"
 url {
   src:
     "https://github.com/ocaml-batteries-team/batteries-included/releases/download/v2.8.0/batteries-2.8.0.tar.gz"
