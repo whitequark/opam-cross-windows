@@ -15,10 +15,13 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build}
   "base-bigarray"
+  "opam-installer" {build}
 ]
 build: [[
   "ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows"
 ]]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "gg.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "gg"]]
 synopsis: """Basic types for computer graphics in OCaml"""
 description: """\
 
