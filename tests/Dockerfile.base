@@ -6,11 +6,11 @@ ARG COMPILER
 ARG SYSTEM
 
 RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && \
-      apt-get install -y --force-yes gawk aspcud binutils automake lzip bubblewrap && \
+      apt-get install -y --force-yes gawk aspcud binutils automake lzip && \
       apt-get -y --force-yes autoremove && apt-get -y --force-yes clean
 
 WORKDIR /usr/src/mxe
-RUN git pull origin master && make cc
+RUN git pull origin master && make cc cmake
 
 RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O /tmp/install.sh && echo /usr/local/bin | sh /tmp/install.sh
 
