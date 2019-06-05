@@ -15,6 +15,7 @@ install: [
 depends: [
   "ocaml" {>= "4.03"}
   "ocaml-windows"
+  "opam-installer" {build}
 ]
 synopsis:
   "OCamlbuild is a build system with builtin rules to easily build most OCaml projects."

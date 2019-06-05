@@ -13,6 +13,7 @@ depends: [
   "topkg" {build}
   "result-windows"
   "ocaml-windows"
+  "opam-installer" {build}
 ]
 build:[[
   "ocaml" "pkg/pkg.ml" "build"

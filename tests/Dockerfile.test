@@ -12,4 +12,6 @@ RUN cd /usr/src/mxe/ && cat /home/opam/mxe-deps | xargs make
 
 USER opam
 
+ENV CC ""
+
 RUN eval $(opam env) && opam reinstall --verbose -y $OPAM_PKG

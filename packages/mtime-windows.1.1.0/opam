@@ -17,6 +17,7 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build}
   "ocaml-windows"
+  "opam-installer" {build}
 ]
 build: [[
   "env" "MTIME_OS=Win32"

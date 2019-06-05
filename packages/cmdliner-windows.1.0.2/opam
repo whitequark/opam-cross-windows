@@ -15,6 +15,7 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build}
   "ocaml-windows"
+  "opam-installer" {build}
   "result-windows"
 ]
 synopsis: "Declarative definition of command line interfaces for OCaml"

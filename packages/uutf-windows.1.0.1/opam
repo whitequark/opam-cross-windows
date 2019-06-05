@@ -13,6 +13,7 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build}
   "ocaml-windows"
+  "opam-installer" {build}
   "uchar-windows"
 ]
 depopts: ["cmdliner-windows"]

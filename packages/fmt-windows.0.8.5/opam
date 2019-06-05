@@ -13,6 +13,7 @@ depends: [
   "topkg" {build & >= "0.7.5"}
   "result-windows"
   "uchar-windows"
+  "opam-installer" {build}
   "ocaml-windows"
 ]
 depopts: [
