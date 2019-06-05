@@ -12,6 +12,7 @@ depends: [
   "ocaml-windows"
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
 ]
 build: [
   ["ocaml" "pkg/git.ml"]

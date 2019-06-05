@@ -13,6 +13,7 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build}
   "ocaml-windows"
+  "opam-installer" {build}
   "uutf-windows" {>= "1.0.0"}
   "uchar-windows"
 ]

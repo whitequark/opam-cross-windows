@@ -13,6 +13,7 @@ depends: [
   "ocamlfind" {build}
   "topkg" {build}
   "ocamlbuild" {build}
+  "opam-installer" {build}
 ]
 build:
 [

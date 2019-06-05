@@ -13,6 +13,7 @@ depends: [
   "topkg" {build}
   "result-windows"
   "ocaml-windows"
+  "opam-installer" {build}
 ]
 depopts: [
   "fmt-windows"
