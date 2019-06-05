@@ -11,7 +11,7 @@ depends: [
   "ocaml-windows"
 ]
 build: [
-  ["dune" "-x" "windows" "build" "@install" "-p" "gen"]
+  ["dune" "build" "-p" "gen" "-x" "windows"  "-j" jobs]
 ]
 dev-repo: "git+https://github.com/c-cube/gen.git"
 url {
