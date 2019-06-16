@@ -1,0 +1,30 @@
+--- a/coff.ml
++++ b/coff.ml
+@@ -125,6 +125,12 @@ end = struct
+     r := Int32.of_int (length b)
+ end
+
++(* [starts_with ~what str]
++   @return true if [str] starts with [what] *)
++let starts_with ~what str =
++  let what_len = String.length what in
++  what_len <= String.length str &&
++  String.sub str 0 what_len = what
+
+ (* Internal representation of COFF object files *)
+
+@@ -758,9 +764,12 @@ module Coff = struct
+     let a = ref [] in
+     List.iter
+       (fun s ->
+-         match s.extra_info with
++         (match s.extra_info with
+            | `Alias s' -> a := (s.sym_name,s'.sym_name) :: !a
+-           | _ -> ()
++           | _ -> ());
++         if starts_with ~what:"__nm_" s.sym_name then
++           a := (String.sub s.sym_name 5 (String.length s.sym_name - 5),
++                s.sym_name) :: !a
+       )
+       x.symbols;
+     !a

@@ -3,6 +3,7 @@ maintainer: "whitequark@whitequark.org"
 substs: [
   "version.ml"
 ]
+patches: ["patches/also-store-symbol-aliases-without-__nm_-prefix.patch"]
 build: [
   ["touch" "Compat.ml"]
   ["sh" "-c" "cat Compat402.ml >> Compat.ml"] {ocaml:compiler < "4.02.0"}
@@ -62,6 +63,7 @@ synopsis:
 extra-files: [
   ["version.ml.in" "md5=f1bb53b9442eeda71d4963c02bf9fa84"]
   ["flexdll-windows.install" "md5=0c2e036b485aab29b553ddf4d7677cd7"]
+  ["patches/also-store-symbol-aliases-without-__nm_-prefix.patch" "md5=b67613e39fde603b43eb0d421d09eaad"]
 ]
 url {
   src: "https://github.com/alainfrisch/flexdll/archive/0.37.tar.gz"
