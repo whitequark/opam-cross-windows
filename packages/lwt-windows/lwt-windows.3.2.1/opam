@@ -25,7 +25,7 @@ build: [
   [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
 ]
 depends: [
-  "ocaml"
+  "ocaml-windows" {< "4.08.0"}
   "ocamlfind" {build}
   "cppo" {build & >= "1.1.0"}
   "ocaml-windows"

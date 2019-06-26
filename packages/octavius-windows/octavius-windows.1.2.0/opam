@@ -10,8 +10,7 @@ bug-reports: "https://github.com/ocaml-doc/octavius/issues"
 tags: ["doc" "ocamldoc" "org:ocaml-doc"]
 
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocaml-windows"
+  "ocaml-windows" {>= "4.03.0" & < "4.08.0"}
   "ocamlfind" {build}
   "dune" {build}
   "topkg" {build & >= "0.7.5"}

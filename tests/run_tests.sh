@@ -8,7 +8,7 @@ if [ -z "${SYSTEM_TYPE}" ]; then
 fi
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION=4.07.0
+  OCAML_VERSION=4.08.0
 fi
 
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
@@ -45,7 +45,7 @@ if [ -n "${BUILD_BASE}" ]; then
 fi
 
 # compiler packages are already present in the base image and should never be rebuilt
-SKIPPED="ocaml-windows32.${OCAML_VERSION} ocaml-windows64.${OCAML_VERSION} ocaml-windows.${OCAML_VERSION} conf-gcc-windows64.1"
+SKIPPED="ocaml-windows32.${OCAML_VERSION} ocaml-windows64.${OCAML_VERSION} ocaml-windows.${OCAML_VERSION} conf-gcc-windows64.1 conf-gcc-windows32.1"
 # these packages just fail
 SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 

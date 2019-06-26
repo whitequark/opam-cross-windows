@@ -8,7 +8,7 @@ if [ -z "${SYSTEM_TYPE}" ]; then
 fi
 
 if [ -z "${OCAML_VERSION}" ]; then
-  OCAML_VERSION="4.07.0"
+  OCAML_VERSION="4.08.0"
 fi
 
 IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"

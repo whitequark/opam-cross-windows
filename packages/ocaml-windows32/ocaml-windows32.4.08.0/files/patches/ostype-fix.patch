@@ -1,0 +1,56 @@
+diff --git a/asmcomp/closure.ml b/asmcomp/closure.ml
+index 35239faff..dea8ee87a 100644
+--- a/asmcomp/closure.ml
++++ b/asmcomp/closure.ml
+@@ -500,9 +500,9 @@ let simplif_prim_pure fpc p (args, approxs) dbg =
+         | Word_size -> make_const_int (8*Arch.size_int)
+         | Int_size -> make_const_int (8*Arch.size_int - 1)
+         | Max_wosize -> make_const_int ((1 lsl ((8*Arch.size_int) - 10)) - 1 )
+-        | Ostype_unix -> make_const_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> make_const_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> make_const_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> make_const_bool false
++        | Ostype_win32 -> make_const_bool true
++        | Ostype_cygwin -> make_const_bool false
+         | Backend_type ->
+             make_const_ptr 0 (* tag 0 is the same as Native here *)
+       end
+diff --git a/asmcomp/cmmgen.ml b/asmcomp/cmmgen.ml
+index d0490998c..72a5a139e 100644
+--- a/asmcomp/cmmgen.ml
++++ b/asmcomp/cmmgen.ml
+@@ -2114,9 +2114,9 @@ and transl_prim_1 env p arg dbg =
+         | Word_size -> int_const (8*Arch.size_int)
+         | Int_size -> int_const (8*Arch.size_int - 1)
+         | Max_wosize -> int_const ((1 lsl ((8*Arch.size_int) - 10)) - 1)
+-        | Ostype_unix -> const_of_bool (Sys.os_type = "Unix")
+-        | Ostype_win32 -> const_of_bool (Sys.os_type = "Win32")
+-        | Ostype_cygwin -> const_of_bool (Sys.os_type = "Cygwin")
++        | Ostype_unix -> const_of_bool false
++        | Ostype_win32 -> const_of_bool true
++        | Ostype_cygwin -> const_of_bool false
+         | Backend_type -> int_const 0 (* tag 0 is the same as Native here *)
+       end
+   | Poffsetint n ->
+diff --git a/utils/config.mlp b/utils/config.mlp
+index 025497a7f..540714980 100644
+--- a/utils/config.mlp
++++ b/utils/config.mlp
+@@ -141,7 +141,7 @@ let host = "%%HOST%%"
+ let target = "%%TARGET%%"
+ 
+ let default_executable_name =
+-  match Sys.os_type with
++  match "%%OCAML_OS_TYPE%%" with
+     "Unix" -> "a.out"
+   | "Win32" | "Cygwin" -> "camlprog.exe"
+   | _ -> "camlprog"
+@@ -189,7 +189,7 @@ let configuration_variables =
+   p "ext_asm" ext_asm;
+   p "ext_lib" ext_lib;
+   p "ext_dll" ext_dll;
+-  p "os_type" Sys.os_type;
++  p "os_type" "%%OCAML_OS_TYPE%%";
+   p "default_executable_name" default_executable_name;
+   p_bool "systhread_supported" systhread_supported;
+   p "host" host;

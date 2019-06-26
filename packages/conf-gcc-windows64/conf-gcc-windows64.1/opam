@@ -3,6 +3,7 @@ maintainer: "whitequark@whitequark.org"
 build: [
   ["sh" "-exc" "${TOOLPREF64-x86_64-w64-mingw32-}gcc --version"]
   ["sh" "-c" "echo \"prefix: \\\"${TOOLPREF64-x86_64-w64-mingw32-}\\\"\" >conf-gcc-windows64.config"]
+  ["sh" "-c" "echo \"host: \\\"`${TOOLPREF64-x86_64-w64-mingw32-}gcc -dumpmachine`\\\"\" >>conf-gcc-windows64.config"]
 ]
 synopsis:
   "Virtual package specifying the location of GCC cross-compiler for 64-bit Windows"

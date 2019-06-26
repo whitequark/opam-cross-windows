@@ -9,7 +9,7 @@ build: [
   ["jbuilder" "build" "-p" "ppxlib" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "ocaml" {>= "4.04.1"}
+  "ocaml-windows" {>= "4.04.1" & < "4.08.0"}
   "base-windows" {>= "v0.11.0"}
   "base" {>= "v0.11.0"}
   "dune" {build}
@@ -21,7 +21,6 @@ depends: [
   "ppx_derivers-windows" {>= "1.0"}
   "stdio" {>= "v0.11.0"}
   "stdio-windows" {>= "v0.11.0"}
-  "ocaml-windows"
 ]
 synopsis: "A comprehensive toolbox for ppx development. It features:"
 description: """

@@ -13,7 +13,7 @@ build: [
   ["jbuilder" "build" "-p" "ocaml-migrate-parsetree" "-j" jobs "-x" "windows"]
 ]
 depends: [
-  "ocaml" {>= "4.02.0"}
+  "ocaml-windows" {>= "4.02.0" & < "4.08.0"}
   "result-windows"
   "ocamlfind" {build}
   "dune" {build}

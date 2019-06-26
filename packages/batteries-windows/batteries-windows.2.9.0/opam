@@ -10,7 +10,7 @@ doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
 bug-reports:
   "https://github.com/ocaml-batteries-team/batteries-included/issues"
 depends: [
-  "ocaml" {>= "4.00.0" & < "4.08.0"}
+  "ocaml-windows" {>= "4.00.0" & < "4.08.0"}
   "ocamlfind" {build & >= "1.5.3"}
   "ocamlbuild" {build}
   "qtest" {with-test & >= "2.5"}
@@ -18,7 +18,6 @@ depends: [
   "bisect" {with-test}
   "num" {build}
   "num-windows"
-  "ocaml-windows"
 ]
 build: [
   [

@@ -13,8 +13,7 @@ install: [
   ["opam-installer" "-i" "--prefix" "%{prefix}%/windows-sysroot" "ocamlbuild.install"]
 ]
 depends: [
-  "ocaml" {>= "4.03"}
-  "ocaml-windows"
+  "ocaml-windows" {>= "4.03" & < "4.08.0"}
   "opam-installer" {build}
 ]
 synopsis:
