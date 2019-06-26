@@ -84,7 +84,7 @@ build_package() {
   fi
 }
 
-PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 1 -mindepth 1 -type d | cut -d '/' -f 2 | sort -u)
+PACKAGES=$(cd ${BASE_PWD}/packages && find . -maxdepth 2 -mindepth 2 -type d | cut -d '/' -f 3 | sort -u)
 
 echo ""
 git remote set-branches origin '*'
@@ -95,7 +95,8 @@ echo "${PACKAGES}" | while read PACKAGE; do
   if [ -n "${WORLD}" ]; then
     build_package "${PACKAGE}"
   else
-    RET=$(cd "${BASE_PWD}/packages/${PACKAGE}" && git diff --name-only HEAD origin/master .)
+    PACKAGE_DIR=`echo ${PACKAGE} | cut -d'.' -f 1`
+    RET=$(cd "${BASE_PWD}/packages/${PACKAGE_DIR}/${PACKAGE}" && git diff --name-only HEAD origin/master .)
 
     if [ -n "${RET}" ]; then
       build_package "${PACKAGE}"
