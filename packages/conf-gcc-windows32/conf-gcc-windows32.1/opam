@@ -3,6 +3,7 @@ maintainer: "whitequark@whitequark.org"
 build: [
   ["sh" "-exc" "${TOOLPREF32-i686-w64-mingw32-}gcc --version"]
   ["sh" "-c" "echo \"prefix: \\\"${TOOLPREF32-i686-w64-mingw32-}\\\"\" >conf-gcc-windows32.config"]
+  ["sh" "-c" "echo \"host: \\\"`${TOOLPREF32-i686-w64-mingw32-}gcc -dumpmachine`\\\"\" >>conf-gcc-windows32.config"]
 ]
 synopsis:
   "Virtual package specifying the location of GCC cross-compiler for 32-bit Windows"

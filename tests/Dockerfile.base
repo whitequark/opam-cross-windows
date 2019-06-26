@@ -16,6 +16,14 @@ RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O
 
 RUN useradd -g staff --create-home opam
 
+USER opam
+
+ENV CC="" CPP="" CXX="" LD="" AS="" AR=""
+
+RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
+
+USER root
+
 ADD packages/ /home/opam/opam-cross-windows/packages
 
 ADD repo /home/opam/opam-cross-windows/repo
@@ -26,14 +34,12 @@ USER opam
 
 WORKDIR /home/opam/opam-cross-windows
 
-RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
-
 RUN opam repository add windows /home/opam/opam-cross-windows
 
 RUN if [ "$SYSTEM" = "x64" ]; then \
       export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
       eval $(opam env) && opam update && \
-      opam install -y ocaml-windows; \
+      opam install -y -v ocaml-windows; \
     fi
 
 RUN if [ "$SYSTEM" = "x86" ]; then \

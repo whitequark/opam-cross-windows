@@ -14,8 +14,7 @@ install: ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
 remove:
   ["ocamlfind" "-toolchain" "windows" "remove" "ppx_tools_versioned"]
 depends: [
-  "ocaml"
-  "ocaml-windows"
+  "ocaml-windows" {< "4.08.0"}
   "ocamlfind" {build & >= "1.5.0"}
   "ocaml-migrate-parsetree-windows" {>= "0.7"}
 ]
