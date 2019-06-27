@@ -1,0 +1,31 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-flac"
+build: [
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "flac"]
+depends: [
+  "ocaml-windows" {>= "4.03"}
+  "ocamlfind" {build}
+  "ogg-windows"
+]
+bug-reports: "https://github.com/savonet/ocaml-flac/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-flac.git"
+synopsis:
+  "Interface for the Free Lossless Audio Codec otherwise known as FLAC"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-flac/releases/download/0.1.5/ocaml-flac-0.1.5.tar.gz"
+  checksum: "md5=7f4ee8cbb681ae94d80890d37553c197"
+}
+depexts: [
+  ["flac"] {os-distribution = "mxe"}
+]
