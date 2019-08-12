@@ -30,6 +30,9 @@ depends: [
   "uchar-windows"
 ]
 url {
-  src: "https://github.com/ocaml-community/sedlex/archive/v2.0.zip"
-  checksum: "md5=807023962f25342b0a2c386a3742414c"
+  src: "https://github.com/ocaml-community/sedlex/archive/v2.1.zip"
+  checksum: [
+    "md5=30fdddb1c9d8301bad3d5b3d2cbbefbf"
+    "sha512=7c937c5ed234ac6f97aacec5e9f185c4490ab8cc953d071b1bbb93983e5518c4c0fb96782a43348631270c7b4f3e0c5dc312777644724adf955f9a58070b3f12"
+  ]
 }
