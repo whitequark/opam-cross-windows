@@ -21,7 +21,7 @@ build: [
 ]
 depends: [
   "ocaml-windows" {>= "4.02.3"}
-  "dune" {>= "1.11"}
+  "dune" {>= "1.11.0"}
   "ppx_tools_versioned"
   "ppx_tools_versioned-windows"
   "ocaml-migrate-parsetree-windows"
