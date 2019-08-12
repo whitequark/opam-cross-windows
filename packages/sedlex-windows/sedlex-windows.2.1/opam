@@ -20,8 +20,8 @@ build: [
   ["dune" "build" "-x" "windows" "-p" "sedlex" "-j" jobs]
 ]
 depends: [
-  "ocaml-windows" {build & >= "4.02.3"}
-  "dune" {build & >= "1.11"}
+  "ocaml-windows" {"4.02.3"}
+  "dune" {>= "1.11"}
   "ppx_tools_versioned"
   "ppx_tools_versioned-windows"
   "ocaml-migrate-parsetree-windows"
