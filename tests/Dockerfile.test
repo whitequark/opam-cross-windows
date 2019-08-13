@@ -4,7 +4,7 @@ MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG OPAM_PKG
 
-RUN opam list --short --recursive --external --vars os-distribution=mxe --required-by=$OPAM_PKG > /home/opam/mxe-deps
+RUN opam list --short --recursive --external --vars os-distribution=mxe,os-family=mingw --required-by=$OPAM_PKG > /home/opam/mxe-deps
 
 USER root
 

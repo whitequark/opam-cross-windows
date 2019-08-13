@@ -14,4 +14,4 @@ RUN chown -R opam /home/opam/opam-cross-windows
 
 USER opam
 
-RUN opam update windows
+RUN opam update
