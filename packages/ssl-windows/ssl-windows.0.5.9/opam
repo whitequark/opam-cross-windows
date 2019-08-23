@@ -9,6 +9,7 @@ build: [
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "ssl"]]
 depends: [
   "ocaml"
+  "dune"
   "ocamlfind" {build}
   "ocaml-windows"
 ]
