@@ -23,8 +23,11 @@ synopsis:
 flags: light-uninstall
 url {
   src:
-    "https://github.com/savonet/ocaml-ffmpeg/releases/download/0.2.0/ocaml-ffmpeg-0.2.0.tar.gz"
-  checksum: "md5=f4315ab1e094196be6276517718ae370"
+    "https://github.com/savonet/ocaml-ffmpeg/releases/download/0.3.0/ocaml-ffmpeg-0.3.0.tar.gz"
+  checksum: [
+    "md5=8a7b992402e8bf48c9dea84beb58cea1"
+    "sha512=a320c47f3d20a1cd9ab70765d77cf1dbc25224bfd818e946e2ca5cd46bdee9a3447d0d3d169812118bc3aec45fe6a97f1f8fe8ed455126d48639625d2968cd37"
+  ]
 }
 depexts: [
   ["ffmpeg"] {os-distribution = "mxe"}
