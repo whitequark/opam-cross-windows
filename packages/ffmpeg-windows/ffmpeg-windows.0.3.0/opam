@@ -4,7 +4,7 @@ authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-ffmpeg"
 build: [
 # avdevice is causing build failures so disable it for now..
-  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows" CFLAGS="-Davdevice_version=assert(false)"]
+  ["./configure" "--host=%{conf-gcc-windows:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=windows" "CFLAGS=-Davdevice_version"]
   [make]
 ]
 install: [
