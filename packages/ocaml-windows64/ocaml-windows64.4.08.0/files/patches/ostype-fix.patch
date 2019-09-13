@@ -58,6 +58,15 @@ diff --git a/stdlib/sys.mlp b/stdlib/sys.mlp
 index 5d997e8ad..f1196504e 100644
 --- a/stdlib/sys.mlp
 +++ b/stdlib/sys.mlp
+@@ -24,7 +24,7 @@ type backend_type =
+   | Other of string
+ (* System interface *)
+ 
+-external get_config: unit -> string * int * bool = "caml_sys_get_config"
++(*external get_config: unit -> string * int * bool = "caml_sys_get_config"*)
+ external get_argv: unit -> string * string array = "caml_sys_get_argv"
+ external big_endian : unit -> bool = "%big_endian"
+ external word_size : unit -> int = "%word_size"
 @@ -36,7 +36,7 @@ external cygwin : unit -> bool = "%ostype_cygwin"
  external get_backend_type : unit -> backend_type = "%backend_type"
 
