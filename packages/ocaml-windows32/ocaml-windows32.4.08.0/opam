@@ -22,7 +22,6 @@ remove: [
 ]
 depends: [
   "ocaml" {"4.08.0" & arch = "x86" | "4.08.0+32bit"}
-  "ocaml-base-compiler" {= "4.08.0"}
   "ocamlfind" {>= "1.5.4"}
   "conf-gcc-windows32"
   "flexdll-windows"
