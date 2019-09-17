@@ -42,7 +42,7 @@ extra-files: [
   ["build.sh" "md5=661e39ae28fb81178637519169313521"]
   ["byterun/caml/s.h" "md5=cea41384207dddbdeb1f662af40bd067"]
   ["byterun/caml/m.h" "md5=04983943424ca21bdad1e6a0e808fdc3"]
-  ["config/Makefile.in" "md5=3aac3191fdbef63267689d8d974f2634"]
+  ["config/Makefile.in" "md5=1c759ecb31a405cfa08bc5202cc0cd63"]
   [
     "patches/use-host-ocamlrun-for-stdlib-doc.patch"
     "md5=bb186ecb914bde3a0a356b691ee8b945"
