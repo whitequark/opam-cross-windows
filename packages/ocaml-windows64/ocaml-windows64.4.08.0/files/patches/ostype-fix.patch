@@ -32,6 +32,27 @@ index d0490998c..72a5a139e 100644
          | Backend_type -> int_const 0 (* tag 0 is the same as Native here *)
        end
    | Poffsetint n ->
+diff --git a/stdlib/sys.mlp b/stdlib/sys.mlp
+index 5d997e8ad..b145e9c22 100644
+--- a/stdlib/sys.mlp
++++ b/stdlib/sys.mlp
+@@ -24,7 +24,6 @@ type backend_type =
+   | Other of string
+ (* System interface *)
+ 
+-external get_config: unit -> string * int * bool = "caml_sys_get_config"
+ external get_argv: unit -> string * string array = "caml_sys_get_argv"
+ external big_endian : unit -> bool = "%big_endian"
+ external word_size : unit -> int = "%word_size"
+@@ -36,7 +35,7 @@ external cygwin : unit -> bool = "%ostype_cygwin"
+ external get_backend_type : unit -> backend_type = "%backend_type"
+ 
+ let (executable_name, argv) = get_argv()
+-let (os_type, _, _) = get_config()
++let os_type = "%%OCAML_OS_TYPE%%"
+ let backend_type = get_backend_type ()
+ let big_endian = big_endian ()
+ let word_size = word_size ()
 diff --git a/utils/config.mlp b/utils/config.mlp
 index 025497a7f..540714980 100644
 --- a/utils/config.mlp
@@ -54,16 +75,3 @@ index 025497a7f..540714980 100644
    p "default_executable_name" default_executable_name;
    p_bool "systhread_supported" systhread_supported;
    p "host" host;
-diff --git a/stdlib/sys.mlp b/stdlib/sys.mlp
-index 5d997e8ad..f1196504e 100644
---- a/stdlib/sys.mlp
-+++ b/stdlib/sys.mlp
-@@ -36,7 +36,7 @@ external cygwin : unit -> bool = "%ostype_cygwin"
- external get_backend_type : unit -> backend_type = "%backend_type"
-
- let (executable_name, argv) = get_argv()
--let (os_type, _, _) = get_config()
-+let os_type = "%%OCAML_OS_TYPE%%"
- let backend_type = get_backend_type ()
- let big_endian = big_endian ()
- let word_size = word_size ()
