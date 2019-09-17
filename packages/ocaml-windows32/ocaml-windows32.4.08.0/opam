@@ -39,7 +39,7 @@ extra-files: [
   ["build.sh" "md5=b468db10dfc74dd85a6c441bbc08474c"]
   ["remove.sh" "md5=d2ebe7ce54e4a93a4d71d5fd889f17e3"]
   ["install.sh" "md5=995050a54b009b4ded377a221f4f6639"]
-  ["Makefile.cross.in" "md5=c4132359a9eca2a736dc2d76b7e2f7c4"]
+  ["Makefile.cross.in" "md5=3aac3191fdbef63267689d8d974f2634"]
   ["patches/use-host-ocamldoc.patch" "md5=630690f2185fc50c51847cd74b42e2d1"]
   ["patches/use-host-ocamlrun.patch" "md5=64ab0e21a5071f790a7babf4f92bf954"]
   ["patches/ostype-fix.patch" "md5=f2ca15a410a6ab1d7b1bd142cccddccf"]
