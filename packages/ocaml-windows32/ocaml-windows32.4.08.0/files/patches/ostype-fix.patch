@@ -1,72 +1,69 @@
-diff --git a/asmcomp/closure.ml b/asmcomp/closure.ml
-index 35239faff..dea8ee87a 100644
---- a/asmcomp/closure.ml
-+++ b/asmcomp/closure.ml
-@@ -500,9 +500,9 @@ let simplif_prim_pure fpc p (args, approxs) dbg =
-         | Word_size -> make_const_int (8*Arch.size_int)
-         | Int_size -> make_const_int (8*Arch.size_int - 1)
-         | Max_wosize -> make_const_int ((1 lsl ((8*Arch.size_int) - 10)) - 1 )
--        | Ostype_unix -> make_const_bool (Sys.os_type = "Unix")
--        | Ostype_win32 -> make_const_bool (Sys.os_type = "Win32")
--        | Ostype_cygwin -> make_const_bool (Sys.os_type = "Cygwin")
-+        | Ostype_unix -> make_const_bool false
-+        | Ostype_win32 -> make_const_bool true
-+        | Ostype_cygwin -> make_const_bool false
-         | Backend_type ->
-             make_const_ptr 0 (* tag 0 is the same as Native here *)
-       end
-diff --git a/asmcomp/cmmgen.ml b/asmcomp/cmmgen.ml
-index d0490998c..72a5a139e 100644
---- a/asmcomp/cmmgen.ml
-+++ b/asmcomp/cmmgen.ml
-@@ -2114,9 +2114,9 @@ and transl_prim_1 env p arg dbg =
-         | Word_size -> int_const (8*Arch.size_int)
-         | Int_size -> int_const (8*Arch.size_int - 1)
-         | Max_wosize -> int_const ((1 lsl ((8*Arch.size_int) - 10)) - 1)
--        | Ostype_unix -> const_of_bool (Sys.os_type = "Unix")
--        | Ostype_win32 -> const_of_bool (Sys.os_type = "Win32")
--        | Ostype_cygwin -> const_of_bool (Sys.os_type = "Cygwin")
-+        | Ostype_unix -> const_of_bool false
-+        | Ostype_win32 -> const_of_bool true
-+        | Ostype_cygwin -> const_of_bool false
-         | Backend_type -> int_const 0 (* tag 0 is the same as Native here *)
-       end
-   | Poffsetint n ->
-diff --git a/stdlib/sys.mlp b/stdlib/sys.mlp
-index 5d997e8ad..b145e9c22 100644
---- a/stdlib/sys.mlp
-+++ b/stdlib/sys.mlp
-@@ -24,7 +24,6 @@ type backend_type =
-   | Other of string
- (* System interface *)
+commit 4a28fe6ad69f7b76b3e845264b0afe03473eb6d8
+Author: Pierre Boutillier <pierre.boutillier@ens-lyon.org>
+Date:   Tue Apr 9 10:18:49 2019 +0200
+
+    `ocamlopt -config` returns "target" `os_type` (instead of "host" one)
+
+diff --git a/Changes b/Changes
+index f855bb3f5..b5da51514 100644
+--- a/Changes
++++ b/Changes
+@@ -52,6 +52,10 @@ Working version
+   of an extensible variant type
+   (Guillaume Bury, review by many fine eyes)
  
--external get_config: unit -> string * int * bool = "caml_sys_get_config"
- external get_argv: unit -> string * string array = "caml_sys_get_argv"
- external big_endian : unit -> bool = "%big_endian"
- external word_size : unit -> int = "%word_size"
-@@ -36,7 +35,7 @@ external cygwin : unit -> bool = "%ostype_cygwin"
- external get_backend_type : unit -> backend_type = "%backend_type"
++- Fix `ocamlopt -config` `os_type` entry to return always the
++  "target" os_type
++  (Pierre Boutillier)
++
+ ### Compiler distribution build system:
  
- let (executable_name, argv) = get_argv()
--let (os_type, _, _) = get_config()
-+let os_type = "%%OCAML_OS_TYPE%%"
- let backend_type = get_backend_type ()
- let big_endian = big_endian ()
- let word_size = word_size ()
+ - #2267: merge generation of header programs, also fixing parallel build on
+diff --git a/Makefile.config.in b/Makefile.config.in
+index 3485f9e1b..fffdf5874 100644
+--- a/Makefile.config.in
++++ b/Makefile.config.in
+@@ -136,6 +136,8 @@ MODEL=@model@
+ 
+ ### Name of operating system family for the native-code compiler.
+ SYSTEM=@system@
++### OCaml name of operating system family for the native-code compiler.
++OCAML_OS_TYPE=@ostype@
+ 
+ ### Command and flags to use for assembling ocamlopt-generated code
+ ASM=@AS@
+diff --git a/configure b/configure
+index c0f2e7296..a749188ea 100755
+Binary files a/configure and b/configure differ
+diff --git a/configure.ac b/configure.ac
+index d9bda3c7e..7b01c2a06 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -84,6 +84,7 @@ AC_SUBST([arch])
+ AC_SUBST([arch64])
+ AC_SUBST([model])
+ AC_SUBST([system])
++AC_SUBST([ostype])
+ AC_SUBST([systhread_support])
+ AC_SUBST([unix_or_win32])
+ AC_SUBST([unixlib])
+diff --git a/utils/Makefile b/utils/Makefile
+index 687529b39..ce6b9e1b5 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -81,6 +81,7 @@ config.ml: config.mlp $(ROOTDIR)/Makefile.config Makefile
+ 	    $(call SUBST,SYSTEM) \
+ 	    $(call SUBST,SYSTHREAD_SUPPORT) \
+ 	    $(call SUBST,TARGET) \
++	    $(call SUBST,OCAML_OS_TYPE) \
+ 	    $(call SUBST,WITH_FRAME_POINTERS) \
+ 	    $(call SUBST,WITH_PROFINFO) \
+ 	    $(call SUBST,WITH_SPACETIME) \
 diff --git a/utils/config.mlp b/utils/config.mlp
-index 025497a7f..540714980 100644
+index 69c561257..7a275ad0c 100644
 --- a/utils/config.mlp
 +++ b/utils/config.mlp
-@@ -141,7 +141,7 @@ let host = "%%HOST%%"
- let target = "%%TARGET%%"
- 
- let default_executable_name =
--  match Sys.os_type with
-+  match "%%OCAML_OS_TYPE%%" with
-     "Unix" -> "a.out"
-   | "Win32" | "Cygwin" -> "camlprog.exe"
-   | _ -> "camlprog"
-@@ -189,7 +189,7 @@ let configuration_variables =
+@@ -185,7 +185,7 @@ let configuration_variables =
    p "ext_asm" ext_asm;
    p "ext_lib" ext_lib;
    p "ext_dll" ext_dll;
