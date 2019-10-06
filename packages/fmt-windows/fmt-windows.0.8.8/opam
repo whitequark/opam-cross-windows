@@ -1,35 +1,35 @@
 opam-version: "2.0"
 maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/fmt"
-doc: "http://erratique.ch/software/fmt"
-dev-repo: "git+http://erratique.ch/repos/fmt.git"
+authors: [ "The fmt programmers" ]
+homepage: "https://erratique.ch/software/fmt"
+doc: "https://erratique.ch/software/fmt"
+dev-repo: "git+https://erratique.ch/repos/fmt.git"
 bug-reports: "https://github.com/dbuenzli/fmt/issues"
 tags: [ "string" "format" "pretty-print" "org:erratique" ]
 license: "ISC"
 depends: [
-  "ocaml" {>= "4.01.0"}
+  "ocaml" {>= "4.05.0"}
+  "ocamlfind" {build}
   "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.5"}
-  "result-windows"
-  "uchar-windows"
+  "topkg" {build & >= "0.9.0"}
+  "stdlib-shims-windows"
   "opam-installer" {build}
+  "seq-windows"
   "ocaml-windows"
 ]
-depopts: [
-  "cmdliner-windows"
-]
-build: [
+depopts: [ "cmdliner-windows" ]
+build: [[
   "ocaml" "pkg/pkg.ml" "build"
-                       "--pinned" "%{pinned}%"
-                       "--with-base-unix" "true"
-                       "--with-cmdliner" "%{cmdliner-windows:installed}%"
-                       "--toolchain" "windows"
-]
+          "--dev-pkg" "%{pinned}%"
+          "--with-base-unix" "true"
+          "--with-cmdliner" "%{cmdliner-windows:installed}%"
+          "--toolchain" "windows" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "fmt.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "fmt"]]
-synopsis: "OCaml Format pretty-printer combinators"
-description: """
+
+synopsis: """OCaml Format pretty-printer combinators"""
+description: """\
+
 Fmt exposes combinators to devise `Format` pretty-printing functions.
 
 Fmt depends only on the OCaml standard library. The optional `Fmt_tty`
@@ -39,9 +39,9 @@ provides command line support for Fmt depends on [`Cmdliner`][cmdliner].
 
 Fmt is distributed under the ISC license.
 
-[cmdliner]: http://erratique.ch/software/cmdliner"""
-flags: light-uninstall
+[cmdliner]: http://erratique.ch/software/cmdliner
+"""
 url {
-  src: "http://erratique.ch/software/fmt/releases/fmt-0.8.5.tbz"
-  checksum: "md5=77b64aa6f20f09de28f2405d6195f12c"
+archive: "https://erratique.ch/software/fmt/releases/fmt-0.8.8.tbz"
+checksum: "473490fcfdf3ff0a8ccee226b873d4b2"
 }
