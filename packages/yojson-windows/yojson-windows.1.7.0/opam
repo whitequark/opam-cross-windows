@@ -6,13 +6,16 @@ bug-reports: "https://github.com/ocaml-community/yojson/issues"
 dev-repo: "git+https://github.com/ocaml-community/yojson.git"
 doc: "https://ocaml-community.github.io/yojson/"
 build: [
+  ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "yojson" "-j" jobs "-x" "windows"]
 ]
+
 depends: [
-  "dune" {build}
+  "ocaml" {>= "4.02.3"}
+  "dune"
   "cppo" {build}
   "easy-format-windows"
-  "biniou-windows"
+  "biniou-windows" {>= "1.2.0"}
 ]
 synopsis:
   "Yojson is an optimized parsing and printing library for the JSON format"
@@ -29,6 +32,6 @@ The program atdgen can be used to derive OCaml-JSON serializers and
 deserializers from type definitions."""
 url {
   src:
-    "https://github.com/ocaml-community/yojson/releases/download/1.6.0/yojson-1.6.0.tbz"
-  checksum: "md5=8ca16557d3068253cc375452af3bde96"
+    "https://github.com/ocaml-community/yojson/releases/download/1.7.0/yojson-1.7.0.tbz"
+  checksum: "md5=b89d39ca3f8c532abe5f547ad3b8f84d"
 }
