@@ -9,7 +9,6 @@ bug-reports: "https://github.com/c-cube/spelll/issues"
 depends: [
   "ocaml-windows"
   "dune"
-  "base-bytes"
   "seq-windows"
   "qcheck" {with-test}
   "mdx" {with-test}
