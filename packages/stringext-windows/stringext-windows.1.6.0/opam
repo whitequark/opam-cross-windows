@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "rudi.grinberg@gmail.com"
+maintainer: "daniil@baturin.org"
 authors: "Rudi Grinberg"
 license: "MIT"
 homepage: "https://github.com/rgrinberg/stringext"
