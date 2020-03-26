@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "Sylvain Le Gall <sylvain+ocaml@le-gall.net>"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: [ "Sylvain Le Gall" ]
 homepage: "https://github.com/gildor478/ocaml-fileutils"
 license: "LGPL-2.1 with OCaml linking exception"
@@ -9,8 +9,6 @@ doc: "https://gildor478.github.io/ocaml-fileutils/"
 
 build: [
   ["dune" "build" "-p" "fileutils" "-j" jobs "-x" "windows"]
-  ["dune" "runtest" "-p" "fileutils" "-j" jobs] {with-test}
-  ["dune" "build" "@doc" "-p" "fileutils" "-j" jobs] {with-doc}
 ]
 depends: [
   "ocaml-windows" {>= "4.03"}
