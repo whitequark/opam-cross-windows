@@ -1,6 +1,6 @@
 opam-version: "2.0"
 synopsis: "Fuzzy string searching, using Levenshtein automaton"
-maintainer: "simon.cruanes.2007@m4x.org"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: "simon.cruanes.2007@m4x.org"
 tags: ["spell" "levenshtein" "automaton" "typo" "edit" "distance"]
 homepage: "https://github.com/c-cube/spelll"
@@ -17,8 +17,6 @@ depends: [
 ]
 build: [
   ["dune" "build" "@install" "-p" "spelll" "-x" "windows" "-j" jobs]
-  ["dune" "runtest" "-p" "spelll" "-j" jobs] {with-test & ocaml:version > "4.02.3" }
-  ["dune" "build" "@doc" "-p" "spelll" "-j" jobs] {with-doc}
 ]
 dev-repo: "git://github.com/c-cube/spelll"
 url {
