@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "support@toml.epimeros.org"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: [
   "Julien Sagot"
   "Emmanuel Surleau"
@@ -13,7 +13,6 @@ bug-reports: "https://github.com/mackwic/To.ml/issues"
 dev-repo: "git+https://github.com/mackwic/To.ml.git"
 build: [
   ["dune" "build" "-p" "toml" "-x" "windows"]
-  ["dune" "runtest"] {with-test}
 ]
 license: "LGPL-3.0-only"
 depends: [
