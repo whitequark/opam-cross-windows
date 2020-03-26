@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: "Thomas Gazagnaire"
 license: "ISC"
 tags: ["org:mirage" "org:ocamllabs"]

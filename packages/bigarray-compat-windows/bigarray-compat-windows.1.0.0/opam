@@ -1,6 +1,6 @@
 opam-version: "2.0"
 synopsis: "Compatibility library to use Stdlib.Bigarray when possible"
-maintainer: "Lucas Pluvinage <lucas.pluvinage@gmail.com>"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: "Lucas Pluvinage <lucas.pluvinage@gmail.com>"
 license: "ISC"
 homepage: "https://github.com/mirage/bigarray-compat"

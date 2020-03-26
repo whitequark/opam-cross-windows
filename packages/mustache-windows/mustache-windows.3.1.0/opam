@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "rudi.grinberg@gmail.com"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 authors: ["Rudi Grinberg" "Armaël Guéneau"]
 license: "MIT"
 homepage: "https://github.com/rgrinberg/ocaml-mustache"
@@ -16,7 +16,6 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "mustache" "-x" "windows" "-j" jobs]
-  ["dune" "runtest" "-p" "mustache" "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/rgrinberg/ocaml-mustache.git"
 synopsis: "Mustache logic-less templates in OCaml"
