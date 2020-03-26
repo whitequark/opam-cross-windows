@@ -10,9 +10,6 @@ depends: [
   "ocaml-windows"
   "dune"
   "seq-windows"
-  "qcheck" {with-test}
-  "mdx" {with-test}
-  "odoc" {with-doc}
 ]
 build: [
   ["dune" "build" "@install" "-p" "spelll" "-x" "windows" "-j" jobs]
