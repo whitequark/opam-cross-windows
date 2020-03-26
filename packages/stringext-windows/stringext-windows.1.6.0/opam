@@ -14,7 +14,6 @@ depends: [
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" "stringext" "-j" jobs "-x" "windows"]
-  ["dune" "runtest" "-p" "stringext" "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/rgrinberg/stringext.git"
 synopsis: "Extra string functions for OCaml"
