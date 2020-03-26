@@ -9,7 +9,7 @@ doc: "https://aantron.github.io/lambdasoup"
 bug-reports: "https://github.com/aantron/lambdasoup/issues"
 
 authors: "Anton Bachin <antonbachin@yahoo.com>"
-maintainer: "Anton Bachin <antonbachin@yahoo.com>"
+maintainer: "Daniil Baturin <daniil+opam@baturin.org>"
 dev-repo: "git+https://github.com/aantron/lambdasoup.git"
 
 depends: [
