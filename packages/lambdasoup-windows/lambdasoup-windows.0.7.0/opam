@@ -1,7 +1,5 @@
-pam-version: "2.0"
-
+opam-version: "2.0"
 synopsis: "Easy functional HTML scraping and manipulation with CSS selectors"
-
 version: "0.7.0"
 license: "MIT"
 homepage: "https://github.com/aantron/lambdasoup"
@@ -40,4 +38,3 @@ url {
   src: "https://github.com/aantron/lambdasoup/archive/0.7.0.tar.gz"
   checksum: "md5=2bb2c7d8a6ac4e12aa7dbdfcbaac0dd8"
 }
-
