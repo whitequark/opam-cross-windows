@@ -8,7 +8,7 @@ Example:
 Tsort.sort [("foundation", []); ("walls", ["foundation"]); ("roof", ["walls"])]
 ```
 """
-maintainer: "daniil@baturin.org"
+maintainer: "Daniil Baturin <daniil@baturin.org>"
 authors: ["Daniil Baturin <daniil@baturin.org>"]
 homepage: "https://github.com/dmbaturin/ocaml-tsort"
 bug-reports: "https://github.com/dmbaturin/ocaml-tsort/issues"
