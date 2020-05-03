@@ -28,10 +28,20 @@ bug-reports: "https://github.com/ocaml/dune/issues"
 dev-repo: "git+https://github.com/ocaml/dune.git"
 depends: [
   "ocaml-windows" {>= "4.07"}
-  "dune" {>= "2.5.1"}
+  "dune-private-libs" {= version}
+  "dune-private-libs-windows" {= version}
+  "dune-action-plugin" {= version}
+  "dune-action-plugin-windows" {= version}
+  "dune" {= version}
+]
+patches: [
+  "dune-deps.patch"
 ]
 build: [
   ["dune" "build" "-p" "dune" "-j" jobs "-x" "windows"]
+]
+extra-files: [
+  ["dune-deps.patch" "md5=8850db75f28d9b8ea093715187f1c2a6"]
 ]
 url {
   src: "https://github.com/ocaml/dune/releases/download/2.5.1/dune-2.5.1.tbz"

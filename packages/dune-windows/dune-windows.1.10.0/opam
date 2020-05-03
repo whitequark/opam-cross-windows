@@ -27,7 +27,7 @@ packages across several versions of OCaml and gives cross-compilation
 for free.
 """
 depends: [
-  "dune" {build & >= "1.10.0"}
+  "dune" {>= "1.10.0"}
   "ocaml-windows" {>= "4.02"}
 ]
 build: [
