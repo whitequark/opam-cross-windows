@@ -12,10 +12,11 @@ build: [
 ]
 
 depends: [
-  "ocaml-windows" {>= "4.04"}
-  "dune"          {build & >= "1.4.0"}
-  "base"          {build & < "v0.13"}
-  "base-windows"  {build & < "v0.13"}
+  "ocaml-windows"     {>= "4.04"}
+  "dune"              {>= "1.4.0"}
+  "dune-configurator" {>= "1.4.0"}
+  "base"              {build & < "v0.13"}
+  "base-windows"      {build & < "v0.13"}
 ]
 
 synopsis: "Bindings to the Perl Compatibility Regular Expressions library"
