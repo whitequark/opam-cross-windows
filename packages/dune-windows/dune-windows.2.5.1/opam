@@ -28,6 +28,7 @@ bug-reports: "https://github.com/ocaml/dune/issues"
 dev-repo: "git+https://github.com/ocaml/dune.git"
 depends: [
   "ocaml-windows" {>= "4.07"}
+  "dune-build-info" {= version}
   "dune-private-libs" {= version}
   "dune-private-libs-windows" {= version}
   "dune-action-plugin" {= version}
