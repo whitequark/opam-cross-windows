@@ -16,7 +16,7 @@ representation.  It is specified in RFC 4648.
 """
 depends: [
   "ocaml-windows"
-  "dune-configurator"
+  "dune-configurator-windows"
   "dune" {>= "2.0"}
 ]
 build: [
