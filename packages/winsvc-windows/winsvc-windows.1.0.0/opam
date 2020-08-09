@@ -1,0 +1,23 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-winsvc"
+bug-reports: "https://github.com/savonet/ocaml-winsvc/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-winsvc.git"
+synopsis: "Library to make OCaml program act as a Windows service."
+build: [
+  ["dune" "build" "-p" "winsvc" "-j" jobs "-x" "windows"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "winsvc"]]
+depends: [
+  "ocaml"
+  "dune"
+  "ocamlfind" {build}
+  "ocaml-windows"
+]
+url {
+  src: "https://github.com/savonet/ocaml-winsvc/archive/dune-1.tar.gz"
+  checksum: [
+    "md5=fe6391b95395a8c92a0080e24b37e5d8"
+  ]
+}
