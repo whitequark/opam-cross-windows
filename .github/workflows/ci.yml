@@ -14,7 +14,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-  build_posix:
+  test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
