@@ -13,10 +13,10 @@ fi
 
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
   COMPILER="${OCAML_VERSION}"
-  IMAGE="dockcross/windows-x64"
+  IMAGE="dockcross/windows-static-x64"
 else
   COMPILER="${OCAML_VERSION}+32bit"
-  IMAGE="dockcross/windows-x86"
+  IMAGE="dockcross/windows-static-x86"
 fi
 
 BASE_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
