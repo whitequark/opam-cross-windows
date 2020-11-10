@@ -15,6 +15,12 @@
 #*                                                                        *
 #**************************************************************************
 
+# Cross-specific variables
+CAMLRUN=%{bin}%/ocamlrun
+OCAMLRUN=%{bin}%/ocamlrun
+CAMLYACC=%{bin}%/ocamlyacc
+OCAMLYACC=%{bin}%/ocamlyacc
+
 # The configuration Makefile
 
 ## The EMPTY variable, used in other definitions
@@ -43,7 +49,7 @@ datarootdir=$(prefix)/man
 LIBDIR=$(prefix)/lib/ocaml
 
 ### Where to install the stub code for the standard library
-STUBLIBDIR=$(libdir)/stublibs
+STUBLIBDIR=$(LIBDIR)/stublibs
 
 ### Where to install the man pages
 # Man pages for commands go in $(MANDIR)/man$(PROGRAMS_MAN_SECTION)
@@ -74,7 +80,7 @@ AS_HAS_DEBUG_PREFIX_MAP=false
 ### Additional link-time options
 # To support dynamic loading of shared libraries (they need to look at
 # our own symbols):
-OC_LDFLAGS=
+OC_LDFLAGS=-municode
 
 ### How to invoke the C preprocessor through the C compiler
 CPP=%{conf-gcc-windows64:prefix}%cpp
@@ -213,7 +219,8 @@ CMXS=cmxa
 #   $(FLEXLINK_CMD) $(FLEXLINK_FLAGS) [-exe|-maindll]
 # or OCAML_FLEXLINK overriding will not work (see utils/config.mlp)
 
-MKEXE=$(MKEXE_ANSI) $(if $(LDFLAGS),-link "$(LDFLAGS)")
+FLEXLINK=%{flexdll-windows:lib}%/flexlink -chain $(SYSTEM) -stack 16777216 -link -static-libgcc
+MKEXE=$(FLEXLINK) -exe $(if $(OC_LDFLAGS),-link "$(OC_LDFLAGS)")
 MKDLL=$(FLEXLINK)
 MKMAINDLL=$(FLEXLINK) -maindll
 
@@ -242,9 +249,9 @@ FORCE_SAFE_STRING=false
 DEFAULT_SAFE_STRING=true
 WINDOWS_UNICODE=1
 AFL_INSTRUMENT=false
-MAX_TESTSUITE_DIR_RETRIES=
+MAX_TESTSUITE_DIR_RETRIES=1
 FLAT_FLOAT_ARRAY=true
-FUNCTION_SECTIONS=
+FUNCTION_SECTIONS=false
 AWK=gawk
 STDLIB_MANPAGES=
 

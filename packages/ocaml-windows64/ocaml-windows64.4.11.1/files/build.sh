@@ -4,8 +4,8 @@ HOST=$1
 
 ./configure --host=$1
 cp -f Makefile.cross Makefile.config
-cp -f config/s-nt.h runtime/caml/s.h
-cp -f config/m-nt.h runtime/caml/m.h
+cp -f s-nt.h runtime/caml/s.h
+cp -f m-nt.h runtime/caml/m.h
 
 if grep "WITH_SPACETIME=true" Makefile.config >/dev/null 2>/dev/null; then
   echo "#define WITH_SPACETIME" >> runtime/caml/m.h
