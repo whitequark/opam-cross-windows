@@ -50,6 +50,6 @@ extra-files: [
   ]
 ]
 url {
-  src: "https://github.com/ocaml/ocaml/archive/4.08.0.tar.gz"
-  checksum: "md5=42ed24e9a7c0e3998cab7d5e7c9f7618"
+  src: "https://github.com/ocaml/ocaml/archive/4.11.1.tar.gz"
+  checksum: "md5=b96ed2d4cb096dd65850fc0ef0a275bc"
 }
