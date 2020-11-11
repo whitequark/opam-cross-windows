@@ -1,7 +1,7 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0 and 4.11.1, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, 4.08.0 and 4.11.1, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Windows.
 
