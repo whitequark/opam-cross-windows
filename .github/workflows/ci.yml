@@ -19,9 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch: [x64, x64]
+        arch: [x64, x86]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run tests
-        run: VERBOSE=1 ./tests/run_tests.sh
+        run: VERBOSE=1 SYSTEM_TYPE=${{ matrix.arch }} ./tests/run_tests.sh

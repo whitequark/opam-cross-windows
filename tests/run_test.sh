@@ -7,6 +7,12 @@ if [ -z "${SYSTEM_TYPE}" ]; then
   SYSTEM_TYPE="x64"
 fi
 
+if [ "${SYSTEM_TYPE}" = "x64" ]; then
+  PKG_CONFIG_PATH="/usr/src/mxe/usr/x86_64-w64-mingw32.static/lib/pkgconfig/"
+else
+  PKG_CONFIG_PATH="/usr/src/mxe/usr/i686-w64-mingw32.static/lib/pkgconfig/"
+fi
+
 if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION="4.11.1"
 fi
@@ -16,6 +22,7 @@ IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
 printf "Building ${PACKAGE} using ${IMAGE}.. "
 
 DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.test --no-cache \
+                --build-arg \"PKG_CONFIG_PATH=${PKG_CONFIG_PATH}\" \
                 --build-arg \"IMAGE=${IMAGE}\" --build-arg \"OPAM_PKG=${PACKAGE}\" . 2>/dev/null"
 
 PACKAGE_DIR=`echo ${PACKAGE} | cut -d'.' -f 1`
