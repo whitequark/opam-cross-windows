@@ -28,8 +28,8 @@ build: [
 ]
 dev-repo: "git+https://github.com/savonet/ocaml-posix.git"
 url {
-  src: "https://github.com/savonet/ocaml-posix/archive/d712c42.tar.gz"
+  src: "https://github.com/savonet/ocaml-posix/archive/cd9f9ea.tar.gz"
   checksum: [
-    "md5=3c42bf743abc2e28aa2aeacb53c14455"
+    "md5=21b54192b3d4e11a3a29586df422f8ef"
   ]
 }
