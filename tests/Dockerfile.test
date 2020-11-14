@@ -6,6 +6,13 @@ ARG OPAM_PKG
 
 ARG PKG_CONFIG_PATH
 
+USER root
+
+# This is until https://github.com/mxe/mxe/pull/2583 is merged
+RUN cd /usr/src/mxe/ && git config --global user.email "toots@rastageeks.org" && git config --global user.name "Romain Beauxis" && git remote add savonet https://github.com/savonet/mxe.git && git fetch savonet && git cherry-pick 1bcf36a1
+
+USER opam
+
 RUN opam list --short --recursive --external --vars os-distribution=mxe,os-family=mingw --required-by=$OPAM_PKG > /home/opam/mxe-deps
 
 USER root
