@@ -10,7 +10,6 @@ install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
    make "install"]
 ]
-r
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "mm"]
 depends: [
   "ocaml-windows" {>= "4.08.0"}
