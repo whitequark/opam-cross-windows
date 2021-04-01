@@ -12,7 +12,7 @@ Prerequisites
 
 On 64-bit Linux build systems, 32-bit libraries must be installed. On Debian derivatives they are provided in the `gcc-multilib` package.
 
-A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-i686` (for 32-bit x86 Windows targets) or `gcc-mingw-w64-x86_64` (for 64-bit x86 Windows targets) packages. Alternatively, the [MXE environment](http://mxe.cc) can be used.
+A C cross-compiler targeting the appropriate Windows platform must be installed. On Debian derivatives they are provided in the `gcc-mingw-w64-i686` (for 32-bit x86 Windows targets) or `gcc-mingw-w64-x86-64` (for 64-bit x86 Windows targets) packages. Alternatively, the [MXE environment](http://mxe.cc) can be used.
 
 Installation
 ------------
