@@ -9,7 +9,7 @@ ARG PKG_CONFIG_PATH
 USER root
 
 # This is until https://github.com/mxe/mxe/pull/2583 is merged
-RUN cd /usr/src/mxe/ && git config --global user.email "toots@rastageeks.org" && git config --global user.name "Romain Beauxis" && git remote add savonet https://github.com/savonet/mxe.git && git fetch savonet && git checkout master && git pull && git cherry-pick dd9b0136
+RUN cd /usr/src/mxe/ && git config --global user.email "toots@rastageeks.org" && git config --global user.name "Romain Beauxis" && git remote add savonet https://github.com/savonet/mxe.git && git fetch savonet && git cherry-pick dd9b0136
 
 USER opam
 
