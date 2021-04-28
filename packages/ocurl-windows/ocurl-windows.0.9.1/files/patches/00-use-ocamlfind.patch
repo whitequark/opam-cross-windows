@@ -1,0 +1,15 @@
+diff --git a/Makefile.in b/Makefile.in
+index fc35ca4..15ef4b6 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,8 +11,8 @@ INSTALL		= @INSTALL@
+ INSTALLDATA	= @INSTALL_DATA@
+ 
+ FINDLIB = @OCAMLFIND@
+-OCAMLC = @OCAMLC@
+-OCAMLOPT = @OCAMLOPT@
++OCAMLC = $(FINDLIB) @OCAMLC@
++OCAMLOPT = $(FINDLIB) @OCAMLOPT@
+ OCAMLDEP = @OCAMLDEP@
+ OCAMLMKLIB = @OCAMLMKLIB@
+ 

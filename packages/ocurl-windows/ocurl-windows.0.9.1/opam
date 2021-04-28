@@ -23,6 +23,13 @@ depopts: ["lwt-windows" "lwt_ppx-windows"]
 depexts: [
   ["curl"] {os-distribution = "mxe"}
 ]
+extra-files: [
+  "patches/00-use-ocamlfind.patch"
+  "md5=08d9b7f67d9276e544854b3bccb865a7"
+]
+patches: [
+  "patches/00-use-ocamlfind.patch"
+]
 synopsis: "Bindings to libcurl"
 description: "libcurl is a client-side URL transfer library, supporting HTTP and a multitude of other network protocols (FTP/SMTP/RTSP/etc). This library wrap easy synchronous API (Curl), synchronous parallel and generic asynchronous API (Curl.Multi), and provides an Lwt-enabled asynchronous interface (Curl_lwt)."
 url {
