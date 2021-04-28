@@ -25,7 +25,7 @@ depexts: [
 ]
 extra-files: [
   "patches/00-use-ocamlfind.patch"
-  "md5=08d9b7f67d9276e544854b3bccb865a7"
+  "md5=6c2595909e6d59950cecc24d1f516cb7"
 ]
 patches: [
   "patches/00-use-ocamlfind.patch"
